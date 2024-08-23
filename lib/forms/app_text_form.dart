@@ -23,7 +23,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.prefixIcon,
     this.suffixIcon,
     this.isReadOnly = false,
-    this.decoration = const InputDecoration(),
+    this.decoration,
   });
 
   final void Function(T? value)? onChanged;
@@ -38,7 +38,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool isReadOnly;
-  final InputDecoration decoration;
+  final InputDecoration? decoration;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -61,7 +61,24 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: widget.decoration,
+        decoration: widget.decoration ??
+            _mobileInputDecoration.copyWith(
+              hintText: widget.hintText,
+              labelText: widget.label,
+              prefixIcon: widget.prefixIcon,
+              suffixIcon: widget.enableObscureText
+                  ? IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                      icon: isObscure
+                          ? const Icon(Icons.visibility_outlined)
+                          : const Icon(Icons.visibility_off_outlined),
+                    )
+                  : widget.suffixIcon,
+            ),
         onChanged: (value) {
           widget.onChanged?.call(
             switch (T) {
@@ -123,6 +140,17 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           );
         },
       ),
+    );
+  }
+}
+
+class LowerCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toLowerCase(),
+      selection: newValue.selection,
     );
   }
 }

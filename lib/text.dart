@@ -10,7 +10,7 @@ class AppText {
     fontWeight: FontWeight.w700,
   );
   static const TextStyle heading3 = TextStyle(
-    fontSize: 32,
+    fontSize: 25,
     fontWeight: FontWeight.w700,
   );
   static const TextStyle heading4 = TextStyle(
@@ -34,7 +34,7 @@ class AppText {
     fontWeight: FontWeight.w600,
   );
   static const TextStyle xLargeM = TextStyle(
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
   );
   static const TextStyle xLargeN = TextStyle(
@@ -65,15 +65,20 @@ class AppText {
     fontSize: 14,
     fontWeight: FontWeight.w600,
   );
-  static const TextStyle mediumM = TextStyle(
+  static const TextStyle mediumMBase = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );
-  static const TextStyle mediumN = TextStyle(
+  static const TextStyle extraSmallMedium = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle mediumR = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
-  static const TextStyle smallB = TextStyle(
+  static const TextStyle extrasmallBold = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w700,
   );
@@ -85,7 +90,7 @@ class AppText {
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
-  static const TextStyle smallN = TextStyle(
+  static const TextStyle extrasmall = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
   );

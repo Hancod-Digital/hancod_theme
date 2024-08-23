@@ -11,7 +11,7 @@ class AppPhoneNumberForm extends AppForm<String> {
     super.fieldKey,
     this.onChanged,
     this.required = false,
-    this.decoration = const InputDecoration(),
+    this.decoration,
     this.onFieldSubmitted,
   });
 
@@ -19,7 +19,7 @@ class AppPhoneNumberForm extends AppForm<String> {
   final bool required;
   final String? Function(PhoneNumber?)? mobileValidator;
   final void Function(String value)? onFieldSubmitted;
-  final InputDecoration decoration;
+  final InputDecoration? decoration;
 
   @override
   State<AppPhoneNumberForm> createState() => _AppPhoneNumberFormState();
@@ -31,7 +31,8 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
     return widget.buildContainer(
       context,
       FormBuilderField<String>(
-        enabled: widget.enabled,
+        // ignore: avoid_redundant_argument_values
+        enabled: true,
         name: widget.name,
         validator: widget.validator,
         onChanged: widget.onChanged,
@@ -42,7 +43,8 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
                 ? null
                 : PhoneNumber.parse(widget.initialValue!),
             validator: widget.mobileValidator,
-            decoration: widget.decoration,
+            decoration: widget.decoration ??
+                _mobileInputDecoration.copyWith(labelText: widget.label),
             onChanged: (phoneNumber) {
               field.didChange(phoneNumber.international);
             },
@@ -62,3 +64,46 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
     );
   }
 }
+
+// const _mobileInputDecoration = InputDecoration(
+//   alignLabelWithHint: true,
+//   floatingLabelAlignment: FloatingLabelAlignment.start,
+//   border: OutlineInputBorder(
+//     borderRadius: BorderRadius.all(Radius.circular(8)),
+//     borderSide: BorderSide(color: AppColors.textfieldOutline),
+//   ),
+//   enabledBorder: OutlineInputBorder(
+//     borderRadius: BorderRadius.all(Radius.circular(8)),
+//     borderSide: BorderSide(color: AppColors.textfieldOutline),
+//   ),
+//   focusedBorder: OutlineInputBorder(
+//     borderRadius: BorderRadius.all(Radius.circular(8)),
+//     borderSide: BorderSide(color: AppColors.primaryColor, width: 2.0),
+//   ),
+//   labelStyle: TextStyle(
+//     color: AppColors.lightGrey,
+//     // fontSize: 15.0,
+//   ),
+//   hintText: 'Enter your phone number',
+//   hintStyle: TextStyle(
+//     color: AppColors.lightGrey,
+//     fontSize: 14.0,
+//   ),
+//   // floatingLabelBehavior: FloatingLabelBehavior.always,
+// );
+const _mobileInputDecoration = InputDecoration(
+  alignLabelWithHint: true,
+  floatingLabelAlignment: FloatingLabelAlignment.start,
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    // ignore: avoid_redundant_argument_values
+    borderSide: BorderSide(color: AppColors.textfieldOutline),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    // ignore: avoid_redundant_argument_values
+    borderSide: BorderSide(color: AppColors.textfieldOutline),
+  ),
+  filled: true,
+  fillColor: Colors.white,
+);

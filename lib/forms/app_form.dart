@@ -23,8 +23,11 @@ class AppForm<T> extends StatefulWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (label != null) ...[
-          Text(label!),
-          const SizedBox(height: 12),
+          // Text(
+          //   label!,
+          //   style: AppText.mediumN.copyWith(color: AppColors.stormyBlue),
+          // ),
+          // const SizedBox(height: 12),
         ],
         child,
       ],
