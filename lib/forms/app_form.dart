@@ -9,12 +9,14 @@ class AppForm<T> extends StatefulWidget {
     this.initialValue,
     this.validator,
     this.enabled = true,
+    this.decoration,
   });
   final String name;
   final String? label;
   final T? initialValue;
   final bool enabled;
   final String? Function(T?)? validator;
+  final InputDecoration? decoration;
   // ignore: strict_raw_type
   final GlobalKey<FormBuilderFieldState>? fieldKey;
 
@@ -23,7 +25,10 @@ class AppForm<T> extends StatefulWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (label != null) ...[
-          Text(label!),
+          Text(
+            label!,
+            style: AppText.medium3.copyWith(color: AppColors.black),
+          ),
           const SizedBox(height: 12),
         ],
         child,

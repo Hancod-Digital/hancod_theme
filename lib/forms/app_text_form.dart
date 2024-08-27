@@ -23,7 +23,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.prefixIcon,
     this.suffixIcon,
     this.isReadOnly = false,
-    this.decoration = const InputDecoration(),
+    super.decoration,
   });
 
   final void Function(T? value)? onChanged;
@@ -38,7 +38,6 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool isReadOnly;
-  final InputDecoration decoration;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -61,22 +60,26 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: widget.decoration,
-        onChanged: (value) {
+        decoration: widget.decoration ?? AppTheme.largeScreenInputDecoration,
+        onChanged: (val) {
           widget.onChanged?.call(
             switch (T) {
-              String => value as T?,
-              int => value == null ? null : int.tryParse(value) as T?,
-              double => value == null ? null : double.tryParse(value) as T?,
-              _ => value as T?
+              String => val as T?,
+              int => val == null ? null : int.tryParse(val) as T?,
+              double => val == null ? null : double.tryParse(val) as T?,
+              _ => val as T?
             },
           );
         },
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => widget.validator?.call(int.tryParse(val ?? '0') as T?),
-            double => widget.validator?.call(double.tryParse(val ?? '0') as T?),
+            int => val == null
+                ? null
+                : widget.validator?.call(int.tryParse(val) as T?),
+            double => val == null
+                ? null
+                : widget.validator?.call(double.tryParse(val) as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },

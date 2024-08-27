@@ -47,6 +47,7 @@ class AppButton extends StatefulWidget {
 class _AppButtonState extends State<AppButton> {
   bool _isClickable = true;
   Timer? _timer;
+  final borderRadius =10.0;
 
   @override
   void dispose() {
@@ -56,103 +57,95 @@ class _AppButtonState extends State<AppButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(10),
-      child: Ink(
-        child: TextButton(
-          style: ButtonStyle(
-            padding:
-                MaterialStateProperty.resolveWith((states) => widget.padding),
-            shape: MaterialStateProperty.resolveWith(
-              (states) => switch (widget.style) {
-                ButtonStyles.primary => RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ButtonStyles.secondary => RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(
-                      color: widget.color ?? AppColors.primaryColor,
-                    ),
-                  ),
-                ButtonStyles.cancel => RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: const BorderSide(color: Color(0xffF0F6FD)),
-                  ),
-              },
-            ),
-            foregroundColor: MaterialStateProperty.resolveWith(
-              (states) => switch (widget.style) {
-                ButtonStyles.primary => AppColors.white,
-                ButtonStyles.secondary =>
-                  widget.color ?? AppColors.primaryColor,
-                ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
-              },
-            ),
-            backgroundColor: MaterialStateProperty.resolveWith(
-              (states) => switch (widget.style) {
-                ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
-                ButtonStyles.secondary => AppColors.white,
-                ButtonStyles.cancel => AppColors.white,
-              },
-            ),
-            overlayColor: MaterialStateProperty.resolveWith(
-              (states) => switch (widget.style) {
-                ButtonStyles.primary => AppColors.primaryColor.withOpacity(.05),
-                ButtonStyles.secondary =>
-                  (widget.color ?? AppColors.primaryColor).withOpacity(.05),
-                ButtonStyles.cancel =>
-                  (widget.color ?? AppColors.primaryColor).withOpacity(.05),
-              },
-            ),
-            elevation: MaterialStateProperty.all(6),
-            shadowColor: MaterialStateProperty.resolveWith(
-              (states) => switch (widget.style) {
-                ButtonStyles.primary ||
-                ButtonStyles.secondary ||
-                ButtonStyles.cancel =>
-                  AppColors.primaryColor.withOpacity(.05),
-              },
-            ),
-            fixedSize: MaterialStateProperty.resolveWith(
-              (states) {
-                if (widget.height != null) {
-                  return Size.fromHeight(widget.height!);
-                }
-                return null;
-              },
-            ),
-          ),
-          onPressed: (widget.isLoading || !_isClickable)
-              ? null
-              : () async {
-                  if (!_isClickable) return;
-                  setState(() {
-                    _isClickable = false;
-                  });
-                  try {
-                    widget.onPress?.call();
-                  } finally {
-                    // Set a timer to re-enable the button after a delay
-                    _timer = Timer(const Duration(milliseconds: 500), () {
-                      if (mounted) {
-                        setState(() {
-                          _isClickable = true;
-                        });
-                      }
-                    });
-                  }
-                },
-          child: widget.isLoading
-              ? const SizedBox(
-                  height: 16,
-                  width: 16,
-                  child: CircularProgressIndicator(
-                    color: AppColors.white,
-                  ),
-                )
-              : widget.label,
+    return TextButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.resolveWith((states) => widget.padding),
+        shape: MaterialStateProperty.resolveWith(
+          (states) => switch (widget.style) {
+            ButtonStyles.primary => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+              ),
+            ButtonStyles.secondary => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+                side: BorderSide(
+                  color: widget.color ?? AppColors.primaryColor,
+                ),
+              ),
+            ButtonStyles.cancel => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+                side: const BorderSide(color: AppColors.buttonOutline),
+              ),
+          },
+        ),
+        foregroundColor: MaterialStateProperty.resolveWith(
+          (states) => switch (widget.style) {
+            ButtonStyles.primary => AppColors.white,
+            ButtonStyles.secondary => widget.color ?? AppColors.primaryColor,
+            ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
+          },
+        ),
+        backgroundColor: MaterialStateProperty.resolveWith(
+          (states) => switch (widget.style) {
+            ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
+            ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
+            ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
+          },
+        ),
+        overlayColor: MaterialStateProperty.resolveWith(
+          (states) => switch (widget.style) {
+            ButtonStyles.primary =>
+              Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
+            ButtonStyles.secondary =>
+              (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+            ButtonStyles.cancel =>
+              (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+          },
+        ),
+        elevation: MaterialStateProperty.all(6),
+        shadowColor: MaterialStateProperty.resolveWith(
+          (states) => switch (widget.style) {
+            ButtonStyles.primary ||
+            ButtonStyles.secondary ||
+            ButtonStyles.cancel =>
+              AppColors.primaryColor.withOpacity(.05),
+          },
+        ),
+        fixedSize: MaterialStateProperty.resolveWith(
+          (states) {
+            if (widget.height != null) {
+              return Size.fromHeight(widget.height!);
+            }
+            return null;
+          },
         ),
       ),
+      onPressed: (widget.isLoading || !_isClickable)
+          ? null
+          : () async {
+              if (!_isClickable) return;
+              setState(() {
+                _isClickable = false;
+              });
+              try {
+                widget.onPress?.call();
+              } finally {
+                // Set a timer to re-enable the button after a delay
+                _timer = Timer(const Duration(milliseconds: 100), () {
+                  if (mounted) {
+                    setState(() {
+                      _isClickable = true;
+                    });
+                  }
+                });
+              }
+            },
+      child: widget.isLoading
+          ? const SizedBox(
+              height: 16,
+              width: 16,
+              child: CircularProgressIndicator(color: AppColors.white),
+            )
+          : widget.label,
     );
   }
 }
