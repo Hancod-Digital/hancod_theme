@@ -47,7 +47,7 @@ class AppButton extends StatefulWidget {
 class _AppButtonState extends State<AppButton> {
   bool _isClickable = true;
   Timer? _timer;
-  final borderRadius =10.0;
+  final borderRadius = 10.0;
 
   @override
   void dispose() {
@@ -108,14 +108,6 @@ class _AppButtonState extends State<AppButton> {
             ButtonStyles.secondary ||
             ButtonStyles.cancel =>
               AppColors.primaryColor.withOpacity(.05),
-          },
-        ),
-        fixedSize: MaterialStateProperty.resolveWith(
-          (states) {
-            if (widget.height != null) {
-              return Size.fromHeight(widget.height!);
-            }
-            return null;
           },
         ),
       ),

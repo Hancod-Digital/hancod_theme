@@ -11,14 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_form_builder: ^9.2.1
-  form_builder_extra_fields: ^10.1.0
-  form_builder_validators: ^9.1.0
+  form_builder_extra_fields: ^11.0.0
+  form_builder_validators: ^11.0.0
   phone_form_field: ^9.2.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
