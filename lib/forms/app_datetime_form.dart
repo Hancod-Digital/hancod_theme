@@ -17,7 +17,7 @@ class AppDateTimeForm extends AppForm<DateTime> {
     this.showCloseButton = false,
     this.valueTransformer,
     this.onClear,
-    this.decoration = const InputDecoration(),
+    super.decoration,
   });
   final void Function(DateTime?)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
@@ -27,7 +27,6 @@ class AppDateTimeForm extends AppForm<DateTime> {
   final dynamic Function(DateTime?)? valueTransformer;
   final void Function()? onClear;
   final bool showCloseButton;
-  final InputDecoration decoration;
   @override
   State<AppDateTimeForm> createState() => _AppDateTimeFormState();
 }
@@ -44,7 +43,8 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
         enabled: widget.enabled,
         validator: widget.validator,
         useRootNavigator: false,
-        decoration: widget.decoration.copyWith(
+        decoration:
+            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

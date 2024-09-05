@@ -25,10 +25,12 @@ class AppTheme {
   );
 
   static final largeScreenInputDecoration = InputDecoration(
-    border: _inputBorder,
-    enabledBorder: _inputBorder,
-    focusedBorder: _inputBorder.copyWith(
-      borderSide: const BorderSide(color: AppColors.subBlack),
+    focusedBorder: _inputBorder,
+    enabledBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.inputBorder),
+    ),
+    border: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.inputBorder),
     ),
     errorBorder: _inputBorder.copyWith(
       borderSide: const BorderSide(color: AppColors.primaryColor),
