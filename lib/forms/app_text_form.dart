@@ -21,7 +21,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.focusNode,
     super.enabled,
     this.prefixIcon,
-    this.suffixIcon,
+    this.suffix,
     this.isReadOnly = false,
     super.decoration,
   });
@@ -36,7 +36,7 @@ class AppTextForm<T> extends AppForm<T> {
   final void Function(T value)? onSubmitted;
   final FocusNode? focusNode;
   final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final Widget? suffix;
   final bool isReadOnly;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
@@ -60,7 +60,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: widget.decoration ?? AppTheme.largeScreenInputDecoration,
+        decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration)
+            .copyWith(suffix: widget.suffix),
         onChanged: (val) {
           widget.onChanged?.call(
             switch (T) {
