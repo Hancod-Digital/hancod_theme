@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'
     hide
         DropdownButton,
@@ -20,3 +21,4 @@ part 'forms/app_typeahead_form.dart';
 part 'forms/app_phonenumber_form.dart';
 part 'forms/app_multidropdown_form.dart';
 part 'forms/app_dropdown_form.dart';
+part 'forms/app_toggle_form.dart';
