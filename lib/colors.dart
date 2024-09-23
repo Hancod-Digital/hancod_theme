@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color primaryColor = Color(0xFF952424);
@@ -16,4 +16,14 @@ class AppColors {
   static const Color neutral400 = Color(0xFF6B7283);
   static const Color tableHeader = Color(0xFFFAFAFA);
   static const Color tableBorder = Color(0xFFE6E7EA);
+
+  // New
+  static const LinearGradient primaryGradient = LinearGradient(
+    begin:  Alignment.topCenter,
+    colors: [
+      Color(0xffFB9250),
+      Color(0xffE97571),
+      Color(0xffDA11B5),
+    ],
+  );
 }

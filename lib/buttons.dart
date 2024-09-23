@@ -47,7 +47,7 @@ class AppButton extends StatefulWidget {
 class _AppButtonState extends State<AppButton> {
   bool _isClickable = true;
   Timer? _timer;
-  final borderRadius = 10.0;
+  final borderRadius = 40.0;
 
   @override
   void dispose() {
@@ -86,7 +86,7 @@ class _AppButtonState extends State<AppButton> {
         ),
         backgroundColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
-            ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
+            ButtonStyles.primary => widget.color ?? AppColors.white,
             ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
             ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
           },

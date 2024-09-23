@@ -27,53 +27,53 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/fonts/
+    - assets/fonts/DMSans
 
   fonts:
-  - family: Lato
+  - family: DMSans
     fonts:
-      - asset: assets/fonts/Lato/Lato-Thin.ttf
+      - asset: assets/fonts/DMSans/DMSans-Thin.ttf
         weight: 100
-      - asset: assets/fonts/Lato/Lato-Thinitalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-Thinitalic.ttf
         weight: 100
         style: italic
-      - asset: assets/fonts/Lato/Lato-ExtraLight.ttf
+      - asset: assets/fonts/DMSans/DMSans-ExtraLight.ttf
         weight: 200
-      - asset: assets/fonts/Lato/Lato-ExtraLightitalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-ExtraLightitalic.ttf
         weight: 200
         style: italic
-      - asset: assets/fonts/Lato/Lato-Light.ttf
+      - asset: assets/fonts/DMSans/DMSans-Light.ttf
         weight: 300
-      - asset: assets/fonts/Lato/Lato-Lightitalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-Lightitalic.ttf
         weight: 300
         style: italic
-      - asset: assets/fonts/Lato/Lato-Regular.ttf
+      - asset: assets/fonts/DMSans/DMSans-Regular.ttf
         weight: 400
-      - asset: assets/fonts/Lato/Lato-Italic.ttf
+      - asset: assets/fonts/DMSans/DMSans-Italic.ttf
         weight: 400
         style: italic
-      - asset: assets/fonts/Lato/Lato-Medium.ttf
+      - asset: assets/fonts/DMSans/DMSans-Medium.ttf
         weight: 500
-      - asset: assets/fonts/Lato/Lato-Mediumitalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-Mediumitalic.ttf
         weight: 500
         style: italic
-      - asset: assets/fonts/Lato/Lato-SemiBold.ttf
+      - asset: assets/fonts/DMSans/DMSans-SemiBold.ttf
         weight: 600
-      - asset: assets/fonts/Lato/Lato-SemiBolditalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-SemiBolditalic.ttf
         weight: 600
         style: italic
-      - asset: assets/fonts/Lato/Lato-Bold.ttf
+      - asset: assets/fonts/DMSans/DMSans-Bold.ttf
         weight: 700
-      - asset: assets/fonts/Lato/Lato-Bolditalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-Bolditalic.ttf
         weight: 700
         style: italic
-      - asset: assets/fonts/Lato/Lato-ExtraBold.ttf
+      - asset: assets/fonts/DMSans/DMSans-ExtraBold.ttf
         weight: 800
-      - asset: assets/fonts/Lato/Lato-ExtraBolditalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-ExtraBolditalic.ttf
         weight: 800
         style: italic
-      - asset: assets/fonts/Lato/Lato-Black.ttf
+      - asset: assets/fonts/DMSans/DMSans-Black.ttf
         weight: 900
-      - asset: assets/fonts/Lato/Lato-Blackitalic.ttf
+      - asset: assets/fonts/DMSans/DMSans-Blackitalic.ttf
         weight: 900
         style: italic

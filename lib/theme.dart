@@ -10,8 +10,8 @@ class AppTheme {
 
   static final lightTheme = ThemeData(
     useMaterial3: false,
-    fontFamily: 'Lato',
-    colorSchemeSeed: AppColors.primaryColor,
+    fontFamily: 'DMSans',
+    colorSchemeSeed: AppColors.white,
   );
 
   static final darkTheme = ThemeData(useMaterial3: false);
@@ -21,7 +21,7 @@ class AppTheme {
 
   static const _inputBorder = OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.inputOutline),
-    borderRadius: BorderRadius.all(Radius.circular(12)),
+    borderRadius: BorderRadius.all(Radius.circular(40)),
   );
 
   static final largeScreenInputDecoration = InputDecoration(
@@ -35,6 +35,8 @@ class AppTheme {
     errorBorder: _inputBorder.copyWith(
       borderSide: const BorderSide(color: AppColors.primaryColor),
     ),
+    hintStyle:
+        AppText.regular12.copyWith(color: AppColors.white.withOpacity(0.5)),
   );
 
   static void setStatusBarAndNavigationBarColors() {
