@@ -48,7 +48,7 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.calendar_month_outlined),
+              const Icon(Icons.keyboard_arrow_down_outlined),
               if (_dateFieldKey.currentState?.value != null &&
                   widget.showCloseButton)
                 IconButton(

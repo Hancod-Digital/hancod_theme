@@ -57,39 +57,52 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
       Stack(
         alignment: Alignment.centerRight,
         children: [
-          FormBuilderTypeAhead<T>(
-            key: key,
-            decoration: widget.decoration,
-            controller: widget.controller,
-            validator: widget.validator,
-            enabled: widget.enabled && key.currentState?.value == null,
-            getImmediateSuggestions: true,
-            name: widget.name,
-            initialValue: widget.initialValue,
-            valueTransformer: widget.valueTransformer,
-            focusNode: widget.focusNode,
-            selectionToTextTransformer: widget.selectionToTextTransformer,
-            suggestionsCallback: widget.suggestionsCallback,
-            itemBuilder: widget.itemBuilder,
-            onSuggestionSelected: (suggestion) {
-              widget.onSuggestionSelected?.call(suggestion);
+          InkWell(
+            onTap: () {
+              widget.onClear?.call();
               setState(() {
-                key.currentState?.didChange(suggestion);
+                widget.onClear?.call();
+                key.currentState?.didChange(null);
+                widget.controller?.clear();
               });
             },
-            noItemsFoundBuilder: widget.noItemsFoundBuilder,
-            scrollController: widget.scrollController,
-          ),
-          if (key.currentState?.value != null && widget.enabled)
-            IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                widget.onClear?.call();
-                setState(() {
-                  key.currentState?.didChange(null);
-                });
-              },
+            child: AbsorbPointer(
+              absorbing: false,
+              child: FormBuilderTypeAhead<T>(
+                key: key,
+                decoration: widget.decoration,
+                controller: widget.controller,
+                validator: widget.validator,
+                enabled: widget.enabled,
+                getImmediateSuggestions: true,
+                name: widget.name,
+                initialValue: widget.initialValue,
+                valueTransformer: widget.valueTransformer,
+                focusNode: widget.focusNode,
+                selectionToTextTransformer: widget.selectionToTextTransformer,
+                suggestionsCallback: (search) {
+                  if (search.isEmpty) {
+                    return widget.suggestionsCallback('');
+                  }
+                  return widget.suggestionsCallback('');
+                  ;
+                },
+                itemBuilder: widget.itemBuilder,
+                onSuggestionSelected: (suggestion) {
+                  widget.onSuggestionSelected?.call(suggestion);
+                  setState(() {
+                    key.currentState?.didChange(suggestion);
+                    widget.controller?.text =
+                        widget.selectionToTextTransformer != null
+                            ? widget.selectionToTextTransformer!(suggestion)
+                            : suggestion.toString();
+                  });
+                },
+                noItemsFoundBuilder: widget.noItemsFoundBuilder,
+                scrollController: widget.scrollController,
+              ),
             ),
+          ),
         ],
       ),
     );

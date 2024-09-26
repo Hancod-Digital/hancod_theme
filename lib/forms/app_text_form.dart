@@ -23,7 +23,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.prefixIcon,
     this.suffixIcon,
     this.isReadOnly = false,
-    super.decoration,
+    this.decoration,
   });
 
   final void Function(T? value)? onChanged;
@@ -38,6 +38,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool isReadOnly;
+  final InputDecoration? decoration;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -60,26 +61,39 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: widget.decoration ?? AppTheme.largeScreenInputDecoration,
-        onChanged: (val) {
+        decoration: widget.decoration ??
+            _mobileInputDecoration.copyWith(
+              hintText: widget.hintText,
+              labelText: '',
+              prefixIcon: widget.prefixIcon,
+              suffixIcon: widget.enableObscureText
+                  ? IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                      icon: isObscure
+                          ? const Icon(Icons.visibility_outlined)
+                          : const Icon(Icons.visibility_off_outlined),
+                    )
+                  : widget.suffixIcon,
+            ),
+        onChanged: (value) {
           widget.onChanged?.call(
             switch (T) {
-              String => val as T?,
-              int => val == null ? null : int.tryParse(val) as T?,
-              double => val == null ? null : double.tryParse(val) as T?,
-              _ => val as T?
+              String => value as T?,
+              int => value == null ? null : int.tryParse(value) as T?,
+              double => value == null ? null : double.tryParse(value) as T?,
+              _ => value as T?
             },
           );
         },
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => val == null
-                ? null
-                : widget.validator?.call(int.tryParse(val) as T?),
-            double => val == null
-                ? null
-                : widget.validator?.call(double.tryParse(val) as T?),
+            int => widget.validator?.call(int.tryParse(val ?? '0') as T?),
+            double => widget.validator?.call(double.tryParse(val ?? '0') as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },
@@ -129,3 +143,33 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     );
   }
 }
+
+class LowerCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    return TextEditingValue(
+      text: newValue.text.toLowerCase(),
+      selection: newValue.selection,
+    );
+  }
+}
+
+const _mobileInputDecoration = InputDecoration(
+  alignLabelWithHint: true,
+  floatingLabelAlignment: FloatingLabelAlignment.start,
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    // ignore: avoid_redundant_argument_values
+    borderSide: BorderSide(color: AppColors.grey),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    // ignore: avoid_redundant_argument_values
+    borderSide: BorderSide(color: AppColors.textfieldOutline),
+  ),
+  filled: true,
+  fillColor: Colors.white,
+);

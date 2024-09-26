@@ -25,6 +25,11 @@ class AppText {
     height: 1,
     fontWeight: FontWeight.w700, // Bold
   );
+  static const TextStyle bold10 = TextStyle(
+    fontSize: 40,
+    height: 1,
+    fontWeight: FontWeight.w700, // Bold
+  );
 
   // 8 Styles
   static const TextStyle light8 = TextStyle(
@@ -98,6 +103,22 @@ class AppText {
   static const TextStyle semiBold6 = TextStyle(
     fontSize: 24,
     height: 1.25,
+    fontWeight: FontWeight.w600, // SemiBold
+  );
+  static const TextStyle semiBold8 = TextStyle(
+    fontSize: 35,
+    height: 1.25,
+    fontWeight: FontWeight.w700, // SemiBold
+  );
+
+  static const TextStyle semiBold7 = TextStyle(
+    fontSize: 28,
+    height: 1.36,
+    fontWeight: FontWeight.w600, // SemiBold
+  );
+  static const TextStyle semiBold3 = TextStyle(
+    fontSize: 16,
+    height: 1.24,
     fontWeight: FontWeight.w600, // SemiBold
   );
 
@@ -236,5 +257,12 @@ class AppText {
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w700, // Bold
+  );
+  static const TextStyle semibold2 = TextStyle(
+    // fontFamily: 'Plus Jakarta Sans',
+    fontWeight: FontWeight.w600, // Semibold
+    fontSize: 14.0, // Font size in pixels
+    height: 20.0 /
+        14.0, // Line height in pixels divided by font size to get the multiplier
   );
 }
