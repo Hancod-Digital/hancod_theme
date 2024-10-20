@@ -188,7 +188,6 @@ class AppText {
     fontWeight: FontWeight.w500, // Medium
   );
 
-  
   static const TextStyle semiBold3 = TextStyle(
     fontSize: 16,
     height: 1.5,
@@ -243,6 +242,11 @@ class AppText {
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w500, // Medium
+  );
+  static const TextStyle semiBold1 = TextStyle(
+    fontSize: 12,
+    height: 1.25,
+    fontWeight: FontWeight.w600, // SemiBold
   );
 
   static const TextStyle bold1 = TextStyle(

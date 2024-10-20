@@ -46,6 +46,11 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
   void initState() {
     super.initState();
     key = widget.fieldKey ?? GlobalKey<FormBuilderFieldState>();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        setState(() {});
+      },
+    );
   }
 
   @override

@@ -16,6 +16,7 @@ extension SnackBarX on BuildContext {
         behavior: SnackBarBehavior.floating,
         content: Text(message),
         backgroundColor: type.bgColor,
+        width: 400,
       ),
     );
   }

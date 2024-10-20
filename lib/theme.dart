@@ -12,6 +12,7 @@ class AppTheme {
     useMaterial3: false,
     fontFamily: 'Lato',
     colorSchemeSeed: AppColors.primaryColor,
+    scaffoldBackgroundColor: AppColors.bgColor,
   );
 
   static final darkTheme = ThemeData(useMaterial3: false);

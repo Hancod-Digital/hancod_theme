@@ -18,6 +18,7 @@ class AppButton extends StatefulWidget {
     this.style = ButtonStyles.primary,
     this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
     this.color,
+    this.enabled = true,
   });
 
   factory AppButton.icon({
@@ -39,6 +40,7 @@ class AppButton extends StatefulWidget {
   final ButtonStyles style;
   final EdgeInsetsGeometry padding;
   final Color? color;
+  final bool enabled;
 
   @override
   State<AppButton> createState() => _AppButtonState();
@@ -78,18 +80,24 @@ class _AppButtonState extends State<AppButton> {
           },
         ),
         foregroundColor: WidgetStateProperty.resolveWith(
-          (states) => switch (widget.style) {
-            ButtonStyles.primary => AppColors.white,
-            ButtonStyles.secondary => widget.color ?? AppColors.primaryColor,
-            ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
-          },
+          (states) => !widget.enabled
+              ? AppColors.grey
+              : switch (widget.style) {
+                  ButtonStyles.primary => AppColors.white,
+                  ButtonStyles.secondary =>
+                    widget.color ?? AppColors.primaryColor,
+                  ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
+                },
         ),
         backgroundColor: WidgetStateProperty.resolveWith(
-          (states) => switch (widget.style) {
-            ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
-            ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
-            ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
-          },
+          (states) => !widget.enabled
+              ? AppColors.inputBorder
+              : switch (widget.style) {
+                  ButtonStyles.primary =>
+                    widget.color ?? AppColors.primaryColor,
+                  ButtonStyles.secondary => widget.color ?? AppColors.white,
+                  ButtonStyles.cancel => widget.color ?? AppColors.white,
+                },
         ),
         overlayColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
@@ -112,7 +120,7 @@ class _AppButtonState extends State<AppButton> {
         ),
         fixedSize: WidgetStatePropertyAll(Size.fromWidth(widget.width)),
       ),
-      onPressed: (widget.isLoading || !_isClickable)
+      onPressed: (widget.isLoading || !_isClickable || !widget.enabled)
           ? null
           : () async {
               if (!_isClickable) return;
