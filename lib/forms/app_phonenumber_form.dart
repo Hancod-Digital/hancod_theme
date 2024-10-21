@@ -37,11 +37,10 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
         initialValue: widget.initialValue,
         builder: (FormFieldState<String> field) {
           return PhoneFormField(
-            initialValue: widget.initialValue == null
-                ? null
-                : PhoneNumber.parse(widget.initialValue!),
+            initialValue: PhoneNumber.parse(widget.initialValue ?? '+974'),
             validator: widget.mobileValidator,
-            decoration: widget.decoration??AppTheme.largeScreenInputDecoration,
+            decoration:
+                widget.decoration ?? AppTheme.largeScreenInputDecoration,
             onChanged: (phoneNumber) {
               field.didChange(phoneNumber.international);
             },

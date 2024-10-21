@@ -23,6 +23,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     super.decoration,
     this.valueTransformer,
     this.onClear,
+    this.updateValue = true,
   });
   final String Function(T suggestion)? selectionToTextTransformer;
   final FutureOr<List<T>> Function(String search) suggestionsCallback;
@@ -35,6 +36,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final FocusNode? focusNode;
   final dynamic Function(T?)? valueTransformer;
   final VoidCallback? onClear;
+  final bool updateValue;
   @override
   State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
 }
@@ -77,7 +79,11 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
             onSelected: (suggestion) {
               widget.onSuggestionSelected?.call(suggestion);
               setState(() {
-                key.currentState?.didChange(suggestion);
+                if (widget.updateValue) {
+                  key.currentState?.didChange(suggestion);
+                } else {
+                  key.currentState?.didChange(null);
+                }
               });
             },
             emptyBuilder: widget.noItemsFoundBuilder,
