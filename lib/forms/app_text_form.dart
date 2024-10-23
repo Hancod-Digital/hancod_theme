@@ -61,7 +61,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: widget.decoration,
+        decoration: widget.decoration.copyWith(hintText: widget.hintText),
         onChanged: (value) {
           widget.onChanged?.call(
             switch (T) {

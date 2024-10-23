@@ -58,7 +58,8 @@ class _HomeState extends State<Home> {
                   decoration: _inputDecoration,
                   suggestionsCallback: (search) =>
                       List.generate(100, (index) => index)
-                          .where((element) => '$element'.contains(search)),
+                          .where((element) => '$element'.contains(search))
+                          .toList(),
                   itemBuilder: (context, suggestion) => ListTile(
                     title: Text('$suggestion'),
                   ),

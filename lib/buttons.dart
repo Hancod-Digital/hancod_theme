@@ -62,8 +62,8 @@ class _AppButtonState extends State<AppButton> {
         child: TextButton(
           style: ButtonStyle(
             padding:
-                MaterialStateProperty.resolveWith((states) => widget.padding),
-            shape: MaterialStateProperty.resolveWith(
+                WidgetStateProperty.resolveWith((states) => widget.padding),
+            shape: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
                 ButtonStyles.primary => RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -71,7 +71,7 @@ class _AppButtonState extends State<AppButton> {
                 ButtonStyles.secondary => RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(
-                      color: widget.color ?? AppColors.primaryColor,
+                      color: widget.color ?? AppColors.brandViolet,
                     ),
                   ),
                 ButtonStyles.cancel => RoundedRectangleBorder(
@@ -80,40 +80,39 @@ class _AppButtonState extends State<AppButton> {
                   ),
               },
             ),
-            foregroundColor: MaterialStateProperty.resolveWith(
+            foregroundColor: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
                 ButtonStyles.primary => AppColors.white,
-                ButtonStyles.secondary =>
-                  widget.color ?? AppColors.primaryColor,
-                ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
+                ButtonStyles.secondary => widget.color ?? AppColors.brandViolet,
+                ButtonStyles.cancel => widget.color ?? AppColors.brandViolet,
               },
             ),
-            backgroundColor: MaterialStateProperty.resolveWith(
+            backgroundColor: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
-                ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
+                ButtonStyles.primary => widget.color ?? AppColors.brandViolet,
                 ButtonStyles.secondary => AppColors.white,
                 ButtonStyles.cancel => AppColors.white,
               },
             ),
-            overlayColor: MaterialStateProperty.resolveWith(
+            overlayColor: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
-                ButtonStyles.primary => AppColors.primaryColor.withOpacity(.05),
+                ButtonStyles.primary => AppColors.brandViolet.withOpacity(.05),
                 ButtonStyles.secondary =>
-                  (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+                  (widget.color ?? AppColors.brandViolet).withOpacity(.05),
                 ButtonStyles.cancel =>
-                  (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+                  (widget.color ?? AppColors.brandViolet).withOpacity(.05),
               },
             ),
-            elevation: MaterialStateProperty.all(6),
-            shadowColor: MaterialStateProperty.resolveWith(
+            elevation: WidgetStateProperty.all(6),
+            shadowColor: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
                 ButtonStyles.primary ||
                 ButtonStyles.secondary ||
                 ButtonStyles.cancel =>
-                  AppColors.primaryColor.withOpacity(.05),
+                  AppColors.brandViolet.withOpacity(.05),
               },
             ),
-            fixedSize: MaterialStateProperty.resolveWith(
+            fixedSize: WidgetStateProperty.resolveWith(
               (states) {
                 if (widget.height != null) {
                   return Size.fromHeight(widget.height!);
