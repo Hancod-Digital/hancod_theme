@@ -2,8 +2,6 @@
 
 part of '../forms.dart';
 
-
-
 class AppToggleForm extends AppForm<bool> {
   const AppToggleForm({
     required super.name,

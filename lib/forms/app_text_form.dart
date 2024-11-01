@@ -63,6 +63,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         decoration:
             (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
           suffix: widget.suffix,
+          prefix: widget.prefixIcon,
+          errorMaxLines: 4,
           suffixIcon: widget.enableObscureText
               ? IconButton(
                   icon: Icon(
