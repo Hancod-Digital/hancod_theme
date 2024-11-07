@@ -19,4 +19,6 @@ class AppColors {
   static const Color tableHeaderColor = Color(0xFFF4F6FF);
   static const Color divider = Color(0xFFF2f2f2);
   static const Color oddRowColor = Color(0xffF7F7F7);
+  static const Color chooseItemType = Color(0xFFEAF5FF);
+  static const Color borderColor = Color(0xFFD6D6D6);
 }

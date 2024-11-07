@@ -192,3 +192,139 @@ class _AppButtonWithIconChild extends StatelessWidget {
     );
   }
 }
+
+class AppIconButton extends StatefulWidget {
+  const AppIconButton({
+    required this.onPress,
+    required this.label,
+    super.key,
+    this.isLoading = false,
+    this.width = double.infinity,
+    this.height,
+    this.style = ButtonStyles.primary,
+    this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+    this.color,
+  });
+
+  final VoidCallback? onPress;
+  final Widget label;
+  final bool isLoading;
+  final double width;
+  final double? height;
+  final ButtonStyles style;
+  final EdgeInsetsGeometry padding;
+  final Color? color;
+
+  @override
+  State<AppIconButton> createState() => _AppIconButtonState();
+}
+
+class _AppIconButtonState extends State<AppIconButton> {
+  bool _isClickable = true;
+  Timer? _timer;
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      shape: switch (widget.style) {
+        ButtonStyles.primary => RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ButtonStyles.secondary => RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+              color: widget.color ?? AppColors.brandViolet,
+            ),
+          ),
+        ButtonStyles.cancel => RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: const BorderSide(color: Color(0xffF0F6FD)),
+          ),
+      },
+      child: Ink(
+        child: IconButton.outlined(
+          style: IconButton.styleFrom(
+            padding: widget.padding,
+            shape: switch (widget.style) {
+              ButtonStyles.primary => RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ButtonStyles.secondary => RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(
+                    color: widget.color ?? AppColors.brandViolet,
+                  ),
+                ),
+              ButtonStyles.cancel => RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: const BorderSide(color: Color(0xffF0F6FD)),
+                ),
+            },
+            foregroundColor: switch (widget.style) {
+              ButtonStyles.primary => AppColors.white,
+              ButtonStyles.secondary => widget.color ?? AppColors.brandViolet,
+              ButtonStyles.cancel => widget.color ?? AppColors.brandViolet,
+            },
+            backgroundColor: switch (widget.style) {
+              ButtonStyles.primary => widget.color ?? AppColors.brandViolet,
+              ButtonStyles.secondary => AppColors.white,
+              ButtonStyles.cancel => AppColors.white,
+            },
+            overlayColor: switch (widget.style) {
+              ButtonStyles.primary => AppColors.brandViolet.withOpacity(.05),
+              ButtonStyles.secondary =>
+                (widget.color ?? AppColors.brandViolet).withOpacity(.05),
+              ButtonStyles.cancel =>
+                (widget.color ?? AppColors.brandViolet).withOpacity(.05),
+            },
+            elevation: 6,
+            shadowColor: switch (widget.style) {
+              ButtonStyles.primary ||
+              ButtonStyles.secondary ||
+              ButtonStyles.cancel =>
+                AppColors.brandViolet.withOpacity(.05),
+            },
+            fixedSize: (widget.height != null)
+                ? Size.fromHeight(widget.height!)
+                : null,
+          ),
+          onPressed: (widget.isLoading || !_isClickable)
+              ? null
+              : () async {
+                  if (!_isClickable) return;
+                  setState(() {
+                    _isClickable = false;
+                  });
+                  try {
+                    widget.onPress?.call();
+                  } finally {
+                    // Set a timer to re-enable the button after a delay
+                    _timer = Timer(const Duration(milliseconds: 500), () {
+                      if (mounted) {
+                        setState(() {
+                          _isClickable = true;
+                        });
+                      }
+                    });
+                  }
+                },
+          icon: widget.isLoading
+              ? const SizedBox(
+                  height: 16,
+                  width: 16,
+                  child: CircularProgressIndicator(
+                    color: AppColors.white,
+                  ),
+                )
+              : widget.label,
+        ),
+      ),
+    );
+  }
+}

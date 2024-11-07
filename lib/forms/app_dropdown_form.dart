@@ -14,7 +14,7 @@ class AppDropDownForm<T> extends AppForm<T> {
     this.valueTransformer,
     super.enabled,
     this.prefixIcon,
-    this.dontShowCloseButton = false,
+    this.showCloseButton = false,
     this.onClear,
     this.decoration = const InputDecoration(),
   });
@@ -22,7 +22,7 @@ class AppDropDownForm<T> extends AppForm<T> {
   final List<DropDownItems<T>>? items;
   final dynamic Function(T?)? valueTransformer;
   final Widget? prefixIcon;
-  final bool dontShowCloseButton;
+  final bool showCloseButton;
   final void Function()? onClear;
   final InputDecoration decoration;
 
@@ -61,7 +61,23 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                 child: DropdownButtonFormField<T>(
                   icon: const SizedBox(),
                   value: field.value as T?,
-                  decoration: widget.decoration,
+                  decoration: widget.decoration.copyWith(
+                    suffixIcon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.keyboard_arrow_down_rounded),
+                        if (field.value != null && widget.showCloseButton)
+                          IconButton(
+                            iconSize: 20,
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              field.didChange(null);
+                              widget.onClear?.call();
+                            },
+                          ),
+                      ],
+                    ),
+                  ),
                   validator: widget.validator,
                   menuMaxHeight: 500,
                   elevation: 2,

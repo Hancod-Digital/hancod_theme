@@ -21,8 +21,13 @@ class AppTheme {
       errorBorder: _inputBorder.copyWith(
         borderSide: const BorderSide(color: AppColors.red),
       ),
+      border: _inputBorder,
       fillColor: AppColors.textfieldFill,
       filled: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 10,
+      ),
     ),
     menuTheme: MenuThemeData(
       style: MenuStyle(

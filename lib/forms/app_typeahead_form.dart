@@ -45,16 +45,10 @@ class AppTypeAheadForm<T> extends AppForm<T> {
 
 class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
   late GlobalKey<FormBuilderFieldState> key;
-
   @override
   void initState() {
     super.initState();
     key = widget.fieldKey ?? GlobalKey<FormBuilderFieldState>();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        setState(() {});
-      },
-    );
   }
 
   @override
