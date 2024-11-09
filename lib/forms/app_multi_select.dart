@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 /// Field for selecting value(s) from a searchable list
-class FormBuilderMultiSelectionSearchableDropdown<T> extends FormBuilderFieldDecoration<List<T>> {
+class FormBuilderMultiSelectionSearchableDropdown<T>
+    extends FormBuilderFieldDecoration<List<T>> {
   /// Creates field for selecting value(s) from a searchable list
   FormBuilderMultiSelectionSearchableDropdown({
     required super.name,
@@ -48,7 +49,8 @@ class FormBuilderMultiSelectionSearchableDropdown<T> extends FormBuilderFieldDec
         popupCustomMultiSelectionWidget = null,
         super(
           builder: (FormFieldState<List<T>?> field) {
-            final state = field as FormBuilderMultiSelectionSearchableDropdownState<T>;
+            final state =
+                field as FormBuilderMultiSelectionSearchableDropdownState<T>;
             return DropdownSearch<T>.multiSelection(
               // Hack to rebuild when didChange is called
               asyncItems: asyncItems,
@@ -56,7 +58,8 @@ class FormBuilderMultiSelectionSearchableDropdown<T> extends FormBuilderFieldDec
               compareFn: compareFn,
               enabled: state.enabled,
               dropdownBuilder: dropdownBuilderMultiSelection,
-              dropdownButtonProps: dropdownButtonProps ?? const DropdownButtonProps(),
+              dropdownButtonProps:
+                  dropdownButtonProps ?? const DropdownButtonProps(),
               dropdownDecoratorProps: DropDownDecoratorProps(
                 dropdownSearchDecoration: state.decoration,
                 textAlign: dropdownSearchTextAlign,
@@ -92,7 +95,8 @@ class FormBuilderMultiSelectionSearchableDropdown<T> extends FormBuilderFieldDec
   ///	custom filter function
   final DropdownSearchFilterFn<T>? filterFn;
 
-  ///function that compares two object with the same type to detected if it's the selected item or not
+  ///function that compares two object with the same type
+  ///to detected if it's the selected item or not
   final DropdownSearchCompareFn<T>? compareFn;
 
   ///dropdownSearch input decoration
@@ -125,7 +129,8 @@ class FormBuilderMultiSelectionSearchableDropdown<T> extends FormBuilderFieldDec
   final DropdownSearchPopupItemBuilder<T>? popupSelectionWidget;
 
   ///widget used to validate items in multiSelection mode
-  final ValidationMultiSelectionBuilder<T?>? popupValidationMultiSelectionWidget;
+  final ValidationMultiSelectionBuilder<T?>?
+      popupValidationMultiSelectionWidget;
 
   ///widget to add custom widget like addAll/removeAll on popup multi selection mode
   final ValidationMultiSelectionBuilder<T>? popupCustomMultiSelectionWidget;
@@ -145,8 +150,10 @@ class FormBuilderMultiSelectionSearchableDropdown<T> extends FormBuilderFieldDec
   final DropdownButtonProps? dropdownButtonProps;
 
   @override
-  FormBuilderMultiSelectionSearchableDropdownState<T> createState() => FormBuilderMultiSelectionSearchableDropdownState<T>();
+  FormBuilderMultiSelectionSearchableDropdownState<T> createState() =>
+      FormBuilderMultiSelectionSearchableDropdownState<T>();
 }
 
 class FormBuilderMultiSelectionSearchableDropdownState<T>
-    extends FormBuilderFieldDecorationState<FormBuilderMultiSelectionSearchableDropdown<T>, List<T>> {}
+    extends FormBuilderFieldDecorationState<
+        FormBuilderMultiSelectionSearchableDropdown<T>, List<T>> {}

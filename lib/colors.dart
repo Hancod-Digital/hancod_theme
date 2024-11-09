@@ -21,4 +21,7 @@ class AppColors {
   static const Color oddRowColor = Color(0xffF7F7F7);
   static const Color chooseItemType = Color(0xFFEAF5FF);
   static const Color borderColor = Color(0xFFD6D6D6);
+  static const Color purchaseGrey = Color(0xFF898989);
+  static const Color grey = Color(0xFF71747D);
+  static const Color black = Color(0xff000000);
 }
