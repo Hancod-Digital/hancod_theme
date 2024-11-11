@@ -4,13 +4,13 @@ class AppToggleForm extends AppForm<bool> {
   const AppToggleForm({
     required super.name,
     required this.hint,
+    bool? super.initialValue,
     super.key,
     super.validator,
     super.label,
     super.fieldKey,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.onChanged,
-    super.initialValue,
   });
   // ignore: avoid_positional_boolean_parameters
   final void Function(bool? val)? onChanged;
@@ -29,7 +29,7 @@ class _AppToggleFormState extends State<AppToggleForm> {
         name: widget.name,
         validator: widget.validator,
         onChanged: widget.onChanged,
-        initialValue: widget.initialValue,
+        initialValue: widget.initialValue as bool? ?? false,
         builder: (FormFieldState<bool> field) {
           return GestureDetector(
             onTap: () {

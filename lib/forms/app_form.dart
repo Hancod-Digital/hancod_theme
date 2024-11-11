@@ -12,7 +12,7 @@ class AppForm<T> extends StatefulWidget {
   });
   final String name;
   final String? label;
-  final T? initialValue;
+  final dynamic initialValue;
   final bool enabled;
   final String? Function(T?)? validator;
   // ignore: strict_raw_type

@@ -9,11 +9,11 @@ class AppCheckBoxForm extends AppForm<bool> {
     super.label,
     super.fieldKey,
     this.onChanged,
-    super.initialValue,
+    bool? super.initialValue,
     this.hintStyle,
     this.controlAffinity = ListTileControlAffinity.leading,
     this.crossAxisAlignment = CrossAxisAlignment.center,
-    this.enabled = true,
+    super.enabled,
   });
   // ignore: avoid_positional_boolean_parameters
   final void Function(bool? val)? onChanged;
@@ -21,8 +21,6 @@ class AppCheckBoxForm extends AppForm<bool> {
   final TextStyle? hintStyle;
   final ListTileControlAffinity controlAffinity;
   final CrossAxisAlignment crossAxisAlignment;
-  @override
-  final bool enabled;
   @override
   State<AppCheckBoxForm> createState() => _AppCheckBoxFormState();
 }
@@ -36,13 +34,14 @@ class _AppCheckBoxFormState extends State<AppCheckBoxForm> {
         name: widget.name,
         validator: widget.validator,
         onChanged: widget.onChanged,
-        initialValue: widget.initialValue ?? false,
+        initialValue: widget.initialValue as bool? ?? false,
         builder: (FormFieldState<bool> field) {
           Widget? leading;
           Widget? trailing;
           final control = Checkbox(
             value: field.value ?? false,
             onChanged: (value) {
+              if (!widget.enabled) return;
               field.didChange(value);
             },
           );

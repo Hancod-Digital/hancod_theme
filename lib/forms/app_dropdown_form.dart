@@ -8,7 +8,7 @@ class AppDropDownForm<T> extends AppForm<T> {
     required this.items,
     super.key,
     super.validator,
-    super.initialValue,
+    T? super.initialValue,
     super.fieldKey,
     this.onChanged,
     this.valueTransformer,
@@ -48,10 +48,11 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
         key: key,
         validator: widget.validator,
         onChanged: widget.onChanged,
-        initialValue: widget.items
-                    ?.any((element) => element.value == widget.initialValue) ??
+        initialValue: widget.items?.any(
+                  (element) => element.value == widget.initialValue as T?,
+                ) ??
                 false
-            ? widget.initialValue
+            ? widget.initialValue as T?
             : null,
         valueTransformer: widget.valueTransformer,
         builder: (FormFieldState<dynamic> field) {
