@@ -113,13 +113,13 @@ class _AppButtonState extends State<AppButton> {
               },
             ),
             fixedSize: WidgetStateProperty.resolveWith(
-              (states) {
-                if (widget.height != null) {
-                  return Size.fromHeight(widget.height!);
-                }
-                return null;
-              },
+              (states) => Size(widget.width, widget.height ?? 50),
             ),
+            alignment: Alignment.center,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            animationDuration: const Duration(milliseconds: 500),
+            splashFactory: InkRipple.splashFactory,
+            enableFeedback: true,
           ),
           onPressed: (widget.isLoading || !_isClickable)
               ? null
@@ -248,6 +248,8 @@ class _AppIconButtonState extends State<AppIconButton> {
           ),
       },
       child: Ink(
+        height: widget.height ?? 50,
+        width: widget.height ?? 50,
         child: IconButton.outlined(
           style: IconButton.styleFrom(
             padding: widget.padding,
@@ -290,9 +292,6 @@ class _AppIconButtonState extends State<AppIconButton> {
               ButtonStyles.cancel =>
                 AppColors.brandViolet.withOpacity(.05),
             },
-            fixedSize: (widget.height != null)
-                ? Size.fromHeight(widget.height!)
-                : null,
           ),
           onPressed: (widget.isLoading || !_isClickable)
               ? null
