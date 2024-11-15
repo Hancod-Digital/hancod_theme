@@ -42,7 +42,10 @@ class FormBuilderMultiSelectionSearchableDropdown<T>
     this.dropdownButtonProps,
     this.dropdownBuilderMultiSelection,
     this.onBeforeChangeMultiSelection,
-  })  : assert(T == String || compareFn != null),
+  })  : assert(
+          T == String || compareFn != null,
+          'compareFn is required for non-String types',
+        ),
         onSavedMultiSelection = null,
         onChangedMultiSelection = null,
         popupValidationMultiSelectionWidget = null,
