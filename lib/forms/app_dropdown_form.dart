@@ -2,7 +2,7 @@
 part of '../forms.dart';
 
 class AppDropDownForm<T> extends AppForm<T> {
-  const AppDropDownForm({
+  AppDropDownForm({
     required super.name,
     required super.label,
     required this.items,
@@ -17,7 +17,19 @@ class AppDropDownForm<T> extends AppForm<T> {
     this.showCloseButton = false,
     this.onClear,
     this.decoration = const InputDecoration(),
-  });
+  }) : assert(
+          items == null ||
+              items.isEmpty ||
+              initialValue == null ||
+              items.where((DropDownItems<T> item) {
+                    return item.value == initialValue;
+                  }).length ==
+                  1,
+          "There should be exactly one item with [DropdownButton]'s value: "
+          '$initialValue. \n'
+          'Either zero or 2 or more [DropdownMenuItem]s were detected '
+          'with the same value',
+        );
   final void Function(T?)? onChanged;
   final List<DropDownItems<T>>? items;
   final dynamic Function(T?)? valueTransformer;
