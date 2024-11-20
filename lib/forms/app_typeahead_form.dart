@@ -23,6 +23,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     super.decoration,
     this.valueTransformer,
     this.onClear,
+    this.labelText,
   });
   final String Function(T suggestion)? selectionToTextTransformer;
   final FutureOr<List<T>> Function(String search) suggestionsCallback;
@@ -35,6 +36,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final FocusNode? focusNode;
   final dynamic Function(T?)? valueTransformer;
   final VoidCallback? onClear;
+  final String? labelText;
   @override
   State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
 }
@@ -57,8 +59,10 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration:
-                widget.decoration ?? AppTheme.largeScreenInputDecoration,
+            decoration: widget.decoration ??
+                AppTheme.largeScreenInputDecoration.copyWith(
+                  labelText: widget.labelText,
+                ),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,
@@ -69,13 +73,13 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
             selectionToTextTransformer: widget.selectionToTextTransformer,
             suggestionsCallback: widget.suggestionsCallback,
             itemBuilder: widget.itemBuilder,
-            onSelected: (suggestion) {
+            onSuggestionSelected: (suggestion) {
               widget.onSuggestionSelected?.call(suggestion);
               setState(() {
                 key.currentState?.didChange(suggestion);
               });
             },
-            emptyBuilder: widget.noItemsFoundBuilder,
+            noItemsFoundBuilder: widget.noItemsFoundBuilder,
             scrollController: widget.scrollController,
           ),
           if (key.currentState?.value != null && widget.enabled)

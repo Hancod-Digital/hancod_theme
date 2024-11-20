@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hancod_theme/hancod_theme.dart';
 
-enum ButtonStyles { primary, secondary, cancel }
+enum ButtonStyles { primary, secondary, cancel, delete }
 
 class AppButton extends StatefulWidget {
   const AppButton({
@@ -59,8 +59,8 @@ class _AppButtonState extends State<AppButton> {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        padding: WidgetStateProperty.resolveWith((states) => widget.padding),
-        shape: WidgetStateProperty.resolveWith(
+        padding: MaterialStateProperty.resolveWith((states) => widget.padding),
+        shape: MaterialStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
@@ -68,49 +68,56 @@ class _AppButtonState extends State<AppButton> {
             ButtonStyles.secondary => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
                 side: BorderSide(
-                  color: widget.color ?? AppColors.primaryColor,
+                  color: widget.color ?? AppColors.primary,
                 ),
               ),
             ButtonStyles.cancel => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
                 side: const BorderSide(color: AppColors.buttonOutline),
               ),
+            ButtonStyles.delete => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius),
+              ),
           },
         ),
-        foregroundColor: WidgetStateProperty.resolveWith(
+        foregroundColor: MaterialStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary => AppColors.white,
-            ButtonStyles.secondary => widget.color ?? AppColors.primaryColor,
-            ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
+            ButtonStyles.secondary => widget.color ?? AppColors.primary,
+            ButtonStyles.cancel => widget.color ?? AppColors.primary,
+            ButtonStyles.delete => AppColors.redStatus500,
           },
         ),
-        backgroundColor: WidgetStateProperty.resolveWith(
+        backgroundColor: MaterialStateProperty.resolveWith(
           (states) => switch (widget.style) {
-            ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
+            ButtonStyles.primary => widget.color ?? AppColors.primary,
             ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
             ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
+            ButtonStyles.delete => AppColors.redStatus500,
           },
         ),
-        overlayColor: WidgetStateProperty.resolveWith(
+        overlayColor: MaterialStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary =>
               Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
             ButtonStyles.secondary =>
-              (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+              (widget.color ?? AppColors.primary).withOpacity(.05),
             ButtonStyles.cancel =>
-              (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+              (widget.color ?? AppColors.primary).withOpacity(.05),
+            ButtonStyles.delete => AppColors.redStatus100,
           },
         ),
-        elevation: WidgetStateProperty.all(6),
-        shadowColor: WidgetStateProperty.resolveWith(
+        elevation: MaterialStateProperty.all(6),
+        shadowColor: MaterialStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary ||
             ButtonStyles.secondary ||
             ButtonStyles.cancel =>
-              AppColors.primaryColor.withOpacity(.05),
+              AppColors.primary.withOpacity(.05),
+            ButtonStyles.delete => AppColors.redStatus500,
           },
         ),
-        fixedSize: WidgetStatePropertyAll(Size.fromWidth(widget.width)),
+        fixedSize: MaterialStatePropertyAll(Size.fromWidth(widget.width)),
       ),
       onPressed: (widget.isLoading || !_isClickable)
           ? null

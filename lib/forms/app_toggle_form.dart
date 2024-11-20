@@ -2,8 +2,6 @@
 
 part of '../forms.dart';
 
-
-
 class AppToggleForm extends AppForm<bool> {
   const AppToggleForm({
     required super.name,
@@ -52,8 +50,8 @@ class _AppToggleFormState extends State<AppToggleForm> {
                     scale: .8,
                     child: CupertinoSwitch(
                       thumbColor: AppColors.white,
-                      activeColor: AppColors.primaryColor,
-                      trackColor: AppColors.grey,
+                      activeColor: AppColors.primary,
+                      trackColor: AppColors.secondary,
                       value: field.value ?? false,
                       onChanged: (value) {
                         field.didChange(value);

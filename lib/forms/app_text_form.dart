@@ -7,6 +7,8 @@ class AppTextForm<T> extends AppForm<T> {
     required super.name,
     super.label,
     super.key,
+    super.boxShadow,
+    super.padding,
     this.hintText,
     super.initialValue,
     super.fieldKey,
@@ -24,6 +26,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.suffix,
     this.isReadOnly = false,
     super.decoration,
+    this.labelText,
   });
 
   final void Function(T? value)? onChanged;
@@ -38,6 +41,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffix;
   final bool isReadOnly;
+  final String? labelText;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -60,8 +64,12 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration)
-            .copyWith(suffix: widget.suffix,hintText: widget.hintText),
+        decoration:
+            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+          suffix: widget.suffix,
+          hintText: widget.hintText,
+          labelText: widget.labelText,
+        ),
         onChanged: (val) {
           widget.onChanged?.call(
             switch (T) {

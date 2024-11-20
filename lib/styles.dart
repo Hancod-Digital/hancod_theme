@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hancod_theme/colors.dart';
 
 class AppStyles {
   static final boxDecoration = BoxDecoration(
@@ -13,4 +14,31 @@ class AppStyles {
     ],
   );
   static const animationDuration = Duration(milliseconds: 300);
+
+  static InputDecoration searchDecoration = InputDecoration(
+    contentPadding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
+    filled: true,
+    fillColor: Colors.white,
+    prefixIcon: const Padding(
+      padding: EdgeInsets.only(left: 16, right: 16),
+      child: Icon(Icons.search, size: 25, color: AppColors.primary),
+    ),
+    prefixIconConstraints: const BoxConstraints(
+      minWidth: 20,
+      minHeight: 20,
+    ),
+    hintStyle: const TextStyle(color: Colors.grey),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: AppColors.inputBorder),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: AppColors.inputBorder),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: AppColors.inputBorder),
+    ),
+  );
 }

@@ -1651,12 +1651,12 @@ class _DropdownButtonState<T> extends State<DropdownButton<T>>
       );
     }
 
-    final effectiveMouseCursor = WidgetStateProperty.resolveAs<MouseCursor>(
-      WidgetStateMouseCursor.clickable,
-      <WidgetState>{
-        if (!_enabled) WidgetState.disabled,
-      },
-    );
+    // final effectiveMouseCursor = WidgetStateProperty.resolveAs<MouseCursor>(
+    //   WidgetStateMouseCursor.clickable,
+    //   <WidgetState>{
+    //     if (!_enabled) WidgetState.disabled,
+    //   },
+    // );
 
     if (widget._inputDecoration != null) {
       result = InputDecorator(
@@ -1672,7 +1672,7 @@ class _DropdownButtonState<T> extends State<DropdownButton<T>>
       child: Actions(
         actions: _actionMap,
         child: InkWell(
-          mouseCursor: effectiveMouseCursor,
+        //  mouseCursor: effectiveMouseCursor,
           onTap: _enabled ? _handleTap : null,
           canRequestFocus: _enabled,
           borderRadius: widget.borderRadius,

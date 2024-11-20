@@ -3,7 +3,9 @@ part of '../forms.dart';
 class AppDateTimeForm extends AppForm<DateTime> {
   const AppDateTimeForm({
     required super.name,
-    required super.label,
+    super.label,
+    super.boxShadow,
+    super.padding,
     super.key,
     this.hintText,
     super.initialValue,
@@ -18,6 +20,7 @@ class AppDateTimeForm extends AppForm<DateTime> {
     this.valueTransformer,
     this.onClear,
     super.decoration,
+    this.labelText,
   });
   final void Function(DateTime?)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
@@ -27,6 +30,7 @@ class AppDateTimeForm extends AppForm<DateTime> {
   final dynamic Function(DateTime?)? valueTransformer;
   final void Function()? onClear;
   final bool showCloseButton;
+  final String? labelText;
   @override
   State<AppDateTimeForm> createState() => _AppDateTimeFormState();
 }
@@ -39,12 +43,14 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
     return widget.buildContainer(
       context,
       FormBuilderDateTimePicker(
+        cursorColor: AppColors.primary500,
         key: _dateFieldKey,
         enabled: widget.enabled,
         validator: widget.validator,
         valueTransformer: widget.valueTransformer,
         decoration:
             (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+          labelText: widget.labelText,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

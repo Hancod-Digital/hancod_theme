@@ -10,6 +10,8 @@ class AppForm<T> extends StatefulWidget {
     this.validator,
     this.enabled = true,
     this.decoration,
+    this.boxShadow,
+    this.padding,
   });
   final String name;
   final String? label;
@@ -17,22 +19,31 @@ class AppForm<T> extends StatefulWidget {
   final bool enabled;
   final String? Function(T?)? validator;
   final InputDecoration? decoration;
+  final List<BoxShadow>? boxShadow;
+  final EdgeInsetsGeometry? padding;
   // ignore: strict_raw_type
   final GlobalKey<FormBuilderFieldState>? fieldKey;
 
   Widget buildContainer(BuildContext context, Widget child) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (label != null) ...[
-          Text(
-            label!,
-            style: AppText.medium3.copyWith(color: AppColors.black),
-          ),
-          const SizedBox(height: 12),
+    return Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        boxShadow: boxShadow,
+        // border: Border.all(color: AppColors.secondaryColor200),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (label != null) ...[
+            Text(
+              label!,
+              style: AppText.medium3.copyWith(color: AppColors.black),
+            ),
+            const SizedBox(height: 12),
+          ],
+          child,
         ],
-        child,
-      ],
+      ),
     );
   }
 
