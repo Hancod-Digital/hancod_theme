@@ -26,4 +26,9 @@ class AppColors {
   static const Color primaryLight = Color(0x66503FB5);
   static const Color warning = Color(0xFFED7200);
   static const Color offWhite = Color(0xFFF8F8F8);
+  // Mobile dashboard colors
+  static const Color customersCard = Color(0xffD7F3FF);
+  static const Color dailySalesCard = Color(0xffFFFBD6);
+  static const Color totalSaleCard = Color(0xffD8FFD7);
+  static const Color totalPurchaseCard = Color(0xffFFDEDE);
 }

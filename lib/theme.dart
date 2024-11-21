@@ -29,6 +29,11 @@ class AppTheme {
         vertical: 10,
       ),
     ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.white,
+      titleTextStyle: AppText.largeSB.copyWith(color: AppColors.black),
+      elevation: 0,
+    ),
     menuTheme: MenuThemeData(
       style: MenuStyle(
         surfaceTintColor: WidgetStateProperty.all(AppColors.white),

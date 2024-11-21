@@ -10,12 +10,16 @@ class AppToggleForm extends AppForm<bool> {
     super.label,
     super.fieldKey,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.hintStyle,
     this.onChanged,
   });
   // ignore: avoid_positional_boolean_parameters
   final void Function(bool? val)? onChanged;
   final String hint;
   final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
+  final TextStyle? hintStyle;
   @override
   State<AppToggleForm> createState() => _AppToggleFormState();
 }
@@ -38,8 +42,9 @@ class _AppToggleFormState extends State<AppToggleForm> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: widget.mainAxisAlignment,
+              crossAxisAlignment: widget.crossAxisAlignment,
               children: [
-                Text(widget.hint, style: AppText.largeM),
+                Text(widget.hint, style: widget.hintStyle ?? AppText.largeM),
                 SizedBox(
                   height: 30,
                   width: 42,
