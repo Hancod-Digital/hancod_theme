@@ -73,13 +73,13 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
             selectionToTextTransformer: widget.selectionToTextTransformer,
             suggestionsCallback: widget.suggestionsCallback,
             itemBuilder: widget.itemBuilder,
-            onSuggestionSelected: (suggestion) {
+            onSelected: (suggestion) {
               widget.onSuggestionSelected?.call(suggestion);
               setState(() {
                 key.currentState?.didChange(suggestion);
               });
             },
-            noItemsFoundBuilder: widget.noItemsFoundBuilder,
+            emptyBuilder: widget.noItemsFoundBuilder,
             scrollController: widget.scrollController,
           ),
           if (key.currentState?.value != null && widget.enabled)

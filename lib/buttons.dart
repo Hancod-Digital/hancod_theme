@@ -59,8 +59,8 @@ class _AppButtonState extends State<AppButton> {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.resolveWith((states) => widget.padding),
-        shape: MaterialStateProperty.resolveWith(
+        padding: WidgetStateProperty.resolveWith((states) => widget.padding),
+        shape: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
