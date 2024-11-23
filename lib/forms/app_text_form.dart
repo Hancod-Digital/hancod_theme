@@ -27,6 +27,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.isReadOnly = false,
     super.decoration,
     this.labelText,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
   });
 
   final void Function(T? value)? onChanged;
@@ -42,6 +43,8 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? suffix;
   final bool isReadOnly;
   final String? labelText;
+  final AutovalidateMode autovalidateMode;
+
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -62,10 +65,11 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
       FormBuilderTextField(
         name: widget.name,
         enabled: widget.enabled,
+        autovalidateMode: widget.autovalidateMode,
         key: key,
         controller: widget.controller,
         decoration:
-            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+            (widget.decoration ?? AppTheme.defaultInputDecoration).copyWith(
           suffix: widget.suffix,
           hintText: widget.hintText,
           labelText: widget.labelText,

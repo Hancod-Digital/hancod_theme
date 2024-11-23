@@ -9,13 +9,13 @@ class AppTheme {
   static const double textFieldBorderRadius = 12;
 
   static final lightTheme = ThemeData(
-    useMaterial3: false,
+    useMaterial3: true,
     // fontFamily: 'Lato',
     colorSchemeSeed: AppColors.primary,
     scaffoldBackgroundColor: AppColors.bgColor,
   );
 
-  static final darkTheme = ThemeData(useMaterial3: false);
+  static final darkTheme = ThemeData(useMaterial3: true);
 
   static Brightness get currentSystemBrightness =>
       PlatformDispatcher.instance.platformBrightness;
@@ -24,7 +24,23 @@ class AppTheme {
     borderSide: BorderSide(
       color: AppColors.inputOutline,
     ),
-    borderRadius: BorderRadius.all(Radius.circular(12)),
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+  );
+
+  static final defaultInputDecoration = InputDecoration(
+    focusedBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.primary),
+    ),
+    enabledBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.inputBorder),
+    ),
+    hintStyle: AppText.text16W500.copyWith(color: AppColors.greyText),
+    border: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.inputBorder),
+    ),
+    errorBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.primary),
+    ),
   );
 
   static final largeScreenInputDecoration = InputDecoration(

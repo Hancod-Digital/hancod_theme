@@ -37,9 +37,9 @@ class AppForm<T> extends StatefulWidget {
           if (label != null) ...[
             Text(
               label!,
-              style: AppText.medium3.copyWith(color: AppColors.black),
+              style: AppText.text16W700.copyWith(color: AppColors.black),
             ),
-            const SizedBox(height: 12),
+            verticalSpaceTiny,
           ],
           child,
         ],

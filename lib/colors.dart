@@ -82,7 +82,7 @@ class AppColors {
   // Additional colors
   static const Color white = Color(0xFFFFFFFF);
   static const Color subBlack = Color(0xFF6B7283);
-  static const Color inputBorder = Color(0xFFE6E7EA);
+  static const Color inputBorder = Color(0xFFBFBFBF);
   static const Color inputOutline = Color(0xFF969BA7);
   static const Color buttonOutline = Color(0xFFE6E6E6);
   static const Color dividerGrey = Color(0xFFE6E7EA);
@@ -90,4 +90,15 @@ class AppColors {
   static const Color bgColor = Color(0xFFF8F9FA);
   static const Color errorBorder = Color(0xFFF24E1E);
   static const Color fillColor = Color(0xFFEDF2F6);
+
+  // Text colors
+  static const Color greyText = Color(0xFF808080);
+
+  // Button colors
+  static const Color gradientCOLOR1 = Color(0xFF00C1EC);
+  static const Color gradientCOLOR2 = Color(0xFF4170DA);
+  static const Color gradientCOLOR3 = Color(0xFF4700DF);
+  static const Color gradientCOLOR4 = Color.fromARGB(255, 250, 99, 91);
+  static const Color gradientCOLOR5 = Color.fromARGB(255, 248, 69, 60);
+  static const Color gradientCOLOR6 = Color.fromARGB(255, 233, 21, 10);
 }
