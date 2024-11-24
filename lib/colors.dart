@@ -81,18 +81,32 @@ class AppColors {
 
   // Additional colors
   static const Color white = Color(0xFFFFFFFF);
+  static const Color lightWhite = Color(0xFFF9F9F9);
   static const Color subBlack = Color(0xFF6B7283);
   static const Color inputBorder = Color(0xFFBFBFBF);
   static const Color inputOutline = Color(0xFF969BA7);
   static const Color buttonOutline = Color(0xFFE6E6E6);
   static const Color dividerGrey = Color(0xFFE6E7EA);
   static const Color paleBlue = Color(0xFFE9EFFF);
+  static const Color scaffoldBgColor = Color(0xFFFBFCFD);
   static const Color bgColor = Color(0xFFF8F9FA);
   static const Color errorBorder = Color(0xFFF24E1E);
   static const Color fillColor = Color(0xFFEDF2F6);
+  static const Color iconGrey = Color(0xFFAEAEAE);
+  static const Color steelBlue = Color(0xFF557095);
+  static const Color lightsteelblue = Color(0xFFB4CBEE);
+  static const Color lavender = Color(0xFFEAEAF6);
+  static const Color darkslategray = Color(0xFF2E2E2E);
+  static const Color lightslategray = Color(0xFF75829C);
+  static const Color mediumslateblue = Color(0xFF0066FF);
+  static const Color orangeRed = Color(0xFFC60000);
+  static const Color aliceblue = Color(0xFFEDF0F7);
+  static const Color turquoise = Color(0xFF16DBCC);
+  static const Color ghostwhite = Color(0xFFEFF1F7);
 
   // Text colors
   static const Color greyText = Color(0xFF808080);
+  static const Color darkBlueText = Color(0xFF32437D);
 
   // Button colors
   static const Color gradientCOLOR1 = Color(0xFF00C1EC);

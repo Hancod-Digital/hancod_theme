@@ -27,6 +27,9 @@ class AppTextForm<T> extends AppForm<T> {
     this.isReadOnly = false,
     super.decoration,
     this.labelText,
+    this.labelStyle,
+    this.contentStyle,
+    this.hintStyle,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
   });
 
@@ -42,6 +45,9 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffix;
   final bool isReadOnly;
+  final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
+  final TextStyle? contentStyle;
   final String? labelText;
   final AutovalidateMode autovalidateMode;
 
@@ -68,9 +74,11 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         autovalidateMode: widget.autovalidateMode,
         key: key,
         controller: widget.controller,
+        style: widget.contentStyle,
         decoration:
             (widget.decoration ?? AppTheme.defaultInputDecoration).copyWith(
           suffix: widget.suffix,
+          hintStyle: widget.hintStyle,
           hintText: widget.hintText,
           labelText: widget.labelText,
         ),
@@ -139,6 +147,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           );
         },
       ),
+      labelStyle: widget.labelStyle,
     );
   }
 }

@@ -9,8 +9,14 @@ class AppTheme {
   static const double textFieldBorderRadius = 12;
 
   static final lightTheme = ThemeData(
-    useMaterial3: true,
+    useMaterial3: false,
     // fontFamily: 'Lato',
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: AppColors.darkBlueText,
+      selectionColor: AppColors.darkBlueText,
+      selectionHandleColor: AppColors.darkBlueText,
+    ),
+
     colorSchemeSeed: AppColors.primary,
     scaffoldBackgroundColor: AppColors.bgColor,
   );
@@ -40,6 +46,28 @@ class AppTheme {
     ),
     errorBorder: _inputBorder.copyWith(
       borderSide: const BorderSide(color: AppColors.primary),
+    ),
+  );
+
+  static final smallScreenInputDecoration = InputDecoration(
+    focusedBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.lightsteelblue),
+    ),
+    fillColor: AppColors.white,
+    filled: true,
+    hintStyle: AppText.text14W500.copyWith(color: AppColors.greyText),
+    enabledBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.ghostwhite),
+    ),
+    border: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.ghostwhite),
+    ),
+    focusColor: AppColors.mediumslateblue,
+    focusedErrorBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.redStatus900),
+    ),
+    errorBorder: _inputBorder.copyWith(
+      borderSide: const BorderSide(color: AppColors.redStatus900),
     ),
   );
 
