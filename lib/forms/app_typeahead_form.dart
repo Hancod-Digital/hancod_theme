@@ -17,6 +17,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     super.enabled = true,
     this.controller,
     this.hintText,
+    super.secondaryLabel,
     T? super.initialValue,
     this.scrollController,
     this.focusNode,
@@ -60,7 +61,8 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration: widget.decoration,
+            decoration:
+                widget.decoration.copyWith(labelText: widget.secondaryLabel),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,

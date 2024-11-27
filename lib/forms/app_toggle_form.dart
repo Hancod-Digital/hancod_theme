@@ -13,6 +13,7 @@ class AppToggleForm extends AppForm<bool> {
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.hintStyle,
     this.onChanged,
+    this.activeColor,
   });
   // ignore: avoid_positional_boolean_parameters
   final void Function(bool? val)? onChanged;
@@ -20,6 +21,7 @@ class AppToggleForm extends AppForm<bool> {
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final TextStyle? hintStyle;
+  final Color? activeColor;
   @override
   State<AppToggleForm> createState() => _AppToggleFormState();
 }
@@ -53,7 +55,7 @@ class _AppToggleFormState extends State<AppToggleForm> {
                     scale: .6,
                     child: CupertinoSwitch(
                       thumbColor: AppColors.white,
-                      activeColor: AppColors.primaryColor,
+                      activeColor: widget.activeColor ?? AppColors.primaryColor,
                       trackColor: AppColors.stormyBlue,
                       value: field.value ?? false,
                       onChanged: (value) {

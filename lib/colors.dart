@@ -31,4 +31,6 @@ class AppColors {
   static const Color dailySalesCard = Color(0xffFFFBD6);
   static const Color totalSaleCard = Color(0xffD8FFD7);
   static const Color totalPurchaseCard = Color(0xffFFDEDE);
+
+  static const Color orange = Color(0xFFFE7F0A);
 }

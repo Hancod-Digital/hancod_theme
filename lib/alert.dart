@@ -14,11 +14,13 @@ extension on SnackBarType {
 }
 
 extension SnackBarX on BuildContext {
+  Size get size => MediaQuery.of(this).size;
   void showSnackBar(String message, {SnackBarType type = SnackBarType.info}) {
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
         duration: const Duration(milliseconds: 2500),
         behavior: SnackBarBehavior.floating,
+        width: size.width > 1200 ? 400 : size.width - 10,
         content: Text(message),
         backgroundColor: type.bgColor,
       ),

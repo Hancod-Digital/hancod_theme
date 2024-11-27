@@ -5,12 +5,14 @@ class AppForm<T> extends StatefulWidget {
     required this.name,
     super.key,
     this.label,
+    this.secondaryLabel,
     this.fieldKey,
     this.initialValue,
     this.validator,
     this.enabled = true,
   });
   final String name;
+  final String? secondaryLabel;
   final String? label;
   final dynamic initialValue;
   final bool enabled;

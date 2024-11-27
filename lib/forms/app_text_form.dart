@@ -80,8 +80,11 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: _key,
         controller: widget.controller,
-        decoration: widget.decoration
-            .copyWith(hintText: widget.hintText, suffix: widget.suffixIcon),
+        decoration: widget.decoration.copyWith(
+          hintText: widget.hintText,
+          suffix: widget.suffixIcon,
+          prefixIcon: widget.prefixIcon,
+        ),
         onChanged: (val) {
           widget.onChanged?.call(
             switch (T) {
