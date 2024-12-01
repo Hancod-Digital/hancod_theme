@@ -16,9 +16,34 @@ class AppTheme {
       selectionColor: AppColors.darkBlueText,
       selectionHandleColor: AppColors.darkBlueText,
     ),
-
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateColor.resolveWith((states) => AppColors.primary),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    ),
     colorSchemeSeed: AppColors.primary,
     scaffoldBackgroundColor: AppColors.bgColor,
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primary,
+      foregroundColor: AppColors.white,
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          return AppColors.primary;
+        }),
+        shape: WidgetStateProperty.resolveWith(
+          (states) => RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        textStyle: WidgetStateProperty.resolveWith(
+          (states) => AppText.text14W600,
+        ),
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (states) => AppColors.white,
+        ),
+      ),
+    ),
   );
 
   static final darkTheme = ThemeData(useMaterial3: true);

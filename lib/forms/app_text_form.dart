@@ -81,6 +81,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           hintStyle: widget.hintStyle,
           hintText: widget.hintText,
           labelText: widget.labelText,
+          prefixIcon: widget.prefixIcon,
         ),
         onChanged: (val) {
           widget.onChanged?.call(

@@ -11,3 +11,4 @@ export 'scroll.dart';
 export 'styles.dart';
 export 'text.dart';
 export 'theme.dart';
+export 'utils.dart';

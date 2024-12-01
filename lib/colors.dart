@@ -3,6 +3,7 @@ import 'dart:ui';
 class AppColors {
   // Color Palette
   static const Color black = Color(0xFF000000);
+  static const Color black2 = Color(0xFF282323);
   static const Color primary = Color(0xFF4E47F2);
   static const Color secondary = Color(0xFFAAB9C5);
   static const Color success = Color(0xFF19A361);
@@ -81,6 +82,7 @@ class AppColors {
 
   // Additional colors
   static const Color white = Color(0xFFFFFFFF);
+  static const Color gray = Color(0xFF848484);
   static const Color lightWhite = Color(0xFFF9F9F9);
   static const Color subBlack = Color(0xFF6B7283);
   static const Color inputBorder = Color(0xFFBFBFBF);
@@ -103,6 +105,23 @@ class AppColors {
   static const Color aliceblue = Color(0xFFEDF0F7);
   static const Color turquoise = Color(0xFF16DBCC);
   static const Color ghostwhite = Color(0xFFEFF1F7);
+  static const Color dimgray = Color(0xFF4B4544);
+  static const Color darkgray = Color(0xFF999999);
+  static const Color gainsboro = Color(0xFFD9D9D9);
+  static const Color midnightblue = Color(0xFF27207C);
+  static const Color seagreen = Color(0xFF3B8D5A);
+  static const Color darkorange = Color(0xFFFE7F0A);
+  static const Color lightgray = Color(0xFFD0D0D0);
+  static const Color whitesmoke = Color(0xFFE9ECEF);
+  static const Color papayawhip = Color(0xFFFFF3D4);
+  static const Color lightgoldenrodyellow = Color(0xFFD4FDD6);
+  static const Color mistyrose = Color(0xFFFDE2EA);
+  static const Color goldenrod = Color(0xFFE7AD18);
+  static const Color mediumseagreen = Color(0xFF19A361);
+  static const Color crimson = Color(0xFFF31155);
+  static const Color dodgerblue = Color(0xFF0085FF);
+  static const Color darkslateblue = Color(0xFF32437D);
+  static const Color cornflowerblue = Color(0xFF2F79D4);
 
   // Text colors
   static const Color greyText = Color(0xFF808080);
