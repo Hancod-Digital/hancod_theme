@@ -25,7 +25,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     this.onClear,
   });
   final String Function(T suggestion)? selectionToTextTransformer;
-  final FutureOr<Iterable<T>> Function(String search) suggestionsCallback;
+  final FutureOr<List<T>> Function(String search) suggestionsCallback;
   final void Function(T suggestion)? onSuggestionSelected;
   final Widget Function(BuildContext context, T suggestion) itemBuilder;
   final Widget Function(BuildContext context)? noItemsFoundBuilder;
@@ -73,32 +73,19 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
                 decoration: widget.decoration,
                 controller: widget.controller,
                 validator: widget.validator,
-                enabled: widget.enabled,
-                getImmediateSuggestions: true,
+                enabled: widget.enabled && key.currentState?.value == null,
                 name: widget.name,
                 initialValue: widget.initialValue,
                 valueTransformer: widget.valueTransformer,
                 focusNode: widget.focusNode,
                 selectionToTextTransformer: widget.selectionToTextTransformer,
-                suggestionsCallback: (search) {
-                  if (search.isEmpty) {
-                    return widget.suggestionsCallback('');
-                  }
-                  return widget.suggestionsCallback('');
-                  ;
-                },
+                suggestionsCallback: widget.suggestionsCallback,
                 itemBuilder: widget.itemBuilder,
-                onSuggestionSelected: (suggestion) {
+                onSelected: (suggestion) {
                   widget.onSuggestionSelected?.call(suggestion);
-                  setState(() {
-                    key.currentState?.didChange(suggestion);
-                    widget.controller?.text =
-                        widget.selectionToTextTransformer != null
-                            ? widget.selectionToTextTransformer!(suggestion)
-                            : suggestion.toString();
-                  });
+                  key.currentState?.didChange(suggestion);
                 },
-                noItemsFoundBuilder: widget.noItemsFoundBuilder,
+                emptyBuilder: widget.noItemsFoundBuilder,
                 scrollController: widget.scrollController,
               ),
             ),
