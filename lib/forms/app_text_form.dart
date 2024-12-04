@@ -82,7 +82,18 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         controller: widget.controller,
         decoration: widget.decoration.copyWith(
           hintText: widget.hintText,
-          suffix: widget.suffixIcon,
+          suffixIcon: widget.enableObscureText
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isObscure = !isObscure;
+                    });
+                  },
+                  icon: isObscure
+                      ? const Icon(Icons.visibility_outlined)
+                      : const Icon(Icons.visibility_off_outlined),
+                )
+              : widget.suffixIcon,
           prefixIcon: widget.prefixIcon,
         ),
         onChanged: (val) {

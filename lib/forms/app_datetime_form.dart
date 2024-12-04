@@ -64,7 +64,7 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
           ),
         ),
         name: widget.name,
-        initialValue: widget.initialValue as DateTime? ?? DateTime.now(),
+        initialValue: widget.initialValue as DateTime?,
         inputType: widget.inputType,
         onChanged: widget.onChanged,
         fieldHintText: widget.hintText,
