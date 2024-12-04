@@ -12,8 +12,12 @@ class AppColors {
   static const Color buttonOutline = Color(0xFFE6E6E6);
   static const Color dividerGrey = Color(0xFFE6E7EA);
   static const Color paleBlue = Color(0xFFE9EFFF);
+  static const Color paleRed = Color(0xFFFFF8F8);
   static const Color bgColor = Color(0xFFEBEBEB);
   static const Color neutral400 = Color(0xFF6B7283);
   static const Color tableHeader = Color(0xFFFAFAFA);
   static const Color tableBorder = Color(0xFFE6E7EA);
+  static const Color cardBorder = Color(0xFFE4E4E4);
+  static const Color menuBorder = Color(0xFFE6E7EA);
+  static const Color primaryLight = Color(0xFFFFF7F6);
 }

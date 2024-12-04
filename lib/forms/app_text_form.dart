@@ -20,9 +20,11 @@ class AppTextForm<T> extends AppForm<T> {
     this.onSubmitted,
     this.focusNode,
     super.enabled,
-    this.prefixIcon,
+    this.prefix,
     this.suffix,
     this.isReadOnly = false,
+    this.prefixIcon,
+    this.suffixIcon,
     super.decoration,
   });
 
@@ -35,8 +37,10 @@ class AppTextForm<T> extends AppForm<T> {
   final TextInputType? keyboardType;
   final void Function(T value)? onSubmitted;
   final FocusNode? focusNode;
+  final Widget? prefix;
   final Widget? prefixIcon;
   final Widget? suffix;
+  final Widget? suffixIcon;
   final bool isReadOnly;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
@@ -60,17 +64,15 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration:
-            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+        decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
           suffix: widget.suffix,
-          prefix: widget.prefixIcon,
+          prefix: widget.prefix,
+          prefixIcon: widget.prefixIcon,
           errorMaxLines: 4,
           suffixIcon: widget.enableObscureText
               ? IconButton(
                   icon: Icon(
-                    isObscure
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined,
+                    isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
                     color: AppColors.grey,
                   ),
                   onPressed: () {
@@ -79,7 +81,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
                     });
                   },
                 )
-              : null,
+              : widget.suffixIcon,
           hintText: widget.hintText,
         ),
         onChanged: (val) {
@@ -95,10 +97,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => widget.validator
-                ?.call(val == null ? null : int.tryParse(val) as T?),
-            double => widget.validator
-                ?.call(val == null ? null : double.tryParse(val) as T?),
+            int => widget.validator?.call(val == null ? null : int.tryParse(val) as T?),
+            double => widget.validator?.call(val == null ? null : double.tryParse(val) as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },

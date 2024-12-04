@@ -30,6 +30,7 @@ class AppButton extends StatefulWidget {
     double width,
     ButtonStyles style,
     EdgeInsetsGeometry padding,
+    Color color,
   }) = _AppButtonWithIcon;
 
   final VoidCallback? onPress;
@@ -84,8 +85,7 @@ class _AppButtonState extends State<AppButton> {
               ? AppColors.grey
               : switch (widget.style) {
                   ButtonStyles.primary => AppColors.white,
-                  ButtonStyles.secondary =>
-                    widget.color ?? AppColors.primaryColor,
+                  ButtonStyles.secondary => widget.color ?? AppColors.primaryColor,
                   ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
                 },
         ),
@@ -93,20 +93,16 @@ class _AppButtonState extends State<AppButton> {
           (states) => !widget.enabled
               ? AppColors.inputBorder
               : switch (widget.style) {
-                  ButtonStyles.primary =>
-                    widget.color ?? AppColors.primaryColor,
+                  ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
                   ButtonStyles.secondary => widget.color ?? AppColors.white,
                   ButtonStyles.cancel => widget.color ?? AppColors.white,
                 },
         ),
         overlayColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
-            ButtonStyles.primary =>
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
-            ButtonStyles.secondary =>
-              (widget.color ?? AppColors.primaryColor).withOpacity(.05),
-            ButtonStyles.cancel =>
-              (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+            ButtonStyles.primary => Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
+            ButtonStyles.secondary => (widget.color ?? AppColors.primaryColor).withOpacity(.05),
+            ButtonStyles.cancel => (widget.color ?? AppColors.primaryColor).withOpacity(.05),
           },
         ),
         elevation: WidgetStateProperty.all(6),
@@ -161,17 +157,25 @@ class _AppButtonWithIcon extends AppButton {
     super.isLoading,
     super.width,
     super.padding,
-  }) : super(label: _AppButtonWithIconChild(icon: icon, label: label));
+    super.color,
+  }) : super(
+            label: _AppButtonWithIconChild(
+          icon: icon,
+          label: label,
+          color: color,
+        ));
 }
 
 class _AppButtonWithIconChild extends StatelessWidget {
   const _AppButtonWithIconChild({
     required this.label,
     required this.icon,
+    this.color,
   });
 
   final Widget label;
   final Widget icon;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
