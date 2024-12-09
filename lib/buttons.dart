@@ -94,7 +94,7 @@ class _AppButtonState extends State<AppButton> {
               ? AppColors.inputBorder
               : switch (widget.style) {
                   ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
-                  ButtonStyles.secondary => widget.color ?? AppColors.white,
+                  ButtonStyles.secondary => AppColors.white,
                   ButtonStyles.cancel => widget.color ?? AppColors.white,
                 },
         ),

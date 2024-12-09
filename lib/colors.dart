@@ -20,4 +20,6 @@ class AppColors {
   static const Color cardBorder = Color(0xFFE4E4E4);
   static const Color menuBorder = Color(0xFFE6E7EA);
   static const Color primaryLight = Color(0xFFFFF7F6);
+
+  static const Color green = Color(0xFF007E2B);
 }

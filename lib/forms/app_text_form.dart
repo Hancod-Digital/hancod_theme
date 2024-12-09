@@ -26,6 +26,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.prefixIcon,
     this.suffixIcon,
     super.decoration,
+    this.style,
   });
 
   final void Function(T? value)? onChanged;
@@ -42,6 +43,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? suffix;
   final Widget? suffixIcon;
   final bool isReadOnly;
+  final TextStyle? style;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -84,6 +86,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
               : widget.suffixIcon,
           hintText: widget.hintText,
         ),
+        style: widget.style,
         onChanged: (val) {
           widget.onChanged?.call(
             switch (T) {

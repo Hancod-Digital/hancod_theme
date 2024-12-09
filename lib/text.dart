@@ -51,6 +51,12 @@ class AppText {
     fontWeight: FontWeight.w700, // Bold
   );
 
+  static const TextStyle semiBold8 = TextStyle(
+    fontSize: 35,
+    height: 1.14,
+    fontWeight: FontWeight.w600, // SemiBold
+  );
+
   // 7 Styles
   static const TextStyle light7 = TextStyle(
     fontSize: 28,
