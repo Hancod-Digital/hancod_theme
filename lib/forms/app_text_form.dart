@@ -60,8 +60,25 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
-        decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration)
-            .copyWith(suffix: widget.suffix,hintText: widget.hintText),
+        decoration:
+            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+                suffix: widget.suffix,
+                suffixIcon: widget.enableObscureText
+                    ? IconButton(
+                        icon: Icon(
+                          isObscure
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: AppColors.white,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isObscure = !isObscure;
+                          });
+                        },
+                      )
+                    : null,
+                hintText: widget.hintText),
         onChanged: (val) {
           widget.onChanged?.call(
             switch (T) {
@@ -126,6 +143,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
             },
           );
         },
+        style: AppText.regular14.copyWith(color: AppColors.white),
       ),
     );
   }

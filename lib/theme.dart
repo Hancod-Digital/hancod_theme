@@ -11,7 +11,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     useMaterial3: false,
     fontFamily: 'DMSans',
-    colorSchemeSeed: AppColors.white,
+    colorSchemeSeed: AppColors.black,
   );
 
   static final darkTheme = ThemeData(useMaterial3: false);

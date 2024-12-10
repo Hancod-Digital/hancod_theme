@@ -44,13 +44,25 @@ class AppButton extends StatefulWidget {
   State<AppButton> createState() => _AppButtonState();
 }
 
-class _AppButtonState extends State<AppButton> {
+class _AppButtonState extends State<AppButton>
+    with SingleTickerProviderStateMixin {
   bool _isClickable = true;
   Timer? _timer;
   final borderRadius = 40.0;
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1))
+          ..addListener(() => setState(() {}))
+          ..repeat();
+    super.initState();
+  }
 
   @override
   void dispose() {
+    _animationController.dispose();
     _timer?.cancel();
     super.dispose();
   }
@@ -133,10 +145,18 @@ class _AppButtonState extends State<AppButton> {
               }
             },
       child: widget.isLoading
-          ? const SizedBox(
+          ? SizedBox(
               height: 16,
               width: 16,
-              child: CircularProgressIndicator(color: AppColors.white),
+              child: RotationTransition(
+                turns: Tween<double>(begin: 0, end: 1)
+                    .animate(_animationController),
+                child: GradientCircularProgressIndicator(
+                  gradientColors: AppColors.primaryGradient.colors,
+                  radius: 8,
+                  strokeWidth: 4,
+                ),
+              ),
             )
           : widget.label,
     );
@@ -177,5 +197,58 @@ class _AppButtonWithIconChild extends StatelessWidget {
         Flexible(child: label),
       ],
     );
+  }
+}
+
+class GradientCircularProgressIndicator extends StatelessWidget {
+  const GradientCircularProgressIndicator({
+    required this.radius,
+    required this.gradientColors,
+    super.key,
+    this.strokeWidth = 10.0,
+  });
+  final double radius;
+  final List<Color> gradientColors;
+  final double strokeWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: Size.fromRadius(radius),
+      painter: GradientCircularProgressPainter(
+        radius: radius,
+        gradientColors: gradientColors,
+        strokeWidth: strokeWidth,
+      ),
+    );
+  }
+}
+
+class GradientCircularProgressPainter extends CustomPainter {
+  GradientCircularProgressPainter({
+    required this.radius,
+    required this.gradientColors,
+    required this.strokeWidth,
+  });
+  final double radius;
+  final List<Color> gradientColors;
+  final double strokeWidth;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final size = Size.fromRadius(radius);
+    final offset = strokeWidth / 2;
+    final rect = Offset(offset, offset) &
+        Size(size.width - strokeWidth, size.height - strokeWidth);
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..shader = SweepGradient(colors: gradientColors).createShader(rect);
+    canvas.drawArc(rect, 0, 2 * math.pi, false, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }

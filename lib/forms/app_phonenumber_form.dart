@@ -13,12 +13,14 @@ class AppPhoneNumberForm extends AppForm<String> {
     this.required = false,
     super.decoration,
     this.onFieldSubmitted,
+    this.hintText,
   });
 
   final void Function(String?)? onChanged;
   final bool required;
   final String? Function(PhoneNumber?)? mobileValidator;
   final void Function(String value)? onFieldSubmitted;
+  final String? hintText;
 
   @override
   State<AppPhoneNumberForm> createState() => _AppPhoneNumberFormState();
@@ -41,7 +43,10 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
                 ? null
                 : PhoneNumber.parse(widget.initialValue!),
             validator: widget.mobileValidator,
-            decoration: widget.decoration??AppTheme.largeScreenInputDecoration,
+            style: AppText.regular14.copyWith(color: AppColors.white),
+            decoration:
+                (widget.decoration ?? AppTheme.largeScreenInputDecoration)
+                    .copyWith(hintText: widget.hintText),
             onChanged: (phoneNumber) {
               field.didChange(phoneNumber.international);
             },
@@ -51,10 +56,7 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
               width: 500,
             ),
             isCountryButtonPersistent: true,
-            countryButtonStyle: const CountryButtonStyle(
-              flagSize: 16,
-              showFlag: false,
-            ),
+            countryCodeStyle: const TextStyle(color: AppColors.white),
           );
         },
       ),
