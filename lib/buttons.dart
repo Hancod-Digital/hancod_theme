@@ -28,6 +28,7 @@ class AppButton extends StatefulWidget {
     Key? key,
     bool isLoading,
     double width,
+    double height,
     ButtonStyles style,
     EdgeInsetsGeometry padding,
     Color color,
@@ -114,7 +115,7 @@ class _AppButtonState extends State<AppButton> {
               AppColors.primaryColor.withOpacity(.05),
           },
         ),
-        fixedSize: WidgetStatePropertyAll(Size.fromWidth(widget.width)),
+        fixedSize: WidgetStatePropertyAll(Size(widget.width, widget.height ?? 50)),
       ),
       onPressed: (widget.isLoading || !_isClickable || !widget.enabled)
           ? null
@@ -156,14 +157,16 @@ class _AppButtonWithIcon extends AppButton {
     super.style,
     super.isLoading,
     super.width,
+    super.height,
     super.padding,
     super.color,
   }) : super(
-            label: _AppButtonWithIconChild(
-          icon: icon,
-          label: label,
-          color: color,
-        ));
+          label: _AppButtonWithIconChild(
+            icon: icon,
+            label: label,
+            color: color,
+          ),
+        );
 }
 
 class _AppButtonWithIconChild extends StatelessWidget {
