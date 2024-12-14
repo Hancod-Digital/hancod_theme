@@ -17,6 +17,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.enableObscureText = false,
     this.keyboardType,
     super.validator,
+    super.autovalidateMode,
     this.onSubmitted,
     this.focusNode,
     super.enabled,
@@ -76,6 +77,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     return widget.buildContainer(
       context,
       FormBuilderTextField(
+        autovalidateMode: widget.autovalidateMode,
         name: widget.name,
         enabled: widget.enabled,
         key: _key,

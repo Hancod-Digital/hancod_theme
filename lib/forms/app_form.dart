@@ -10,6 +10,7 @@ class AppForm<T> extends StatefulWidget {
     this.initialValue,
     this.validator,
     this.enabled = true,
+    this.autovalidateMode,
   });
   final String name;
   final String? secondaryLabel;
@@ -17,6 +18,7 @@ class AppForm<T> extends StatefulWidget {
   final dynamic initialValue;
   final bool enabled;
   final String? Function(T?)? validator;
+  final AutovalidateMode? autovalidateMode;
   // ignore: strict_raw_type
   final GlobalKey<FormBuilderFieldState>? fieldKey;
 
