@@ -50,7 +50,7 @@ class _AppToggleFormState extends State<AppToggleForm> {
                     scale: .8,
                     child: CupertinoSwitch(
                       thumbColor: AppColors.white,
-                      activeColor: AppColors.primaryColor,
+                      activeColor: AppColors.green,
                       trackColor: AppColors.grey,
                       value: field.value ?? false,
                       onChanged: (value) {
