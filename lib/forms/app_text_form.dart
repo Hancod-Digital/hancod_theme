@@ -24,6 +24,7 @@ class AppTextForm<T> extends AppForm<T> {
     super.enabled,
     this.prefixIcon,
     this.suffix,
+    this.suffixIcon,
     this.isReadOnly = false,
     super.decoration,
     this.labelText,
@@ -49,6 +50,7 @@ class AppTextForm<T> extends AppForm<T> {
   final TextStyle? labelStyle;
   final TextStyle? contentStyle;
   final String? labelText;
+  final Widget? suffixIcon;
   final AutovalidateMode autovalidateMode;
 
   @override
@@ -78,6 +80,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         decoration:
             (widget.decoration ?? AppTheme.defaultInputDecoration).copyWith(
           suffix: widget.suffix,
+          suffixIcon: widget.suffixIcon,
           hintStyle: widget.hintStyle,
           hintText: widget.hintText,
           labelText: widget.labelText,
