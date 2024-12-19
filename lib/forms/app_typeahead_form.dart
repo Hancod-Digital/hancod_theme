@@ -24,6 +24,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     this.valueTransformer,
     this.onClear,
     this.labelText,
+    this.onChanged,
   });
   final String Function(T suggestion)? selectionToTextTransformer;
   final FutureOr<List<T>> Function(String search) suggestionsCallback;
@@ -37,6 +38,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final dynamic Function(T?)? valueTransformer;
   final VoidCallback? onClear;
   final String? labelText;
+  final void Function(T?)? onChanged;
   @override
   State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
 }
@@ -59,10 +61,9 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration: widget.decoration ??
-                AppTheme.largeScreenInputDecoration.copyWith(
-                  labelText: widget.labelText,
-                ),
+            decoration: AppTheme.largeScreenInputDecoration.copyWith(
+              labelText: widget.labelText,
+            ),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,
@@ -73,6 +74,7 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
             selectionToTextTransformer: widget.selectionToTextTransformer,
             suggestionsCallback: widget.suggestionsCallback,
             itemBuilder: widget.itemBuilder,
+            onChanged: widget.onChanged,
             onSuggestionSelected: (suggestion) {
               widget.onSuggestionSelected?.call(suggestion);
               setState(() {

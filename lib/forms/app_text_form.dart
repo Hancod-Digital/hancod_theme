@@ -27,6 +27,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.isReadOnly = false,
     super.decoration,
     this.labelText,
+    this.trimText = true,
   });
 
   final void Function(T? value)? onChanged;
@@ -42,6 +43,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? suffix;
   final bool isReadOnly;
   final String? labelText;
+  final bool trimText;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -71,12 +73,16 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           labelText: widget.labelText,
         ),
         onChanged: (val) {
+          final processedVal = widget.trimText ? val?.trim() : val;
           widget.onChanged?.call(
             switch (T) {
-              String => val as T?,
-              int => val == null ? null : int.tryParse(val) as T?,
-              double => val == null ? null : double.tryParse(val) as T?,
-              _ => val as T?
+              String => processedVal as T?,
+              int =>
+                processedVal == null ? null : int.tryParse(processedVal) as T?,
+              double => processedVal == null
+                  ? null
+                  : double.tryParse(processedVal) as T?,
+              _ => processedVal as T?
             },
           );
         },
@@ -125,12 +131,13 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         keyboardType: widget.keyboardType,
         onSubmitted: (value) {
           if (value == null) return;
+          final processedValue = widget.trimText ? value.trim() : value;
           widget.onSubmitted?.call(
             switch (T) {
-              String => value as T,
-              int => int.tryParse(value) as T,
-              double => double.tryParse(value) as T,
-              _ => value as T
+              String => processedValue as T,
+              int => int.tryParse(processedValue) as T,
+              double => double.tryParse(processedValue) as T,
+              _ => processedValue as T
             },
           );
         },
