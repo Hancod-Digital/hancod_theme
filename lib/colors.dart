@@ -134,4 +134,6 @@ class AppColors {
   static const Color gradientCOLOR4 = Color.fromARGB(255, 250, 99, 91);
   static const Color gradientCOLOR5 = Color.fromARGB(255, 248, 69, 60);
   static const Color gradientCOLOR6 = Color.fromARGB(255, 233, 21, 10);
+
+  static const Color royalBlue = Color(0xFF6E79E2);
 }
