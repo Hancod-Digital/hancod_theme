@@ -32,5 +32,12 @@ class AppColors {
   static const Color totalSaleCard = Color(0xffD8FFD7);
   static const Color totalPurchaseCard = Color(0xffFFDEDE);
 
+  static const Color blue = Color(0xFF0085FF);
   static const Color orange = Color(0xFFFE7F0A);
+
+  static const Color ledgerTotalSales = Color(0xffFF6A00);
+  static const Color ledgerTotalPurchases = Color(0xff551FFF);
+  static const Color ledgerReceiveAmount = Color(0xff00B2FF);
+  static const Color ledgerCustomerDue = Color(0xffEE0000);
+  static const Color ledgerSupplierDue = Color(0xff4CAE29);
 }
