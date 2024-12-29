@@ -91,4 +91,7 @@ class AppColors {
   static const Color bgColor = Color(0xFFF8F9FA);
   static const Color errorBorder = Color(0xFFF24E1E);
   static const Color fillColor = Color(0xFFEDF2F6);
+
+  //table
+  static const Color tableBackgroundColor = Color(0xFFF5F7FE);
 }

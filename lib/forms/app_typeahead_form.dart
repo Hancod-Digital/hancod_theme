@@ -61,9 +61,10 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration: AppTheme.largeScreenInputDecoration.copyWith(
-              labelText: widget.labelText,
-            ),
+            decoration: widget.decoration ??
+                AppTheme.largeScreenInputDecoration.copyWith(
+                  labelText: widget.labelText,
+                ),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,

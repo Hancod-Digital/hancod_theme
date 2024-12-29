@@ -5,6 +5,7 @@ part of '../forms.dart';
 class AppTextForm<T> extends AppForm<T> {
   const AppTextForm({
     required super.name,
+    super.autoValidateMode,
     super.label,
     super.key,
     super.boxShadow,
@@ -44,6 +45,7 @@ class AppTextForm<T> extends AppForm<T> {
   final bool isReadOnly;
   final String? labelText;
   final bool trimText;
+
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -62,6 +64,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     return widget.buildContainer(
       context,
       FormBuilderTextField(
+        autovalidateMode: widget.autoValidateMode,
         name: widget.name,
         enabled: widget.enabled,
         key: key,
@@ -89,12 +92,10 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => val == null
-                ? null
-                : widget.validator?.call(int.tryParse(val) as T?),
-            double => val == null
-                ? null
-                : widget.validator?.call(double.tryParse(val) as T?),
+            int => widget.validator
+                ?.call(val == null ? null : int.tryParse(val) as T?),
+            double => widget.validator
+                ?.call(val == null ? null : double.tryParse(val) as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },
