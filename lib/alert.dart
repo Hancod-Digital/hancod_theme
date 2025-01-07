@@ -5,7 +5,12 @@ enum SnackBarType { success, error, warning, info }
 
 extension on SnackBarType {
   // Change this according to type
-  Color get bgColor => switch (this) { _ => AppColors.primaryColor };
+  Color get bgColor => switch (this) {
+        SnackBarType.success => AppColors.green,
+        SnackBarType.error => AppColors.primaryColor,
+        SnackBarType.warning => AppColors.yellow,
+        SnackBarType.info => AppColors.blue,
+      };
 }
 
 extension SnackBarX on BuildContext {
