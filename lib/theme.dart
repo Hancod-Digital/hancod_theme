@@ -26,6 +26,24 @@ class AppTheme {
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.white,
     ),
+
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        focusedBorder: _inputBorder.copyWith(
+          borderSide: const BorderSide(color: AppColors.primary),
+        ),
+        enabledBorder: _inputBorder.copyWith(
+          borderSide: const BorderSide(color: AppColors.inputBorder),
+        ),
+        hintStyle: AppText.text16W500.copyWith(color: AppColors.greyText),
+        border: _inputBorder.copyWith(
+          borderSide: const BorderSide(color: AppColors.inputBorder),
+        ),
+        errorBorder: _inputBorder.copyWith(
+          borderSide: const BorderSide(color: AppColors.primary),
+        ),
+      ),
+    ),
     filledButtonTheme: FilledButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.resolveWith((states) {
