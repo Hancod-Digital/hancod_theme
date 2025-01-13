@@ -5,7 +5,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:hancod_theme/hancod_theme.dart';
 
-enum ButtonStyles { primary, secondary, cancel, delete }
+enum ButtonStyles {
+  primary,
+  secondary,
+  cancel,
+  delete,
+  success,
+}
 
 class AppButton extends StatefulWidget {
   const AppButton({
@@ -27,10 +33,11 @@ class AppButton extends StatefulWidget {
     required VoidCallback? onPress,
     required Widget label,
     Key? key,
-    bool isLoading,
-    double width,
-    ButtonStyles style,
-    EdgeInsetsGeometry padding,
+    bool? isLoading,
+    double? width,
+    ButtonStyles? style,
+    EdgeInsetsGeometry? padding,
+    bool? isIconRight,
   }) = _AppButtonWithIcon;
 
   final VoidCallback? onPress;
@@ -79,7 +86,9 @@ class _AppButtonState extends State<AppButton> {
                 borderRadius: BorderRadius.circular(borderRadius),
                 side: const BorderSide(color: AppColors.buttonOutline),
               ),
-            ButtonStyles.delete => RoundedRectangleBorder(
+            ButtonStyles.delete ||
+            ButtonStyles.success =>
+              RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
               ),
           },
@@ -113,6 +122,7 @@ class _AppButtonState extends State<AppButton> {
             ButtonStyles.cancel =>
               (widget.color ?? AppColors.primary).withOpacity(.05),
             ButtonStyles.delete => AppColors.redStatus100,
+            ButtonStyles.success => Colors.green.shade600,
           },
         ),
         elevation: MaterialStateProperty.all(6),
@@ -123,6 +133,7 @@ class _AppButtonState extends State<AppButton> {
             ButtonStyles.cancel =>
               AppColors.primary.withOpacity(.05),
             ButtonStyles.delete => AppColors.redStatus500,
+            ButtonStyles.success => Colors.green.withOpacity(.05),
           },
         ),
         fixedSize: MaterialStatePropertyAll(Size.fromWidth(widget.width)),
@@ -164,33 +175,54 @@ class _AppButtonWithIcon extends AppButton {
     required Widget icon,
     required Widget label,
     super.key,
-    super.style,
-    super.isLoading,
-    super.width,
-    super.padding,
-  }) : super(label: _AppButtonWithIconChild(icon: icon, label: label));
+    ButtonStyles? style,
+    bool? isLoading,
+    double? width,
+    EdgeInsetsGeometry? padding,
+    bool? isIconRight,
+  }) : super(
+          label: _AppButtonWithIconChild(
+            icon: icon,
+            label: label,
+            isIconRight: isIconRight ?? false,
+          ),
+          style: style ?? ButtonStyles.primary,
+          isLoading: isLoading ?? false,
+          width: width ?? double.infinity,
+          padding: padding ??
+              const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+        );
 }
 
 class _AppButtonWithIconChild extends StatelessWidget {
   const _AppButtonWithIconChild({
     required this.label,
     required this.icon,
+    this.isIconRight = false,
   });
 
   final Widget label;
   final Widget icon;
+  final bool isIconRight;
 
   @override
   Widget build(BuildContext context) {
     final scale = MediaQuery.textScalerOf(context).scale(14);
     final gap = scale <= 1 ? 8 : lerpDouble(8, 4, math.min(scale - 1, 1))!;
+
+    final children = [
+      if (!isIconRight) icon,
+      SizedBox(width: gap.toDouble()),
+      Flexible(child: label),
+      if (isIconRight) ...[
+        SizedBox(width: gap.toDouble()),
+        icon,
+      ],
+    ];
+
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        icon,
-        SizedBox(width: gap.toDouble()),
-        Flexible(child: label),
-      ],
+      children: children,
     );
   }
 }

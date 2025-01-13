@@ -12,6 +12,7 @@ class AppForm<T> extends StatefulWidget {
     this.decoration,
     this.boxShadow,
     this.padding,
+    this.autoValidateMode,
   });
   final String name;
   final String? label;
@@ -21,6 +22,7 @@ class AppForm<T> extends StatefulWidget {
   final InputDecoration? decoration;
   final List<BoxShadow>? boxShadow;
   final EdgeInsetsGeometry? padding;
+  final AutovalidateMode? autoValidateMode;
   // ignore: strict_raw_type
   final GlobalKey<FormBuilderFieldState>? fieldKey;
 

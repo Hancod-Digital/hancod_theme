@@ -141,6 +141,44 @@ class AppTheme {
     ),
   );
 
+  static final curvedInputDecoration = InputDecoration(
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: 20,
+    ),
+    filled: true,
+    fillColor: AppColors.white,
+    // hintText: context.l10n.size,
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(
+        color: AppColors.inputBorder,
+      ),
+    ),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(
+        color: AppColors.inputBorder,
+      ),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(
+        color: AppColors.errorBorder,
+      ),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(
+        color: AppColors.inputBorder,
+      ),
+    ),
+    suffixIcon: const Icon(
+      Icons.arrow_drop_down_rounded,
+      weight: 16,
+      color: AppColors.black,
+    ),
+  );
+
   static final screenInputDecorationWithPrefixIcon = InputDecoration(
     // prefixIcon: Assets.icons.searchIcon1.svg(),
     fillColor: AppColors.fillColor,

@@ -41,4 +41,11 @@ class AppStyles {
       borderSide: const BorderSide(color: AppColors.inputBorder),
     ),
   );
+
+  static InputDecoration filtrationDecoration =
+      searchDecoration.copyWith(prefixIcon: null);
+
+  static ButtonStyle buttonStyle = ButtonStyle(
+    padding: MaterialStateProperty.all(const EdgeInsets.all(16)),
+  );
 }

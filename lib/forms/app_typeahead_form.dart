@@ -24,6 +24,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     this.valueTransformer,
     this.onClear,
     this.labelText,
+    this.onChanged,
   });
   final String Function(T suggestion)? selectionToTextTransformer;
   final FutureOr<List<T>> Function(String search) suggestionsCallback;
@@ -37,6 +38,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final dynamic Function(T?)? valueTransformer;
   final VoidCallback? onClear;
   final String? labelText;
+  final void Function(T?)? onChanged;
   @override
   State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
 }

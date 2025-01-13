@@ -5,6 +5,7 @@ part of '../forms.dart';
 class AppTextForm<T> extends AppForm<T> {
   const AppTextForm({
     required super.name,
+    super.autoValidateMode,
     super.label,
     super.key,
     super.boxShadow,
@@ -32,6 +33,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.contentStyle,
     this.hintStyle,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.trimText = true,
   });
 
   final void Function(T? value)? onChanged;
@@ -52,6 +54,7 @@ class AppTextForm<T> extends AppForm<T> {
   final String? labelText;
   final Widget? suffixIcon;
   final AutovalidateMode autovalidateMode;
+  final bool trimText;
 
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
@@ -71,6 +74,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     return widget.buildContainer(
       context,
       FormBuilderTextField(
+        autovalidateMode: widget.autoValidateMode,
         name: widget.name,
         enabled: widget.enabled,
         autovalidateMode: widget.autovalidateMode,
@@ -87,24 +91,26 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           prefixIcon: widget.prefixIcon,
         ),
         onChanged: (val) {
+          final processedVal = widget.trimText ? val?.trim() : val;
           widget.onChanged?.call(
             switch (T) {
-              String => val as T?,
-              int => val == null ? null : int.tryParse(val) as T?,
-              double => val == null ? null : double.tryParse(val) as T?,
-              _ => val as T?
+              String => processedVal as T?,
+              int =>
+                processedVal == null ? null : int.tryParse(processedVal) as T?,
+              double => processedVal == null
+                  ? null
+                  : double.tryParse(processedVal) as T?,
+              _ => processedVal as T?
             },
           );
         },
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => val == null
-                ? null
-                : widget.validator?.call(int.tryParse(val) as T?),
-            double => val == null
-                ? null
-                : widget.validator?.call(double.tryParse(val) as T?),
+            int => widget.validator
+                ?.call(val == null ? null : int.tryParse(val) as T?),
+            double => widget.validator
+                ?.call(val == null ? null : double.tryParse(val) as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },
@@ -141,12 +147,13 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         keyboardType: widget.keyboardType,
         onSubmitted: (value) {
           if (value == null) return;
+          final processedValue = widget.trimText ? value.trim() : value;
           widget.onSubmitted?.call(
             switch (T) {
-              String => value as T,
-              int => int.tryParse(value) as T,
-              double => double.tryParse(value) as T,
-              _ => value as T
+              String => processedValue as T,
+              int => int.tryParse(processedValue) as T,
+              double => double.tryParse(processedValue) as T,
+              _ => processedValue as T
             },
           );
         },

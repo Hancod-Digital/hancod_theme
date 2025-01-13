@@ -59,6 +59,7 @@ class AppColors {
 
   // Success
   static const Color success100 = Color(0xFFA4F4E7);
+  static const Color success200 = Color(0xFF15B097);
   static const Color success500 = Color(0xFF19A361);
   static const Color success900 = Color(0xFF007D4D);
 
