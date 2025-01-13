@@ -24,6 +24,8 @@ class AppButton extends StatefulWidget {
     this.style = ButtonStyles.primary,
     this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
     this.color,
+    this.foregroundColor,
+    this.backgroundColor,
   });
 
   factory AppButton.icon({
@@ -46,6 +48,8 @@ class AppButton extends StatefulWidget {
   final ButtonStyles style;
   final EdgeInsetsGeometry padding;
   final Color? color;
+  final WidgetStateProperty<Color?>? foregroundColor;
+  final WidgetStateProperty<Color?>? backgroundColor;
 
   @override
   State<AppButton> createState() => _AppButtonState();
@@ -66,8 +70,8 @@ class _AppButtonState extends State<AppButton> {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.resolveWith((states) => widget.padding),
-        shape: MaterialStateProperty.resolveWith(
+        padding: WidgetStateProperty.resolveWith((states) => widget.padding),
+        shape: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
@@ -89,25 +93,27 @@ class _AppButtonState extends State<AppButton> {
               ),
           },
         ),
-        foregroundColor: MaterialStateProperty.resolveWith(
-          (states) => switch (widget.style) {
-            ButtonStyles.primary => AppColors.white,
-            ButtonStyles.secondary => widget.color ?? AppColors.primary,
-            ButtonStyles.cancel => widget.color ?? AppColors.primary,
-            ButtonStyles.delete => AppColors.redStatus500,
-            ButtonStyles.success => AppColors.success500,
-          },
-        ),
-        backgroundColor: MaterialStateProperty.resolveWith(
-          (states) => switch (widget.style) {
-            ButtonStyles.primary => widget.color ?? AppColors.primary,
-            ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
-            ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
-            ButtonStyles.delete => AppColors.redStatus500,
-            ButtonStyles.success => AppColors.success200,
-          },
-        ),
-        overlayColor: MaterialStateProperty.resolveWith(
+        foregroundColor: widget.foregroundColor ??
+            WidgetStateProperty.resolveWith(
+              (states) => switch (widget.style) {
+                ButtonStyles.primary => AppColors.white,
+                ButtonStyles.secondary => widget.color ?? AppColors.primary,
+                ButtonStyles.cancel => widget.color ?? AppColors.primary,
+                ButtonStyles.delete => AppColors.redStatus500,
+              },
+            ),
+        backgroundColor: widget.backgroundColor ??
+            WidgetStateProperty.resolveWith(
+              (states) => switch (widget.style) {
+                ButtonStyles.primary => widget.color ?? AppColors.primary,
+                ButtonStyles.secondary =>
+                  Theme.of(context).scaffoldBackgroundColor,
+                ButtonStyles.cancel =>
+                  Theme.of(context).scaffoldBackgroundColor,
+                ButtonStyles.delete => AppColors.redStatus500,
+              },
+            ),
+        overlayColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary =>
               Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
@@ -217,6 +223,63 @@ class _AppButtonWithIconChild extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: children,
+    );
+  }
+}
+
+class GradientAppButton extends StatelessWidget {
+  const GradientAppButton({
+    required this.onPressed,
+    required this.child,
+    super.key,
+    this.width = double.infinity,
+    this.height = 48,
+    this.isEnabled = true,
+    this.padding = const EdgeInsets.symmetric(horizontal: 24),
+  });
+  final VoidCallback? onPressed;
+  final Widget child;
+  final double width;
+  final double height;
+  final bool isEnabled;
+  final EdgeInsetsGeometry padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: isEnabled ? onPressed : null,
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child: Ink(
+          decoration: BoxDecoration(
+            gradient: isEnabled
+                ? const LinearGradient(
+                    colors: [
+                      AppColors.gradientCOLOR1,
+                      AppColors.gradientCOLOR2,
+                      AppColors.gradientCOLOR3,
+                    ],
+                  )
+                : null,
+            color: isEnabled ? null : const Color(0xFFCCCCCC),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Container(
+            width: width,
+            height: height,
+            padding: padding,
+            alignment: Alignment.center,
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

@@ -25,9 +25,14 @@ class AppTextForm<T> extends AppForm<T> {
     super.enabled,
     this.prefixIcon,
     this.suffix,
+    this.suffixIcon,
     this.isReadOnly = false,
     super.decoration,
     this.labelText,
+    this.labelStyle,
+    this.contentStyle,
+    this.hintStyle,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.trimText = true,
   });
 
@@ -43,7 +48,12 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffix;
   final bool isReadOnly;
+  final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
+  final TextStyle? contentStyle;
   final String? labelText;
+  final Widget? suffixIcon;
+  final AutovalidateMode autovalidateMode;
   final bool trimText;
 
   @override
@@ -67,13 +77,18 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         autovalidateMode: widget.autoValidateMode,
         name: widget.name,
         enabled: widget.enabled,
+        autovalidateMode: widget.autovalidateMode,
         key: key,
         controller: widget.controller,
+        style: widget.contentStyle,
         decoration:
-            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+            (widget.decoration ?? AppTheme.defaultInputDecoration).copyWith(
           suffix: widget.suffix,
+          suffixIcon: widget.suffixIcon,
+          hintStyle: widget.hintStyle,
           hintText: widget.hintText,
           labelText: widget.labelText,
+          prefixIcon: widget.prefixIcon,
         ),
         onChanged: (val) {
           final processedVal = widget.trimText ? val?.trim() : val;
@@ -143,6 +158,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           );
         },
       ),
+      labelStyle: widget.labelStyle,
     );
   }
 }

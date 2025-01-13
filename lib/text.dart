@@ -188,7 +188,6 @@ class AppText {
     fontWeight: FontWeight.w500, // Medium
   );
 
-  
   static const TextStyle semiBold3 = TextStyle(
     fontSize: 16,
     height: 1.5,
@@ -249,5 +248,460 @@ class AppText {
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w700, // Bold
+  );
+
+  static const TextStyle text12W400 = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text12W400White = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text12W500 = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text12W500White = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text12W600 = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text12W600White = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text12W700 = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text12W700White = TextStyle(
+    fontSize: 12,
+    height: 1.33,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text14W400 = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text14W400White = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text14W500 = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text14W500White = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text14W600 = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text14W600White = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text14W700 = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text14W700White = TextStyle(
+    fontSize: 14,
+    height: 1.43,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text16W400 = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text16W400White = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text16W500 = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text16W500White = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text16W600 = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text16W600White = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text16W700 = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text16W700White = TextStyle(
+    fontSize: 16,
+    height: 1.5,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text18W400 = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text18W400White = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text18W500 = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text18W500White = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text18W600 = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text18W600White = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text18W700 = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text18W700White = TextStyle(
+    fontSize: 18,
+    height: 1.44,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text20W400 = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text20W400White = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text20W500 = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text20W500White = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text20W600 = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text20W600White = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text20W700 = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text20W700White = TextStyle(
+    fontSize: 20,
+    height: 1.4,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text24W400 = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text24W400White = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text24W500 = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text24W500White = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text24W600 = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text24W600White = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text24W700 = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text24W700White = TextStyle(
+    fontSize: 24,
+    height: 1.33,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text28W400 = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text28W400White = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text28W500 = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text28W500White = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text28W600 = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text28W600White = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text28W700 = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text28W700White = TextStyle(
+    fontSize: 28,
+    height: 1.29,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text32W400 = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text32W400White = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text32W500 = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text32W500White = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text32W600 = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text32W600White = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
+  static const TextStyle text32W700 = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle text32W700White = TextStyle(
+    fontSize: 32,
+    height: 1.25,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+
+  static const TextStyle text36W400 = TextStyle(
+    fontSize: 36,
+    height: 1.22,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle text36W400White = TextStyle(
+    fontSize: 36,
+    height: 1.22,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+  );
+
+  static const TextStyle text36W500 = TextStyle(
+    fontSize: 36,
+    height: 1.22,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle text36W500White = TextStyle(
+    fontSize: 36,
+    height: 1.22,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+
+  static const TextStyle text36W600 = TextStyle(
+    fontSize: 36,
+    height: 1.22,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle text36W600White = TextStyle(
+    fontSize: 36,
+    height: 1.22,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
   );
 }

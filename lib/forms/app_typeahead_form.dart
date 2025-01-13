@@ -59,42 +59,41 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
       Stack(
         alignment: Alignment.centerRight,
         children: [
-          FormBuilderTypeAhead<T>(
-            key: key,
-            decoration: widget.decoration ??
-                AppTheme.largeScreenInputDecoration.copyWith(
-                  labelText: widget.labelText,
-                ),
-            controller: widget.controller,
-            validator: widget.validator,
-            enabled: widget.enabled && key.currentState?.value == null,
-            name: widget.name,
-            initialValue: widget.initialValue,
-            valueTransformer: widget.valueTransformer,
-            focusNode: widget.focusNode,
-            selectionToTextTransformer: widget.selectionToTextTransformer,
-            suggestionsCallback: widget.suggestionsCallback,
-            itemBuilder: widget.itemBuilder,
-            onChanged: widget.onChanged,
-            onSuggestionSelected: (suggestion) {
-              widget.onSuggestionSelected?.call(suggestion);
-              setState(() {
-                key.currentState?.didChange(suggestion);
-              });
-            },
-            noItemsFoundBuilder: widget.noItemsFoundBuilder,
-            scrollController: widget.scrollController,
-          ),
-          if (key.currentState?.value != null && widget.enabled)
-            IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                widget.onClear?.call();
-                setState(() {
-                  key.currentState?.didChange(null);
-                });
-              },
-            ),
+          // FormBuilderTypeAhead<T>(
+          //   key: key,
+          //   decoration: widget.decoration ??
+          //       AppTheme.largeScreenInputDecoration.copyWith(
+          //         labelText: widget.labelText,
+          //       ),
+          //   controller: widget.controller,
+          //   validator: widget.validator,
+          //   enabled: widget.enabled && key.currentState?.value == null,
+          //   name: widget.name,
+          //   initialValue: widget.initialValue,
+          //   valueTransformer: widget.valueTransformer,
+          //   focusNode: widget.focusNode,
+          //   selectionToTextTransformer: widget.selectionToTextTransformer,
+          //   suggestionsCallback: widget.suggestionsCallback,
+          //   itemBuilder: widget.itemBuilder,
+          //   onSelected: (suggestion) {
+          //     widget.onSuggestionSelected?.call(suggestion);
+          //     setState(() {
+          //       key.currentState?.didChange(suggestion);
+          //     });
+          //   },
+          //   emptyBuilder: widget.noItemsFoundBuilder,
+          //   scrollController: widget.scrollController,
+          // ),
+          // if (key.currentState?.value != null && widget.enabled)
+          //   IconButton(
+          //     icon: const Icon(Icons.close),
+          //     onPressed: () {
+          //       widget.onClear?.call();
+          //       setState(() {
+          //         key.currentState?.didChange(null);
+          //       });
+          //     },
+          //   ),
         ],
       ),
     );

@@ -41,7 +41,8 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
                 ? null
                 : PhoneNumber.parse(widget.initialValue!),
             validator: widget.mobileValidator,
-            decoration: widget.decoration??AppTheme.largeScreenInputDecoration,
+            decoration:
+                widget.decoration ?? AppTheme.largeScreenInputDecoration,
             onChanged: (phoneNumber) {
               field.didChange(phoneNumber.international);
             },

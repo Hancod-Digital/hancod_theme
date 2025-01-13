@@ -26,7 +26,8 @@ class AppForm<T> extends StatefulWidget {
   // ignore: strict_raw_type
   final GlobalKey<FormBuilderFieldState>? fieldKey;
 
-  Widget buildContainer(BuildContext context, Widget child) {
+  Widget buildContainer(BuildContext context, Widget child,
+      {TextStyle? labelStyle}) {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
@@ -39,9 +40,10 @@ class AppForm<T> extends StatefulWidget {
           if (label != null) ...[
             Text(
               label!,
-              style: AppText.semiBold3.copyWith(color: AppColors.black),
+              style: labelStyle ??
+                  AppText.text16W700.copyWith(color: AppColors.black),
             ),
-            const SizedBox(height: 12),
+            verticalSpaceTiny,
           ],
           child,
         ],
