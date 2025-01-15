@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppText {
   // 9 Styles
@@ -50,7 +51,7 @@ class AppText {
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle bold8 = TextStyle(
+  static  TextStyle bold8 = GoogleFonts.plusJakartaSans(
     fontSize: 35,
     height: 1.14,
     fontWeight: FontWeight.w700, // Bold
@@ -88,7 +89,7 @@ class AppText {
     fontWeight: FontWeight.w300, // Light
   );
 
-  static const TextStyle regular6 = TextStyle(
+  static  TextStyle regular6 = GoogleFonts.plusJakartaSans(
     fontSize: 24,
     height: 1.25,
     fontWeight: FontWeight.w400, // Regular
@@ -100,7 +101,7 @@ class AppText {
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle semiBold6 = TextStyle(
+  static  TextStyle semiBold6 = GoogleFonts.plusJakartaSans(
     fontSize: 24,
     height: 1.25,
     fontWeight: FontWeight.w600, // SemiBold
@@ -116,13 +117,13 @@ class AppText {
     height: 1.36,
     fontWeight: FontWeight.w600, // SemiBold
   );
-  static const TextStyle semiBold3 = TextStyle(
+  static  TextStyle semiBold3 = GoogleFonts.plusJakartaSans(
     fontSize: 16,
     height: 1.24,
     fontWeight: FontWeight.w600, // SemiBold
   );
 
-  static const TextStyle bold6 = TextStyle(
+  static  TextStyle bold6 = GoogleFonts.plusJakartaSans(
     fontSize: 24,
     height: 1.25,
     fontWeight: FontWeight.w700, // Bold
@@ -135,7 +136,7 @@ class AppText {
     fontWeight: FontWeight.w300, // Light
   );
 
-  static const TextStyle regular5 = TextStyle(
+  static  TextStyle regular5 = GoogleFonts.plusJakartaSans(
     fontSize: 20,
     height: 1.4,
     fontWeight: FontWeight.w400, // Regular
@@ -147,7 +148,7 @@ class AppText {
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle bold5 = TextStyle(
+  static final TextStyle bold5 = GoogleFonts.plusJakartaSans(
     fontSize: 20,
     height: 1.4,
     fontWeight: FontWeight.w700, // Bold
@@ -160,50 +161,50 @@ class AppText {
     fontWeight: FontWeight.w300, // Light
   );
 
-  static const TextStyle regular4 = TextStyle(
+  static  TextStyle regular4 = GoogleFonts.plusJakartaSans(
     fontSize: 18,
     height: 1.44,
     fontWeight: FontWeight.w400, // Regular
   );
 
-  static const TextStyle medium4 = TextStyle(
+  static  TextStyle medium4 = GoogleFonts.plusJakartaSans(
     fontSize: 18,
     height: 1.44,
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle semiBold4 = TextStyle(
+  static  TextStyle semiBold4 = GoogleFonts.plusJakartaSans(
     fontSize: 18,
     height: 1.44,
     fontWeight: FontWeight.w600, // SemiBold
   );
 
-  static const TextStyle bold4 = TextStyle(
+  static  TextStyle bold4 = GoogleFonts.plusJakartaSans(
     fontSize: 18,
     height: 1.44,
     fontWeight: FontWeight.w700, // Bold
   );
 
   // 3 Styles
-  static const TextStyle light3 = TextStyle(
+  static  TextStyle light3 = GoogleFonts.plusJakartaSans(
     fontSize: 16,
     height: 1.5,
     fontWeight: FontWeight.w300, // Light
   );
 
-  static const TextStyle regular3 = TextStyle(
+  static  TextStyle regular3 =  GoogleFonts.plusJakartaSans(
     fontSize: 16,
     height: 1.5,
     fontWeight: FontWeight.w400, // Regular
   );
 
-  static const TextStyle medium3 = TextStyle(
+  static  TextStyle medium3 = GoogleFonts.plusJakartaSans(
     fontSize: 16,
-    height: 1.5,
+    // height: 1.5,
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle bold3 = TextStyle(
+  static  TextStyle bold3 = GoogleFonts.plusJakartaSans(
     fontSize: 16,
     height: 1.5,
     fontWeight: FontWeight.w700, // Bold
@@ -216,49 +217,49 @@ class AppText {
     fontWeight: FontWeight.w300, // Light
   );
 
-  static const TextStyle regular2 = TextStyle(
+  static  TextStyle regular2 = GoogleFonts.plusJakartaSans(
     fontSize: 14,
     height: 1.43,
     fontWeight: FontWeight.w400, // Regular
   );
 
-  static const TextStyle medium2 = TextStyle(
+  static  TextStyle medium2 = GoogleFonts.plusJakartaSans(
     fontSize: 14,
     height: 1.43,
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle bold2 = TextStyle(
+  static  TextStyle bold2 = GoogleFonts.plusJakartaSans(
     fontSize: 14,
     height: 1.43,
     fontWeight: FontWeight.w700, // Bold
   );
 
   // 1 Styles
-  static const TextStyle light1 = TextStyle(
+  static  TextStyle light1 = GoogleFonts.plusJakartaSans(
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w300, // Light
   );
 
-  static const TextStyle regular1 = TextStyle(
+  static  TextStyle regular1 = GoogleFonts.plusJakartaSans(
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w400, // Regular
   );
 
-  static const TextStyle medium1 = TextStyle(
+  static final TextStyle medium1 = GoogleFonts.plusJakartaSans(
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w500, // Medium
   );
 
-  static const TextStyle bold1 = TextStyle(
+  static  TextStyle bold1 = GoogleFonts.plusJakartaSans(
     fontSize: 12,
     height: 1.33,
     fontWeight: FontWeight.w700, // Bold
   );
-  static const TextStyle semibold2 = TextStyle(
+  static  TextStyle semibold2 = GoogleFonts.plusJakartaSans(
     // fontFamily: 'Plus Jakarta Sans',
     fontWeight: FontWeight.w600, // Semibold
     fontSize: 14.0, // Font size in pixels

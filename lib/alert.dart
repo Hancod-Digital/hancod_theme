@@ -12,6 +12,7 @@ extension SnackBarX on BuildContext {
   void showSnackBar(String message, {SnackBarType type = SnackBarType.info}) {
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
+        
         duration: const Duration(milliseconds: 2500),
         behavior: SnackBarBehavior.floating,
         content: Text(message),

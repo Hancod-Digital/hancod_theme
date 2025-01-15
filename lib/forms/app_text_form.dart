@@ -13,6 +13,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.onChanged,
     this.inputFormatters,
     this.minLines = 1,
+    this.maxLength = 50,
     this.controller,
     this.enableObscureText = false,
     this.keyboardType,
@@ -29,6 +30,7 @@ class AppTextForm<T> extends AppForm<T> {
   final void Function(T? value)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final int minLines;
+  final int maxLength;
   final String? hintText;
   final TextEditingController? controller;
   final bool enableObscureText;
@@ -57,12 +59,14 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     return widget.buildContainer(
       context,
       FormBuilderTextField(
+        maxLength: widget.maxLength,
         name: widget.name,
         enabled: widget.enabled,
         key: key,
         controller: widget.controller,
         decoration: widget.decoration ??
             _mobileInputDecoration.copyWith(
+              counterText:'',
               hintText: widget.hintText,
               labelText: '',
               prefixIcon: widget.prefixIcon,

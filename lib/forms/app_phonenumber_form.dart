@@ -18,7 +18,7 @@ class AppPhoneNumberForm extends AppForm<String> {
   final void Function(String?)? onChanged;
   final bool required;
   final String? Function(PhoneNumber?)? mobileValidator;
-  final void Function(String value)? onFieldSubmitted;
+  final dynamic Function(PhoneNumber)? onFieldSubmitted;
   final InputDecoration decoration;
 
   @override
