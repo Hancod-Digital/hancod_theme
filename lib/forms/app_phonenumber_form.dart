@@ -5,6 +5,7 @@ class AppPhoneNumberForm extends AppForm<String> {
     required super.name,
     super.key,
     super.validator,
+    super.enabled,
     this.mobileValidator,
     super.label,
     super.initialValue,
@@ -38,6 +39,7 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
         initialValue: widget.initialValue,
         builder: (FormFieldState<String> field) {
           return PhoneFormField(
+            enabled:widget.enabled ,
             initialValue: widget.initialValue == null
                 ? null
                 : PhoneNumber.parse(widget.initialValue!),

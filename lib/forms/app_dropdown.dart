@@ -9,6 +9,7 @@ class AppDropDownForm<T> extends AppForm<T> {
     super.validator,
     super.initialValue,
     super.fieldKey,
+    super.decoration,
     this.onChanged,
     this.valueTransformer,
     super.enabled,
