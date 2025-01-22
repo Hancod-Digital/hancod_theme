@@ -113,7 +113,7 @@ class _AppButtonState extends State<AppButton> {
               },
             ),
             fixedSize: WidgetStateProperty.resolveWith(
-              (states) => Size(widget.width, widget.height ?? 50),
+              (states) => Size(widget.width, widget.height ?? double.infinity),
             ),
             alignment: Alignment.center,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,

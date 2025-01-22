@@ -43,7 +43,6 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
         key: _dateFieldKey,
         enabled: widget.enabled,
         validator: widget.validator,
-        useRootNavigator: false,
         valueTransformer: widget.valueTransformer,
         decoration: widget.decoration.copyWith(
           suffixIcon: Row(
