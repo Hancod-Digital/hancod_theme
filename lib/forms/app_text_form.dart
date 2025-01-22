@@ -15,6 +15,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.minLines = 1,
     this.maxLength = 50,
     this.controller,
+    this.autoFocus=false,
     this.enableObscureText = false,
     this.keyboardType,
     super.validator,
@@ -34,6 +35,7 @@ class AppTextForm<T> extends AppForm<T> {
   final String? hintText;
   final TextEditingController? controller;
   final bool enableObscureText;
+  final bool autoFocus;
   final TextInputType? keyboardType;
   final void Function(T value)? onSubmitted;
   final FocusNode? focusNode;
@@ -63,6 +65,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         name: widget.name,
         enabled: widget.enabled,
         key: key,
+        autofocus: widget.autoFocus,
         controller: widget.controller,
         decoration: widget.decoration ??
             _mobileInputDecoration.copyWith(
