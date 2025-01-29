@@ -22,6 +22,7 @@ class AppColors {
   static const Color chooseItemType = Color(0xFFEAF5FF);
   static const Color borderColor = Color(0xFFD6D6D6);
   static const Color grey = Color(0xFF71747D);
+  static const Color greyish = Color(0xFF444444);
   static const Color black = Color(0xff000000);
   static const Color primaryLight = Color(0x66503FB5);
   static const Color warning = Color(0xFFED7200);
