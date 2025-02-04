@@ -57,6 +57,10 @@ class AppText {
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle mediumEB = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+  );
   static const TextStyle mediumB = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,
@@ -128,6 +132,10 @@ class AppText {
   );
   static const TextStyle b28 = TextStyle(
     fontSize: 28,
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle b32 = TextStyle(
+    fontSize: 32,
     fontWeight: FontWeight.w700,
   );
   static const TextStyle bl36 = TextStyle(

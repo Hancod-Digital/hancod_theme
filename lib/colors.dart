@@ -23,6 +23,7 @@ class AppColors {
   static const Color borderColor = Color(0xFFD6D6D6);
   static const Color grey = Color(0xFF71747D);
   static const Color greyish = Color(0xFF444444);
+  static const Color greyish2 = Color(0xFF737376);
   static const Color black = Color(0xff000000);
   static const Color primaryLight = Color(0x66503FB5);
   static const Color warning = Color(0xFFED7200);
@@ -32,6 +33,7 @@ class AppColors {
   static const Color dailySalesCard = Color(0xffFFFBD6);
   static const Color totalSaleCard = Color(0xffD8FFD7);
   static const Color totalPurchaseCard = Color(0xffFFDEDE);
+  static const Color greyBorder = Color(0xFFE8E8E8);
 
   static const Color blue = Color(0xFF0085FF);
   static const Color orange = Color(0xFFFE7F0A);

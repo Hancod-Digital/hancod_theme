@@ -28,7 +28,9 @@ class AppButton extends StatefulWidget {
     bool isLoading,
     double width,
     ButtonStyles style,
+    Color? color,
     EdgeInsetsGeometry padding,
+    bool? iconLeading,
   }) = _AppButtonWithIcon;
 
   final VoidCallback? onPress;
@@ -166,18 +168,27 @@ class _AppButtonWithIcon extends AppButton {
     super.isLoading,
     super.width,
     super.padding,
-  }) : super(label: _AppButtonWithIconChild(icon: icon, label: label));
+    super.color,
+    bool? iconLeading,
+  }) : super(
+          label: _AppButtonWithIconChild(
+            icon: icon,
+            label: label,
+            iconLeading: iconLeading ?? true,
+          ),
+        );
 }
 
 class _AppButtonWithIconChild extends StatelessWidget {
   const _AppButtonWithIconChild({
     required this.label,
     required this.icon,
+    this.iconLeading = true,
   });
 
   final Widget label;
   final Widget icon;
-
+  final bool iconLeading;
   @override
   Widget build(BuildContext context) {
     final scale = MediaQuery.textScalerOf(context).scale(14);
@@ -185,9 +196,15 @@ class _AppButtonWithIconChild extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        icon,
-        SizedBox(width: gap.toDouble()),
+        if (iconLeading) ...[
+          icon,
+          SizedBox(width: gap.toDouble()),
+        ],
         Flexible(child: label),
+        if (!iconLeading) ...[
+          SizedBox(width: gap.toDouble()),
+          icon,
+        ],
       ],
     );
   }
