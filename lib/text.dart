@@ -26,8 +26,8 @@ class AppText {
     height: 1,
     fontWeight: FontWeight.w700, // Bold
   );
-  static const TextStyle bold10 = TextStyle(
-    fontSize: 40,
+  static  TextStyle bold10 = GoogleFonts.plusJakartaSans(
+    fontSize: 40,   
     height: 1,
     fontWeight: FontWeight.w700, // Bold
   );
