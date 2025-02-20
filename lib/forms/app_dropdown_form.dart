@@ -3,7 +3,7 @@ part of '../forms.dart';
 class AppDropDownForm<T> extends AppForm<T> {
   const AppDropDownForm({
     required super.name,
-    required super.label,
+    this.label, // Made label optional
     required this.items,
     super.key,
     super.validator,
@@ -16,6 +16,8 @@ class AppDropDownForm<T> extends AppForm<T> {
     this.dontShowCloseButton = false,
     this.onClear,
   });
+
+  final String? label; // Changed to nullable
   final void Function(T?)? onChanged;
   final List<DropDownItems<T>>? items;
   final dynamic Function(T?)? valueTransformer;
@@ -50,9 +52,11 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                 child: DropdownButtonFormField<T>(
                   icon: const SizedBox(),
                   value: field.value as T?,
-                  decoration:
-                      (widget.decoration ?? AppTheme.largeScreenInputDecoration)
-                          .copyWith(
+                  decoration: (widget.decoration ??
+                          AppTheme.largeScreenInputDecoration)
+                      .copyWith(
+                    // Use the label if provided, otherwise no label
+                    labelText: widget.label,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 10,
@@ -73,6 +77,27 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                             },
                           ),
                       ],
+                    ),
+                    // Changed border style to boxy
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.zero, // Boxy corners
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.zero, // Boxy corners
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.tabBarColor),
+                      borderRadius: BorderRadius.zero, // Boxy corners
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.zero, // Boxy corners
+                    ),
+                    disabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.zero, // Boxy corners
                     ),
                   ),
                   validator: widget.validator,
