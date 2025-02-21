@@ -9,7 +9,7 @@ class AppTheme {
   static const double textFieldBorderRadius = 12;
 
   static final lightTheme = ThemeData(
-   scaffoldBackgroundColor: Color.fromRGBO(255, 255, 255, 1),
+    scaffoldBackgroundColor: Color.fromRGBO(248, 248, 248, 1),
     useMaterial3: false,
     fontFamily: 'Lato',
     colorSchemeSeed: AppColors.primaryColor,
