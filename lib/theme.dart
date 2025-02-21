@@ -11,7 +11,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: Color.fromRGBO(248, 248, 248, 1),
     useMaterial3: false,
-    fontFamily: 'Lato',
+    fontFamily: 'PlusJakartaSans',
     colorSchemeSeed: AppColors.primaryColor,
   );
 
