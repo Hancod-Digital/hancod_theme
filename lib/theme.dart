@@ -9,10 +9,11 @@ class AppTheme {
   static const double textFieldBorderRadius = 12;
 
   static final lightTheme = ThemeData(
-    scaffoldBackgroundColor: Color.fromRGBO(248, 248, 248, 1),
+    scaffoldBackgroundColor: const Color.fromRGBO(248, 248, 248, 1),
     useMaterial3: false,
     fontFamily: 'PlusJakartaSans',
     colorSchemeSeed: AppColors.primaryColor,
+    dialogBackgroundColor: Colors.white,
   );
 
   static final darkTheme = ThemeData(useMaterial3: false);

@@ -18,6 +18,7 @@ class AppButton extends StatefulWidget {
     this.style = ButtonStyles.primary,
     this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
     this.color,
+    this.enabled = true,
   });
 
   factory AppButton.icon({
@@ -29,6 +30,7 @@ class AppButton extends StatefulWidget {
     double width,
     ButtonStyles style,
     EdgeInsetsGeometry padding,
+    bool enabled,
   }) = _AppButtonWithIcon;
 
   final VoidCallback? onPress;
@@ -39,7 +41,7 @@ class AppButton extends StatefulWidget {
   final ButtonStyles style;
   final EdgeInsetsGeometry padding;
   final Color? color;
-
+  final bool enabled;
   @override
   State<AppButton> createState() => _AppButtonState();
 }
@@ -47,7 +49,7 @@ class AppButton extends StatefulWidget {
 class _AppButtonState extends State<AppButton> {
   bool _isClickable = true;
   Timer? _timer;
-  final borderRadius =10.0;
+  final borderRadius = 10.0;
 
   @override
   void dispose() {
@@ -59,8 +61,8 @@ class _AppButtonState extends State<AppButton> {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.resolveWith((states) => widget.padding),
-        shape: MaterialStateProperty.resolveWith(
+        padding: WidgetStateProperty.resolveWith((states) => widget.padding),
+        shape: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
@@ -77,21 +79,29 @@ class _AppButtonState extends State<AppButton> {
               ),
           },
         ),
-        foregroundColor: MaterialStateProperty.resolveWith(
-          (states) => switch (widget.style) {
-            ButtonStyles.primary => AppColors.white,
-            ButtonStyles.secondary => widget.color ?? AppColors.primaryColor,
-            ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
-          },
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (states) => widget.enabled
+              ? switch (widget.style) {
+                  ButtonStyles.primary => AppColors.white,
+                  ButtonStyles.secondary =>
+                    widget.color ?? AppColors.primaryColor,
+                  ButtonStyles.cancel => widget.color ?? AppColors.primaryColor,
+                }
+              : AppColors.subBlack,
         ),
-        backgroundColor: MaterialStateProperty.resolveWith(
-          (states) => switch (widget.style) {
-            ButtonStyles.primary => widget.color ?? AppColors.primaryColor,
-            ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
-            ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
-          },
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (states) => widget.enabled
+              ? switch (widget.style) {
+                  ButtonStyles.primary =>
+                    widget.color ?? AppColors.primaryColor,
+                  ButtonStyles.secondary =>
+                    Theme.of(context).scaffoldBackgroundColor,
+                  ButtonStyles.cancel =>
+                    Theme.of(context).scaffoldBackgroundColor,
+                }
+              : Colors.grey[300]!,
         ),
-        overlayColor: MaterialStateProperty.resolveWith(
+        overlayColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary =>
               Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
@@ -101,8 +111,8 @@ class _AppButtonState extends State<AppButton> {
               (widget.color ?? AppColors.primaryColor).withOpacity(.05),
           },
         ),
-        elevation: MaterialStateProperty.all(6),
-        shadowColor: MaterialStateProperty.resolveWith(
+        elevation: WidgetStateProperty.all(6),
+        shadowColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
             ButtonStyles.primary ||
             ButtonStyles.secondary ||
@@ -110,7 +120,7 @@ class _AppButtonState extends State<AppButton> {
               AppColors.primaryColor.withOpacity(.05),
           },
         ),
-        fixedSize: MaterialStateProperty.resolveWith(
+        fixedSize: WidgetStateProperty.resolveWith(
           (states) {
             if (widget.height != null) {
               return Size.fromHeight(widget.height!);
@@ -119,7 +129,7 @@ class _AppButtonState extends State<AppButton> {
           },
         ),
       ),
-      onPressed: (widget.isLoading || !_isClickable)
+      onPressed: (widget.isLoading || !_isClickable || !widget.enabled)
           ? null
           : () async {
               if (!_isClickable) return;
@@ -160,6 +170,7 @@ class _AppButtonWithIcon extends AppButton {
     super.isLoading,
     super.width,
     super.padding,
+    super.enabled,
   }) : super(label: _AppButtonWithIconChild(icon: icon, label: label));
 }
 

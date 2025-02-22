@@ -15,7 +15,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.minLines = 1,
     this.maxLength = 50,
     this.controller,
-    this.autoFocus=false,
+    this.autoFocus = false,
     this.enableObscureText = false,
     this.keyboardType,
     super.validator,
@@ -42,6 +42,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool isReadOnly;
+  @override
   final InputDecoration? decoration;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
@@ -69,7 +70,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         controller: widget.controller,
         decoration: widget.decoration ??
             _mobileInputDecoration.copyWith(
-              counterText:'',
+              counterText: '',
               hintText: widget.hintText,
               labelText: '',
               prefixIcon: widget.prefixIcon,

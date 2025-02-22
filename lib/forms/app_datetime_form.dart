@@ -27,6 +27,7 @@ class AppDateTimeForm extends AppForm<DateTime> {
   final dynamic Function(DateTime?)? valueTransformer;
   final void Function()? onClear;
   final bool showCloseButton;
+  @override
   final InputDecoration decoration;
   @override
   State<AppDateTimeForm> createState() => _AppDateTimeFormState();

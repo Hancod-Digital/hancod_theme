@@ -35,6 +35,7 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final FocusNode? focusNode;
   final dynamic Function(T?)? valueTransformer;
   final VoidCallback? onClear;
+  @override
   final InputDecoration decoration;
 
   @override

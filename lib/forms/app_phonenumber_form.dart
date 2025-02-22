@@ -20,6 +20,7 @@ class AppPhoneNumberForm extends AppForm<String> {
   final bool required;
   final String? Function(PhoneNumber?)? mobileValidator;
   final dynamic Function(PhoneNumber)? onFieldSubmitted;
+  @override
   final InputDecoration decoration;
 
   @override
@@ -39,7 +40,7 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
         initialValue: widget.initialValue,
         builder: (FormFieldState<String> field) {
           return PhoneFormField(
-            enabled:widget.enabled ,
+            enabled: widget.enabled,
             initialValue: widget.initialValue == null
                 ? null
                 : PhoneNumber.parse(widget.initialValue!),
@@ -53,7 +54,6 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
               height: 600,
               width: 500,
             ),
-            isCountryButtonPersistent: true,
             countryButtonStyle: const CountryButtonStyle(
               showIsoCode: true,
               flagSize: 16,
