@@ -25,6 +25,8 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     this.onClear,
     this.updateValue = true,
     this.onChanged,
+    this.suffixIcon,
+    this.suffix,
   });
   final String Function(T suggestion)? selectionToTextTransformer;
   final FutureOr<List<T>> Function(String search) suggestionsCallback;
@@ -39,6 +41,9 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final VoidCallback? onClear;
   final bool updateValue;
   final void Function(T?)? onChanged;
+  final Widget? suffix;
+  final Widget? suffixIcon;
+
   @override
   State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
 }
@@ -66,7 +71,10 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration: widget.decoration ?? AppTheme.largeScreenInputDecoration,
+            decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+              suffix: widget.suffix,
+              suffixIcon: widget.suffixIcon,
+            ),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,

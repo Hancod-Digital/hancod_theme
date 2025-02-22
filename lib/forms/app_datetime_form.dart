@@ -46,14 +46,13 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
         validator: widget.validator,
         valueTransformer: widget.valueTransformer,
         lastDate: widget.lastDate,
-        decoration:
-            (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+        decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
+          hintText: widget.hintText,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               const Icon(Icons.calendar_month_outlined),
-              if (_dateFieldKey.currentState?.value != null &&
-                  widget.showCloseButton)
+              if (_dateFieldKey.currentState?.value != null && widget.showCloseButton)
                 IconButton(
                   iconSize: 20,
                   icon: const Icon(Icons.close),

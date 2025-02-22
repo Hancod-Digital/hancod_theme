@@ -15,6 +15,7 @@ class AppDropDownForm<T> extends AppForm<T> {
     this.prefixIcon,
     this.dontShowCloseButton = false,
     this.onClear,
+    this.hintText,
   });
   final void Function(T?)? onChanged;
   final List<DropDownItems<T>>? items;
@@ -22,6 +23,7 @@ class AppDropDownForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final bool dontShowCloseButton;
   final void Function()? onClear;
+  final String? hintText;
 
   @override
   State<AppDropDownForm<T>> createState() => _AppDropDownFormState();
@@ -37,11 +39,8 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
         name: widget.name,
         validator: widget.validator,
         onChanged: widget.onChanged,
-        initialValue: widget.items
-                    ?.any((element) => element.value == widget.initialValue) ??
-                false
-            ? widget.initialValue
-            : null,
+        initialValue:
+            widget.items?.any((element) => element.value == widget.initialValue) ?? false ? widget.initialValue : null,
         valueTransformer: widget.valueTransformer,
         builder: (FormFieldState<dynamic> field) {
           return DropdownButtonHideUnderline(
@@ -50,9 +49,7 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                 child: DropdownButtonFormField<T>(
                   icon: const SizedBox(),
                   value: field.value as T?,
-                  decoration:
-                      (widget.decoration ?? AppTheme.largeScreenInputDecoration)
-                          .copyWith(
+                  decoration: (widget.decoration ?? AppTheme.largeScreenInputDecoration).copyWith(
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 10,
@@ -77,6 +74,7 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                   ),
                   validator: widget.validator,
                   menuMaxHeight: 500,
+                  hint: Text(widget.hintText ?? ''),
                   elevation: 2,
                   isExpanded: true,
                   items: widget.items,

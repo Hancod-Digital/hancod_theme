@@ -13,12 +13,12 @@ class AppTheme {
     fontFamily: 'Lato',
     colorSchemeSeed: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.bgColor,
+    dialogBackgroundColor: AppColors.white,
   );
 
   static final darkTheme = ThemeData(useMaterial3: false);
 
-  static Brightness get currentSystemBrightness =>
-      PlatformDispatcher.instance.platformBrightness;
+  static Brightness get currentSystemBrightness => PlatformDispatcher.instance.platformBrightness;
 
   static const _inputBorder = OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.inputOutline),
