@@ -29,4 +29,22 @@ class AppColors {
   static const Color lowStockSecondary = Color(0xFFFEEEEC);
   static const Color newReservation = Color(0xFF01B763);
   static const Color newReservationSecondary = Color(0xFFE6F8EF);
+
+  // Snackbar Colors
+  static const Color successBg = Color(0xFFEEFFF3);
+  static const Color errorBg = Color(0xFFFFF6F8);
+  static const Color warningBg = Color(0xFFFCD28C);
+  static const Color infoBg = Color(0xFFF1F6FD);
+
+  // Snackbar border Colors
+  static const Color successBorder = Color(0xFFB1E4BF);
+  static const Color errorBorder = Color(0xFFFFA7A0);
+  static const Color warningBorder = Color(0xFFFCD28C);
+  static const Color infoBorder = Color(0xFFA7C5FD);
+
+  // Snackbar Text Colors
+  static const Color successText = Color(0xFF23A047);
+  static const Color errorText = Color(0xFFF44336);
+  static const Color warningText = Color(0xFFFCA004);
+  static const Color infoText = Color(0xFF0052EA);
 }

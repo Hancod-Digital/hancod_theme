@@ -28,6 +28,7 @@ class _AppToggleFormState extends State<AppToggleForm> {
     return widget.buildContainer(
       context,
       FormBuilderField(
+        key: widget.fieldKey,
         name: widget.name,
         validator: widget.validator,
         onChanged: widget.onChanged,
