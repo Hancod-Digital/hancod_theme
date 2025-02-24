@@ -55,11 +55,13 @@ extension SnackBarX on BuildContext {
               color: type.textColor,
             ),
             const SizedBox(width: 10),
-            Text(
-              message,
-              style: AppText.medium2.copyWith(
-                fontFamily: 'Lato',
-                color: const Color(0xff181818),
+            Expanded(
+              child: Text(
+                message,
+                style: AppText.medium2.copyWith(
+                  fontFamily: 'Lato',
+                  color: const Color(0xff181818),
+                ),
               ),
             ),
           ],
