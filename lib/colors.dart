@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class AppColors {
-  static const Color primaryColor = Color(0xFF0A003D);
+  static const Color primaryColor = Color(0xFFEC1E26);
   static const Color white = Color(0xFFFFFFFF);
   static const Color stormyBlue = Color(0xFF75829C);
   static const Color title = Color(0xFF2E2E2E);
@@ -43,4 +43,6 @@ class AppColors {
   static const Color ledgerReceiveAmount = Color(0xff00B2FF);
   static const Color ledgerCustomerDue = Color(0xffEE0000);
   static const Color ledgerSupplierDue = Color(0xff4CAE29);
+  static const Color secondaryColor = Color(0xFFABAAB1);
+  static const Color secondaryBackgroundColor = Color(0xFFF8F8F8);
 }
