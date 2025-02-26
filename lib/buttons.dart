@@ -115,7 +115,9 @@ class _AppButtonState extends State<AppButton> {
               AppColors.primaryColor.withOpacity(.05),
           },
         ),
-        fixedSize: WidgetStatePropertyAll(Size(widget.width, widget.height ?? 50)),
+        fixedSize: WidgetStatePropertyAll(
+          Size(widget.width, widget.height ?? 50),
+        ),
       ),
       onPressed: (widget.isLoading || !_isClickable || !widget.enabled)
           ? null

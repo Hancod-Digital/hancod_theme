@@ -43,6 +43,7 @@ class _AppToggleFormState extends State<AppToggleForm> {
               mainAxisAlignment: widget.mainAxisAlignment,
               children: [
                 widget.hint,
+                const SizedBox(width: 10),
                 SizedBox(
                   height: 30,
                   width: 42,
