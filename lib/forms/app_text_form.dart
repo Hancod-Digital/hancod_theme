@@ -62,6 +62,9 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     return widget.buildContainer(
       context,
       FormBuilderTextField(
+        onTapOutside: (value) {
+          FocusScope.of(context).unfocus();
+        },
         maxLength: widget.maxLength,
         name: widget.name,
         enabled: widget.enabled,
