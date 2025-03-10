@@ -11,6 +11,7 @@ class AppTheme {
     useMaterial3: false,
     fontFamily: 'Inter',
     colorSchemeSeed: AppColors.brandViolet,
+    scaffoldBackgroundColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: _inputBorder.copyWith(
         borderSide: const BorderSide(color: AppColors.textfieldOutline),
@@ -59,8 +60,7 @@ class AppTheme {
     borderRadius: BorderRadius.all(Radius.circular(textFieldBorderRadius)),
   );
 
-  static Brightness get currentSystemBrightness =>
-      PlatformDispatcher.instance.platformBrightness;
+  static Brightness get currentSystemBrightness => PlatformDispatcher.instance.platformBrightness;
 
   static void setStatusBarAndNavigationBarColors() {
     SystemChrome.setSystemUIOverlayStyle(

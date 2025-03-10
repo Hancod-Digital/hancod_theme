@@ -16,7 +16,7 @@ class AppButton extends StatefulWidget {
     this.width = double.infinity,
     this.height,
     this.style = ButtonStyles.primary,
-    this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+    this.padding,
     this.color,
   });
 
@@ -39,7 +39,7 @@ class AppButton extends StatefulWidget {
   final double width;
   final double? height;
   final ButtonStyles style;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
   final Color? color;
 
   @override
@@ -50,6 +50,9 @@ class _AppButtonState extends State<AppButton> {
   bool _isClickable = true;
   Timer? _timer;
 
+  final largePadding = const EdgeInsets.symmetric(vertical: 20, horizontal: 24);
+  final smallPadding = const EdgeInsets.all(12);
+
   @override
   void dispose() {
     _timer?.cancel();
@@ -58,13 +61,15 @@ class _AppButtonState extends State<AppButton> {
 
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.sizeOf(context).width < 800;
     return Material(
       borderRadius: BorderRadius.circular(10),
       child: Ink(
         child: TextButton(
           style: ButtonStyle(
-            padding:
-                WidgetStateProperty.resolveWith((states) => widget.padding),
+            padding: WidgetStateProperty.resolveWith(
+              (states) => widget.padding ?? (isSmall ? smallPadding : largePadding),
+            ),
             shape: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
                 ButtonStyles.primary => RoundedRectangleBorder(
@@ -99,10 +104,8 @@ class _AppButtonState extends State<AppButton> {
             overlayColor: WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
                 ButtonStyles.primary => AppColors.brandViolet.withOpacity(.05),
-                ButtonStyles.secondary =>
-                  (widget.color ?? AppColors.brandViolet).withOpacity(.05),
-                ButtonStyles.cancel =>
-                  (widget.color ?? AppColors.brandViolet).withOpacity(.05),
+                ButtonStyles.secondary => (widget.color ?? AppColors.brandViolet).withOpacity(.05),
+                ButtonStyles.cancel => (widget.color ?? AppColors.brandViolet).withOpacity(.05),
               },
             ),
             elevation: WidgetStateProperty.all(6),
@@ -297,10 +300,8 @@ class _AppIconButtonState extends State<AppIconButton> {
             },
             overlayColor: switch (widget.style) {
               ButtonStyles.primary => AppColors.brandViolet.withOpacity(.05),
-              ButtonStyles.secondary =>
-                (widget.color ?? AppColors.brandViolet).withOpacity(.05),
-              ButtonStyles.cancel =>
-                (widget.color ?? AppColors.brandViolet).withOpacity(.05),
+              ButtonStyles.secondary => (widget.color ?? AppColors.brandViolet).withOpacity(.05),
+              ButtonStyles.cancel => (widget.color ?? AppColors.brandViolet).withOpacity(.05),
             },
             elevation: 6,
             shadowColor: switch (widget.style) {
