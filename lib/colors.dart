@@ -28,6 +28,7 @@ class AppColors {
   static const Color primaryLight = Color(0x66503FB5);
   static const Color warning = Color(0xFFED7200);
   static const Color offWhite = Color(0xFFF8F8F8);
+  static const Color purple = Color(0xFFBEB4FF);
   // Mobile dashboard colors
   static const Color customersCard = Color(0xffD7F3FF);
   static const Color dailySalesCard = Color(0xffFFFBD6);
@@ -43,4 +44,12 @@ class AppColors {
   static const Color ledgerReceiveAmount = Color(0xff00B2FF);
   static const Color ledgerCustomerDue = Color(0xffEE0000);
   static const Color ledgerSupplierDue = Color(0xff4CAE29);
+
+  static const Color reportGreen = Color(0xFF1F6B5D);
+  static const Color reportBrown = Color(0xFF9C4444);
+  static const Color reportPurple = Color(0xFF5E3C6B);
+
+  static const Color reportGreenLight = Color(0xFFB4E4D4);
+  static const Color reportBrownLight = Color(0xFFFFE5D9);
+  static const Color reportPurpleLight = Color(0xFFD8C3E8);
 }
