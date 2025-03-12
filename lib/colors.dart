@@ -30,9 +30,16 @@ class AppColors {
   static const Color tabBarColor = Color(0xffDA11B5);
   static const Color beansWalletBackgroundColor = Color(0xffF1F5FC);
   static const Color filterCountryChip = Color(0xC0DAE8FF);
+  static const Color rankingProfileBorderOne = Color(0xC0F6AE0D);
+  static const Color rankingProfileBorderTwo = Color(0xC0488EFF);
+  static const Color rankingProfileBorderThree = Color(0xC0F86B00);
+  static const Color myLevelTextColor = Color(0xC070818C);
+  static const Color myLevelTableColor = Color(0xC0EEEEF6);
+  static const Color myLevelTableExpColor = Color(0xC04A4058);
   static const Color bl = Color(0xff);
   static const Color red = Colors.red;
   static const Color green = Colors.green;
+
  
 
   // New
