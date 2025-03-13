@@ -27,7 +27,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.decoration = const InputDecoration(),
     this.style,
     this.onFocusLose,
-    this.secondaryLabel,
+    super.secondaryLabel
   });
 
   final void Function(T? value)? onChanged;
@@ -45,7 +45,7 @@ class AppTextForm<T> extends AppForm<T> {
   final InputDecoration decoration;
   final TextStyle? style;
   final void Function(T? value)? onFocusLose;
-  final String? secondaryLabel;
+  
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
