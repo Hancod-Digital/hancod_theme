@@ -27,7 +27,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.decoration = const InputDecoration(),
     this.style,
     this.onFocusLose,
-    super.secondaryLabel
+    super.secondaryLabel,
   });
 
   final void Function(T? value)? onChanged;
@@ -45,7 +45,7 @@ class AppTextForm<T> extends AppForm<T> {
   final InputDecoration decoration;
   final TextStyle? style;
   final void Function(T? value)? onFocusLose;
-  
+
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -94,7 +94,9 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
                       isObscure = !isObscure;
                     });
                   },
-                  icon: isObscure ? const Icon(Icons.visibility_outlined) : const Icon(Icons.visibility_off_outlined),
+                  icon: isObscure
+                      ? const Icon(Icons.visibility_outlined)
+                      : const Icon(Icons.visibility_off_outlined),
                 )
               : widget.suffixIcon,
           prefixIcon: widget.prefixIcon,
@@ -112,8 +114,10 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => widget.validator?.call(val == null ? null : int.tryParse(val) as T?),
-            double => widget.validator?.call(val == null ? null : double.tryParse(val) as T?),
+            int => widget.validator
+                ?.call(val == null ? null : int.tryParse(val) as T?),
+            double => widget.validator
+                ?.call(val == null ? null : double.tryParse(val) as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },
@@ -160,7 +164,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
                     return newValue; // Allow just the minus sign
                   }
                   // Replace anything that's not a digit or decimal point
-                  newString = '-${digitsAfterMinus.replaceAll(RegExp(r'[^\d.]'), '')}';
+                  newString =
+                      '-${digitsAfterMinus.replaceAll(RegExp(r'[^\d.]'), '')}';
                 } else {
                   // Replace anything that's not a digit or decimal point
                   newString = newValue.text.replaceAll(RegExp(r'[^\d.]'), '');
@@ -193,7 +198,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
                   // Allow the decimal point to be typed
                   return newValue.copyWith(
                     text: newString,
-                    selection: TextSelection.collapsed(offset: newString.length),
+                    selection:
+                        TextSelection.collapsed(offset: newString.length),
                   );
                 }
 
@@ -226,8 +232,10 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
                 return newValue.copyWith(
                   text: newString,
                   selection: newValue.selection.copyWith(
-                    baseOffset: newValue.selection.baseOffset.clamp(0, newString.length),
-                    extentOffset: newValue.selection.extentOffset.clamp(0, newString.length),
+                    baseOffset: newValue.selection.baseOffset
+                        .clamp(0, newString.length),
+                    extentOffset: newValue.selection.extentOffset
+                        .clamp(0, newString.length),
                   ),
                 );
               },

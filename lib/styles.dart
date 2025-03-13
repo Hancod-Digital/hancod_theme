@@ -8,7 +8,7 @@ class AppStyles {
       BoxShadow(
         offset: const Offset(0, 20),
         blurRadius: 27,
-        color: Colors.black.withOpacity(.05),
+        color: Colors.black.withValues(alpha: .05),
       ),
     ],
   );

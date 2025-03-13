@@ -47,24 +47,24 @@ class _AppMultiSelectDropdownFormState<T extends Object>
         builder: (field) {
           return MultiDropdown<T>.future(
             controller: _controller,
-            searchDecoration: const SearchFieldDecoration(
-              border: OutlineInputBorder(
+            searchDecoration: SearchFieldDecoration(
+              border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
-                borderSide: BorderSide(color: AppColors.textfieldOutline),
+                borderSide: BorderSide(color: AppColors.stormyBlue),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                borderSide: BorderSide(color: AppColors.outlineGrey),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: Colors.blueGrey[300]!),
               ),
             ),
-            fieldDecoration: const FieldDecoration(
-              border: OutlineInputBorder(
+            fieldDecoration: FieldDecoration(
+              border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
-                borderSide: BorderSide(color: AppColors.textfieldOutline),
+                borderSide: BorderSide(color: AppColors.stormyBlue),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                borderSide: BorderSide(color: AppColors.outlineGrey),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: Colors.blueGrey[300]!),
               ),
             ),
             dropdownDecoration: DropdownDecoration(

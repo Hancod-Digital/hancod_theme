@@ -60,7 +60,8 @@ class AppTheme {
     borderRadius: BorderRadius.all(Radius.circular(textFieldBorderRadius)),
   );
 
-  static Brightness get currentSystemBrightness => PlatformDispatcher.instance.platformBrightness;
+  static Brightness get currentSystemBrightness =>
+      PlatformDispatcher.instance.platformBrightness;
 
   static void setStatusBarAndNavigationBarColors() {
     SystemChrome.setSystemUIOverlayStyle(
