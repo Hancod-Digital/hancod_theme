@@ -48,7 +48,8 @@ class _AppCheckBoxFormState extends State<AppCheckBoxForm> {
           final secondary = Text(
             widget.hint,
             overflow: TextOverflow.ellipsis,
-            style: widget.hintStyle,
+            style: widget.hintStyle ??
+                AppText.largeN.copyWith(color: AppColors.stormyBlue),
           );
           switch (widget.controlAffinity) {
             case ListTileControlAffinity.leading:

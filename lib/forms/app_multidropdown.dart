@@ -47,6 +47,29 @@ class _AppMultiSelectDropdownFormState<T extends Object>
         builder: (field) {
           return MultiDropdown<T>.future(
             controller: _controller,
+            searchDecoration: const SearchFieldDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: AppColors.textfieldOutline),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: AppColors.outlineGrey),
+              ),
+            ),
+            fieldDecoration: const FieldDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: AppColors.textfieldOutline),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(color: AppColors.outlineGrey),
+              ),
+            ),
+            dropdownDecoration: DropdownDecoration(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            ),
             future: widget.future,
             onSelectionChange: field.didChange,
             searchEnabled: true,

@@ -2,7 +2,7 @@
 part of '../forms.dart';
 
 class AppDropDownForm<T> extends AppForm<T> {
-  const AppDropDownForm({
+  AppDropDownForm({
     required super.name,
     required super.label,
     required this.items,
