@@ -9,7 +9,6 @@ import 'package:flutter/material.dart'
         DropdownButtonFormField,
         DropdownButtonHideUnderline,
         DropdownMenuItem;
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -28,3 +27,9 @@ part 'forms/app_text_form.dart';
 part 'forms/app_toggle_form.dart';
 part 'forms/app_typeahead_form.dart';
 part 'forms/custom_dropdown.dart';
+part 'forms/app_phonenumber_form.dart';
+part 'forms/app_checkbox_form.dart';
+part 'forms/app_dropdown_form.dart';
+part 'forms/custom_dropdown.dart';
+part 'forms/app_multidropdown.dart';
+part 'forms/app_toggle_form.dart';

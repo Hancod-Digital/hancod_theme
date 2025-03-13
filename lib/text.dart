@@ -6,7 +6,7 @@ class AppText {
     fontWeight: FontWeight.w700,
   );
   static const TextStyle heading2 = TextStyle(
-    fontSize: 40,
+    fontSize: 34,
     fontWeight: FontWeight.w700,
   );
   static const TextStyle heading3 = TextStyle(
