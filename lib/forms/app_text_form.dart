@@ -52,7 +52,6 @@ class AppTextForm<T> extends AppForm<T> {
   final TextStyle? contentStyle;
   final String? labelText;
   final Widget? suffixIcon;
-  final AutovalidateMode autovalidateMode;
   final bool trimText;
 
   @override
@@ -75,12 +74,11 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
       FormBuilderTextField(
         name: widget.name,
         enabled: widget.enabled,
-        autovalidateMode: widget.autovalidateMode,
+        autovalidateMode: widget.autoValidateMode,
         key: key,
         controller: widget.controller,
         style: widget.contentStyle,
-        decoration:
-            (widget.decoration ?? AppTheme.defaultInputDecoration).copyWith(
+        decoration: (widget.decoration ?? AppTheme.defaultInputDecoration).copyWith(
           suffix: widget.suffix,
           suffixIcon: widget.suffixIcon,
           hintStyle: widget.hintStyle,
@@ -93,11 +91,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
           widget.onChanged?.call(
             switch (T) {
               String => processedVal as T?,
-              int =>
-                processedVal == null ? null : int.tryParse(processedVal) as T?,
-              double => processedVal == null
-                  ? null
-                  : double.tryParse(processedVal) as T?,
+              int => processedVal == null ? null : int.tryParse(processedVal) as T?,
+              double => processedVal == null ? null : double.tryParse(processedVal) as T?,
               _ => processedVal as T?
             },
           );
@@ -105,10 +100,8 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         validator: (val) {
           return switch (T) {
             String => widget.validator?.call(val as T?),
-            int => widget.validator
-                ?.call(val == null ? null : int.tryParse(val) as T?),
-            double => widget.validator
-                ?.call(val == null ? null : double.tryParse(val) as T?),
+            int => widget.validator?.call(val == null ? null : int.tryParse(val) as T?),
+            double => widget.validator?.call(val == null ? null : double.tryParse(val) as T?),
             Type() => widget.validator?.call(val as T?),
           };
         },

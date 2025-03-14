@@ -10,7 +10,6 @@ enum ButtonStyles {
   secondary,
   cancel,
   delete,
-  success,
 }
 
 class AppButton extends StatefulWidget {
@@ -86,9 +85,7 @@ class _AppButtonState extends State<AppButton> {
                 borderRadius: BorderRadius.circular(borderRadius),
                 side: const BorderSide(color: AppColors.buttonOutline),
               ),
-            ButtonStyles.delete ||
-            ButtonStyles.success =>
-              RoundedRectangleBorder(
+            ButtonStyles.delete => RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
               ),
           },
@@ -106,34 +103,24 @@ class _AppButtonState extends State<AppButton> {
             WidgetStateProperty.resolveWith(
               (states) => switch (widget.style) {
                 ButtonStyles.primary => widget.color ?? AppColors.primary,
-                ButtonStyles.secondary =>
-                  Theme.of(context).scaffoldBackgroundColor,
-                ButtonStyles.cancel =>
-                  Theme.of(context).scaffoldBackgroundColor,
+                ButtonStyles.secondary => Theme.of(context).scaffoldBackgroundColor,
+                ButtonStyles.cancel => Theme.of(context).scaffoldBackgroundColor,
                 ButtonStyles.delete => AppColors.redStatus500,
               },
             ),
         overlayColor: WidgetStateProperty.resolveWith(
           (states) => switch (widget.style) {
-            ButtonStyles.primary =>
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
-            ButtonStyles.secondary =>
-              (widget.color ?? AppColors.primary).withOpacity(.05),
-            ButtonStyles.cancel =>
-              (widget.color ?? AppColors.primary).withOpacity(.05),
+            ButtonStyles.primary => Theme.of(context).scaffoldBackgroundColor.withOpacity(.1),
+            ButtonStyles.secondary => (widget.color ?? AppColors.primary).withOpacity(.05),
+            ButtonStyles.cancel => (widget.color ?? AppColors.primary).withOpacity(.05),
             ButtonStyles.delete => AppColors.redStatus100,
-            ButtonStyles.success => Colors.green.shade600,
           },
         ),
         elevation: MaterialStateProperty.all(6),
         shadowColor: MaterialStateProperty.resolveWith(
           (states) => switch (widget.style) {
-            ButtonStyles.primary ||
-            ButtonStyles.secondary ||
-            ButtonStyles.cancel =>
-              AppColors.primary.withOpacity(.05),
+            ButtonStyles.primary || ButtonStyles.secondary || ButtonStyles.cancel => AppColors.primary.withOpacity(.05),
             ButtonStyles.delete => AppColors.redStatus500,
-            ButtonStyles.success => Colors.green.withOpacity(.05),
           },
         ),
         fixedSize: MaterialStatePropertyAll(Size.fromWidth(widget.width)),
@@ -189,8 +176,7 @@ class _AppButtonWithIcon extends AppButton {
           style: style ?? ButtonStyles.primary,
           isLoading: isLoading ?? false,
           width: width ?? double.infinity,
-          padding: padding ??
-              const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+          padding: padding ?? const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
         );
 }
 
