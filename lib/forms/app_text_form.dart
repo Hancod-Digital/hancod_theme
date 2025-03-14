@@ -5,7 +5,7 @@ part of '../forms.dart';
 class AppTextForm<T> extends AppForm<T> {
   const AppTextForm({
     required super.name,
-    super.autoValidateMode,
+    super.autoValidateMode = AutovalidateMode.onUserInteraction,
     super.label,
     super.key,
     super.boxShadow,
@@ -32,7 +32,6 @@ class AppTextForm<T> extends AppForm<T> {
     this.labelStyle,
     this.contentStyle,
     this.hintStyle,
-    this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.trimText = true,
   });
 
@@ -74,7 +73,6 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
     return widget.buildContainer(
       context,
       FormBuilderTextField(
-        autovalidateMode: widget.autoValidateMode,
         name: widget.name,
         enabled: widget.enabled,
         autovalidateMode: widget.autovalidateMode,
