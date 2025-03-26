@@ -12,6 +12,7 @@ class AppTheme {
     fontFamily: 'Inter',
     colorSchemeSeed: AppColors.brandViolet,
     scaffoldBackgroundColor: AppColors.white,
+    dialogBackgroundColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: _inputBorder.copyWith(
         borderSide: const BorderSide(color: AppColors.textfieldOutline),
