@@ -61,7 +61,7 @@ class _AppButtonState extends State<AppButton> {
 
   @override
   Widget build(BuildContext context) {
-    final isSmall = MediaQuery.sizeOf(context).width < 800;
+    final isSmall = MediaQuery.sizeOf(context).width < 500;
     return Material(
       borderRadius: BorderRadius.circular(10),
       child: Ink(

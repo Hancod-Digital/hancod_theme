@@ -234,7 +234,13 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
             ),
           ...widget.inputFormatters ?? [],
         ],
-        keyboardType: widget.keyboardType,
+        keyboardType: widget.keyboardType ??
+            switch (T) {
+              String => TextInputType.text,
+              int => TextInputType.number,
+              double => TextInputType.numberWithOptions(decimal: true),
+              Type() => TextInputType.text,
+            },
         onSubmitted: (value) {
           if (value == null) return;
           widget.onSubmitted?.call(

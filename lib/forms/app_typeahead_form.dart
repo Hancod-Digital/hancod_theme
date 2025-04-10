@@ -61,8 +61,7 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration:
-                widget.decoration.copyWith(labelText: widget.secondaryLabel),
+            decoration: widget.decoration.copyWith(labelText: widget.secondaryLabel),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,
@@ -73,6 +72,7 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
             selectionToTextTransformer: widget.selectionToTextTransformer,
             suggestionsCallback: widget.suggestionsCallback,
             itemBuilder: widget.itemBuilder,
+            hideOnEmpty: true,
             onSelected: (suggestion) {
               widget.onSuggestionSelected?.call(suggestion);
               setState(() {
