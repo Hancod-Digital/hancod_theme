@@ -54,4 +54,6 @@ class AppColors {
   static const Color reportGreenLight = Color(0xFFB4E4D4);
   static const Color reportBrownLight = Color(0xFFFFE5D9);
   static const Color reportPurpleLight = Color(0xFFD8C3E8);
+
+  static const Color lightBlue = Color(0xFFE5EEFF);
 }
