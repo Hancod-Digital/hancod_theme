@@ -52,14 +52,13 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
     super.initState();
     key = widget.fieldKey ?? GlobalKey<FormBuilderFieldState>();
     controller = widget.controller ?? TextEditingController();
-    final initialValue = widget.initialValue == null
-        ? null
-        : widget.initialValue is String
-            ? widget.initialValue
-            : widget.selectionToTextTransformer?.call(
-                widget.initialValue as T,
-              );
-    // If the initial value is not null, set the controller's text to the initial value
+    final initialValue = (
+      widget.initialValue is String?
+          ? widget.initialValue
+          : widget.selectionToTextTransformer?.call(widget.initialValue as T),
+    ) as String?;
+    // If the initial value is not null, set the controller's
+    // text to the initial value
     if (initialValue != null) {
       controller.text = initialValue;
     }
