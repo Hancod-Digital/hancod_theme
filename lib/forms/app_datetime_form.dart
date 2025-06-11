@@ -45,6 +45,9 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
         validator: widget.validator,
         valueTransformer: widget.valueTransformer,
         decoration: widget.decoration.copyWith(
+          suffixIconConstraints: const BoxConstraints(
+            minWidth: 40,
+          ),
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
