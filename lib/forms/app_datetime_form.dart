@@ -68,6 +68,7 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
         inputType: widget.inputType,
         onChanged: widget.onChanged,
         fieldHintText: widget.hintText,
+        format: DateFormat('dd/MM/yyyy'),
       ),
     );
   }
