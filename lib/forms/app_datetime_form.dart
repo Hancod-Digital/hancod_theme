@@ -49,8 +49,7 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Icon(Icons.calendar_month_outlined),
-              if (_dateFieldKey.currentState?.value != null &&
-                  widget.showCloseButton)
+              if (_dateFieldKey.currentState?.value != null && widget.showCloseButton)
                 IconButton(
                   iconSize: 20,
                   icon: const Icon(Icons.close),
@@ -67,6 +66,7 @@ class _AppDateTimeFormState extends State<AppDateTimeForm> {
         inputType: widget.inputType,
         onChanged: widget.onChanged,
         fieldHintText: widget.hintText,
+        format: DateFormat('dd/MM/yyyy'),
       ),
     );
   }
