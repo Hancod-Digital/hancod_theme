@@ -45,7 +45,9 @@ class _AppPhoneNumberFormState extends State<AppPhoneNumberForm> {
             onChanged: (phoneNumber) {
               field.didChange(phoneNumber.international);
             },
-            onSubmitted: widget.onFieldSubmitted,
+            onSubmitted: (phoneNumber) {
+              widget.onFieldSubmitted?.call(phoneNumber.international);
+            },
             countrySelectorNavigator: const CountrySelectorNavigator.dialog(
               height: 600,
               width: 500,

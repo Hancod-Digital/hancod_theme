@@ -1,26 +1,26 @@
 name: hancod_theme
 description: "Theme package for Hancod"
-version: 0.0.2
+version: 0.0.3
 homepage:
 
 environment:
-  sdk: ">=3.3.1 <4.0.0"
+  sdk: ">=3.6.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
-  dropdown_search: ^5.0.6
+  dropdown_search: ^6.0.2
   flutter:
     sdk: flutter
-  flutter_form_builder: ^9.4.1
-  form_builder_extra_fields: ^11.0.0
-  form_builder_validators: ^11.0.0
+  flutter_form_builder: ^10.0.1
+  form_builder_extra_fields: ^12.0.0
+  form_builder_validators: ^11.1.2
   multi_dropdown: ^3.0.1
-  phone_form_field: ^9.2.8
-
+  phone_form_field: ^10.0.8
+  intl: ^0.20.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^7.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
