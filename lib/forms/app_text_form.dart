@@ -28,6 +28,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.style,
     this.onFocusLose,
     this.secondaryLabel,
+    this.textInputAction
   });
 
   final void Function(T? value)? onChanged;
@@ -45,6 +46,7 @@ class AppTextForm<T> extends AppForm<T> {
   final InputDecoration decoration;
   final TextStyle? style;
   final void Function(T? value)? onFocusLose;
+  final TextInputAction? textInputAction;
   final String? secondaryLabel;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
@@ -137,6 +139,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         obscureText: widget.enableObscureText && isObscure,
         style: widget.style,
         maxLines: widget.minLines,
+        textInputAction: widget.textInputAction,
         inputFormatters: [
           if (T == double)
             TextInputFormatter.withFunction(
