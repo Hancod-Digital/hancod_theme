@@ -56,4 +56,6 @@ class AppColors {
   static const Color reportPurpleLight = Color(0xFFD8C3E8);
 
   static const Color lightBlue = Color(0xFFE5EEFF);
+  static const Color greyNew = Color.fromRGBO(164, 164, 164, 1);
+
 }
