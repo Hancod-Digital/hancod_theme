@@ -3,6 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hancod_theme/hancod_theme.dart';
 
+// This is to prevent transitions on web
+class NoTransitionsOnWeb extends PageTransitionsTheme {
+  const NoTransitionsOnWeb();
+
+  @override
+  Widget buildTransitions<T>(
+    route,
+    context,
+    animation,
+    secondaryAnimation,
+    child,
+  ) {
+    if (kIsWeb) {
+      return child;
+    }
+    return super.buildTransitions(
+      route,
+      context,
+      animation,
+      secondaryAnimation,
+      child,
+    );
+  }
+}
+
 class AppTheme {
   AppTheme._();
 
@@ -51,6 +76,7 @@ class AppTheme {
         alignment: Alignment.center,
       ),
     ),
+    pageTransitionsTheme: const NoTransitionsOnWeb(),
   );
   static final darkTheme = ThemeData(
     useMaterial3: false,
