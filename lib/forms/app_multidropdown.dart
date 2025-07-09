@@ -14,7 +14,10 @@ class AppMultiSelectDropdownForm<T extends Object> extends AppForm<T> {
     super.initialValue,
     this.decoration = const InputDecoration(),
     this.controller,
+    this.onSelectionChange,
   });
+
+  final void Function(List<T>)? onSelectionChange;
 
   final void Function(String)? onSearchChange;
   final MultiSelectController<T>? controller;
@@ -22,12 +25,10 @@ class AppMultiSelectDropdownForm<T extends Object> extends AppForm<T> {
   final InputDecoration decoration;
 
   @override
-  State<AppMultiSelectDropdownForm<T>> createState() =>
-      _AppMultiSelectDropdownFormState();
+  State<AppMultiSelectDropdownForm<T>> createState() => _AppMultiSelectDropdownFormState();
 }
 
-class _AppMultiSelectDropdownFormState<T extends Object>
-    extends State<AppMultiSelectDropdownForm<T>> {
+class _AppMultiSelectDropdownFormState<T extends Object> extends State<AppMultiSelectDropdownForm<T>> {
   late GlobalKey<FormBuilderFieldState> _key;
   late MultiSelectController<T> _controller;
   @override
@@ -71,7 +72,10 @@ class _AppMultiSelectDropdownFormState<T extends Object>
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             ),
             future: widget.future,
-            onSelectionChange: field.didChange,
+            onSelectionChange: (selectedItems) {
+              widget.onSelectionChange?.call(selectedItems);
+              field.didChange(selectedItems);
+            },
             searchEnabled: true,
             onSearchChange: widget.onSearchChange,
           );
