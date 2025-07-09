@@ -29,6 +29,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.onFocusLose,
     this.secondaryLabel,
     this.textInputAction
+    this.textAlign = TextAlign.start,
   });
 
   final void Function(T? value)? onChanged;
@@ -48,6 +49,7 @@ class AppTextForm<T> extends AppForm<T> {
   final void Function(T? value)? onFocusLose;
   final TextInputAction? textInputAction;
   final String? secondaryLabel;
+  final TextAlign textAlign;
   @override
   State<AppTextForm<T>> createState() => _AppTextFormState();
 }
@@ -84,6 +86,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         autovalidateMode: widget.autovalidateMode,
         name: widget.name,
         enabled: widget.enabled,
+        textAlign: widget.textAlign,
         key: _key,
         controller: widget.controller,
         decoration: widget.decoration.copyWith(
