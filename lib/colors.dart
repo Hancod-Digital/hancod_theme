@@ -58,6 +58,8 @@ class AppColors {
   static const Color lightBlue = Color(0xFFE5EEFF);
   static const Color greyNew = Color.fromRGBO(164, 164, 164, 1);
   static const Color miscellaneous = Color.fromRGBO(0, 122, 255, 1);
+  static const Color ghostWhite=const Color(0xFFFBFAFF);
+
 
 
 }
