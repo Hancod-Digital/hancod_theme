@@ -17,6 +17,7 @@ class AppDropDownForm<T> extends AppForm<T> {
     this.showCloseButton = false,
     this.onClear,
     this.decoration = const InputDecoration(),
+    this.sufixIcon=true
   });
   final void Function(T?)? onChanged;
   final List<DropDownItems<T>>? items;
@@ -25,6 +26,7 @@ class AppDropDownForm<T> extends AppForm<T> {
   final bool showCloseButton;
   final void Function()? onClear;
   final InputDecoration decoration;
+  final bool sufixIcon;
 
   @override
   State<AppDropDownForm<T>> createState() => _AppDropDownFormState();
@@ -63,7 +65,7 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                   icon: const SizedBox(),
                   value: field.value as T?,
                   decoration: widget.decoration.copyWith(
-                    suffixIcon: Row(
+                    suffixIcon:widget.sufixIcon? Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Icon(Icons.keyboard_arrow_down_rounded),
@@ -77,7 +79,7 @@ class _AppDropDownFormState<T> extends State<AppDropDownForm<T>> {
                             },
                           ),
                       ],
-                    ),
+                    ):null,
                   ),
                   validator: widget.validator,
                   menuMaxHeight: 500,
