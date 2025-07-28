@@ -28,7 +28,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.style,
     this.onFocusLose,
     this.secondaryLabel,
-    this.textInputAction
+    this.textInputAction,
     this.textAlign = TextAlign.start,
   });
 

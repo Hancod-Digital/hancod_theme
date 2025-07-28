@@ -29,6 +29,8 @@ class AppColors {
   static const Color warning = Color(0xFFED7200);
   static const Color offWhite = Color(0xFFF8F8F8);
   static const Color purple = Color(0xFFBEB4FF);
+  static const Color brandPurple = Color(0xFFDE3BE2);
+
   // Mobile dashboard colors
   static const Color customersCard = Color(0xffD7F3FF);
   static const Color dailySalesCard = Color(0xffFFFBD6);
@@ -58,8 +60,9 @@ class AppColors {
   static const Color lightBlue = Color(0xFFE5EEFF);
   static const Color greyNew = Color.fromRGBO(164, 164, 164, 1);
   static const Color miscellaneous = Color.fromRGBO(0, 122, 255, 1);
-  static const Color ghostWhite=const Color(0xFFFBFAFF);
+  static const Color ghostWhite = const Color(0xFFFBFAFF);
 
-
-
+  static const Color newInvoiceSelectedColors = Color(0xFF3047EC);
+  static const Color newInvoiceTextBlue = Color(0xFFF4F9FF);
+  static const Color newInvoiceTextWhite = Color(0xFFFAFAFA);
 }
