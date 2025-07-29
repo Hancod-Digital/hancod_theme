@@ -65,4 +65,10 @@ class AppColors {
   static const Color newInvoiceSelectedColors = Color(0xFF3047EC);
   static const Color newInvoiceTextBlue = Color(0xFFF4F9FF);
   static const Color newInvoiceTextWhite = Color(0xFFFAFAFA);
+
+  // TypeAhead Form Colors
+  static const Color typeAheadBorderColor = Color(0xFFF1F1F1);
+  static const Color typeAheadLabelColor = Color(0xFFB1B1B1);
+  // Notes and Terms Border Color
+  static const Color notesTermsBorderColor = Color(0xFFCBCBCB);
 }

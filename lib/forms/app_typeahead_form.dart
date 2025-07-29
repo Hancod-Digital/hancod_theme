@@ -1,7 +1,5 @@
 // ignore_for_file: strict_raw_type
-
 part of '../forms.dart';
-
 class AppTypeAheadForm<T> extends AppForm<T> {
   const AppTypeAheadForm({
     required super.name,
@@ -39,11 +37,9 @@ class AppTypeAheadForm<T> extends AppForm<T> {
   final VoidCallback? onClear;
   final InputDecoration decoration;
   final bool updateValue;
-
   @override
   State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
 }
-
 class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
   late GlobalKey<FormBuilderFieldState> key;
   late TextEditingController controller;
@@ -61,7 +57,6 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
       controller.text = initialValue;
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return widget.buildContainer(
@@ -71,7 +66,39 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
         children: [
           FormBuilderTypeAhead<T>(
             key: key,
-            decoration: widget.decoration.copyWith(labelText: widget.secondaryLabel),
+            decoration: widget.decoration.copyWith(
+              labelText: widget.secondaryLabel,
+              labelStyle: const TextStyle(
+                color: AppColors.typeAheadLabelColor,
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide:
+                    const BorderSide(color: AppColors.typeAheadBorderColor),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide:
+                    const BorderSide(color: AppColors.typeAheadBorderColor),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide:
+                    const BorderSide(color: AppColors.typeAheadBorderColor),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide:
+                    const BorderSide(color: AppColors.typeAheadBorderColor),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide:
+                    const BorderSide(color: AppColors.typeAheadBorderColor),
+              ),
+            ),
             controller: widget.controller,
             validator: widget.validator,
             enabled: widget.enabled && key.currentState?.value == null,
