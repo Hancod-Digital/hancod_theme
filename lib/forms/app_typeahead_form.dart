@@ -1,5 +1,10 @@
 // ignore_for_file: strict_raw_type
 part of '../forms.dart';
+
+/// A typeahead form field that provides autocomplete functionality.
+///
+/// This widget extends [AppForm] and provides a searchable dropdown with
+/// customizable styling and behavior.
 class AppTypeAheadForm<T> extends AppForm<T> {
   const AppTypeAheadForm({
     required super.name,
@@ -24,39 +29,63 @@ class AppTypeAheadForm<T> extends AppForm<T> {
     this.onClear,
     this.updateValue = true,
   });
+
+  // Callback functions
   final String Function(T suggestion)? selectionToTextTransformer;
   final FutureOr<List<T>> Function(String search) suggestionsCallback;
   final void Function(T suggestion)? onSuggestionSelected;
   final Widget Function(BuildContext context, T suggestion) itemBuilder;
   final Widget Function(BuildContext context)? noItemsFoundBuilder;
+  final VoidCallback? onClear;
+
+  // Controllers and nodes
   final TextEditingController? controller;
   final ScrollController? scrollController;
-  final String? hintText;
   final FocusNode? focusNode;
-  final dynamic Function(T?)? valueTransformer;
-  final VoidCallback? onClear;
+
+  // UI properties
+  final String? hintText;
   final InputDecoration decoration;
   final bool updateValue;
+
+  // Value transformation
+  final dynamic Function(T?)? valueTransformer;
+
   @override
-  State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState();
+  State<AppTypeAheadForm<T>> createState() => _AppTypeAheadFormState<T>();
 }
+
 class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
-  late GlobalKey<FormBuilderFieldState> key;
-  late TextEditingController controller;
+  late final GlobalKey<FormBuilderFieldState> _fieldKey;
+  late final TextEditingController _textController;
+
+  // Extract border styling to avoid duplication
+
   @override
   void initState() {
     super.initState();
-    key = widget.fieldKey ?? GlobalKey<FormBuilderFieldState>();
-    controller = widget.controller ?? TextEditingController();
-    final initialValue = widget.initialValue is String?
-        ? (widget.initialValue as String?)
-        : widget.selectionToTextTransformer?.call(widget.initialValue as T);
-    // If the initial value is not null, set the controller's
-    // text to the initial value
-    if (initialValue != null) {
-      controller.text = initialValue;
+    _fieldKey = widget.fieldKey ?? GlobalKey<FormBuilderFieldState>();
+    _textController = widget.controller ?? TextEditingController();
+    _initializeControllerText();
+  }
+
+  void _initializeControllerText() {
+    final initialText = _getInitialTextValue();
+    if (initialText != null && initialText.isNotEmpty) {
+      _textController.text = initialText;
     }
   }
+
+  String? _getInitialTextValue() {
+    if (widget.initialValue == null) return null;
+
+    if (widget.initialValue is String) {
+      return widget.initialValue as String;
+    }
+
+    return widget.selectionToTextTransformer?.call(widget.initialValue as T);
+  }
+
   @override
   Widget build(BuildContext context) {
     return widget.buildContainer(
@@ -64,77 +93,77 @@ class _AppTypeAheadFormState<T> extends State<AppTypeAheadForm<T>> {
       Stack(
         alignment: Alignment.centerRight,
         children: [
-          FormBuilderTypeAhead<T>(
-            key: key,
-            decoration: widget.decoration.copyWith(
-              labelText: widget.secondaryLabel,
-              labelStyle: const TextStyle(
-                color: AppColors.typeAheadLabelColor,
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide:
-                    const BorderSide(color: AppColors.typeAheadBorderColor),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide:
-                    const BorderSide(color: AppColors.typeAheadBorderColor),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide:
-                    const BorderSide(color: AppColors.typeAheadBorderColor),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide:
-                    const BorderSide(color: AppColors.typeAheadBorderColor),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4),
-                borderSide:
-                    const BorderSide(color: AppColors.typeAheadBorderColor),
-              ),
-            ),
-            controller: widget.controller,
-            validator: widget.validator,
-            enabled: widget.enabled && key.currentState?.value == null,
-            name: widget.name,
-            initialValue: widget.initialValue as T?,
-            valueTransformer: widget.valueTransformer,
-            focusNode: widget.focusNode,
-            selectionToTextTransformer: widget.selectionToTextTransformer,
-            suggestionsCallback: widget.suggestionsCallback,
-            itemBuilder: widget.itemBuilder,
-            hideOnEmpty: true,
-            onSelected: (suggestion) {
-              widget.onSuggestionSelected?.call(suggestion);
-              setState(() {
-                if (widget.updateValue) {
-                  key.currentState?.didChange(suggestion);
-                } else {
-                  key.currentState?.didChange(null);
-                }
-              });
-            },
-            emptyBuilder: widget.noItemsFoundBuilder,
-            scrollController: widget.scrollController,
-          ),
-          if (key.currentState?.value != null && widget.enabled)
-            IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                widget.onClear?.call();
-                setState(() {
-                  key.currentState?.didChange(null);
-                });
-              },
-            ),
+          _buildTypeAheadField(),
+          _buildClearButton(),
         ],
       ),
     );
+  }
+
+  Widget _buildTypeAheadField() {
+    return FormBuilderTypeAhead<T>(
+      key: _fieldKey,
+      decoration: _buildInputDecoration(),
+      controller: widget.controller,
+      validator: widget.validator,
+      enabled: _isFieldEnabled(),
+      name: widget.name,
+      initialValue: widget.initialValue as T?,
+      valueTransformer: widget.valueTransformer,
+      focusNode: widget.focusNode,
+      selectionToTextTransformer: widget.selectionToTextTransformer,
+      suggestionsCallback: widget.suggestionsCallback,
+      itemBuilder: widget.itemBuilder,
+      hideOnEmpty: true,
+      onSelected: _handleSuggestionSelected,
+      emptyBuilder: widget.noItemsFoundBuilder,
+      scrollController: widget.scrollController,
+    );
+  }
+
+  InputDecoration _buildInputDecoration() {
+    return widget.decoration.copyWith(
+      labelText: widget.secondaryLabel,
+      labelStyle: const TextStyle(
+        color: AppColors.typeAheadLabelColor,
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+      ),
+    );
+  }
+
+  bool _isFieldEnabled() {
+    return widget.enabled && _fieldKey.currentState?.value == null;
+  }
+
+  void _handleSuggestionSelected(T suggestion) {
+    widget.onSuggestionSelected?.call(suggestion);
+
+    setState(() {
+      if (widget.updateValue) {
+        _fieldKey.currentState?.didChange(suggestion);
+      } else {
+        _fieldKey.currentState?.didChange(null);
+      }
+    });
+  }
+
+  Widget _buildClearButton() {
+    final hasValue = _fieldKey.currentState?.value != null;
+    final isEnabled = widget.enabled;
+
+    if (!hasValue || !isEnabled) return const SizedBox.shrink();
+
+    return IconButton(
+      icon: const Icon(Icons.close),
+      onPressed: _handleClear,
+    );
+  }
+
+  void _handleClear() {
+    widget.onClear?.call();
+    setState(() {
+      _fieldKey.currentState?.didChange(null);
+    });
   }
 }
