@@ -3,7 +3,7 @@ part of '../forms.dart';
 class AppToggleForm extends AppForm<bool> {
   const AppToggleForm({
     required super.name,
-    required this.hint,
+    this.hint,
     bool? super.initialValue,
     super.key,
     super.validator,
@@ -14,14 +14,16 @@ class AppToggleForm extends AppForm<bool> {
     this.hintStyle,
     this.onChanged,
     this.activeColor,
+    this.mainAxisSize = MainAxisSize.min,
   });
   // ignore: avoid_positional_boolean_parameters
   final void Function(bool? val)? onChanged;
-  final String hint;
+  final String? hint;
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final TextStyle? hintStyle;
   final Color? activeColor;
+  final MainAxisSize mainAxisSize;
   @override
   State<AppToggleForm> createState() => _AppToggleFormState();
 }
@@ -42,11 +44,11 @@ class _AppToggleFormState extends State<AppToggleForm> {
               field.didChange(!field.value!);
             },
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: widget.mainAxisSize,
               mainAxisAlignment: widget.mainAxisAlignment,
               crossAxisAlignment: widget.crossAxisAlignment,
               children: [
-                Text(widget.hint, style: widget.hintStyle ?? AppText.largeM),
+                if (widget.hint != null) Text(widget.hint!, style: widget.hintStyle ?? AppText.largeM),
                 SizedBox(
                   height: 30,
                   width: 42,
