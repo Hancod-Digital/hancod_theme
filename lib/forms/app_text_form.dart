@@ -24,7 +24,7 @@ class AppTextForm<T> extends AppForm<T> {
     this.prefixIcon,
     this.suffixIcon,
     this.isReadOnly = false,
-    this.decoration = const InputDecoration(),
+    this.decoration,
     this.style,
     this.onFocusLose,
     this.secondaryLabel,
@@ -44,7 +44,7 @@ class AppTextForm<T> extends AppForm<T> {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool isReadOnly;
-  final InputDecoration decoration;
+  final InputDecoration? decoration;
   final TextStyle? style;
   final void Function(T? value)? onFocusLose;
   final TextInputAction? textInputAction;
@@ -58,10 +58,12 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
   bool isObscure = true;
   late GlobalKey<FormBuilderFieldState> _key;
   late FocusNode _focusNode;
+  late InputDecoration _decoration;
   @override
   void initState() {
     super.initState();
     _key = widget.fieldKey ?? GlobalKey<FormBuilderFieldState>();
+    _decoration = widget.decoration ?? const InputDecoration();
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(() {
       if (!_focusNode.hasFocus) {
@@ -89,7 +91,7 @@ class _AppTextFormState<T> extends State<AppTextForm<T>> {
         textAlign: widget.textAlign,
         key: _key,
         controller: widget.controller,
-        decoration: widget.decoration.copyWith(
+        decoration: _decoration.copyWith(
           hintText: widget.hintText,
           labelText: widget.secondaryLabel,
           suffixIcon: widget.enableObscureText
